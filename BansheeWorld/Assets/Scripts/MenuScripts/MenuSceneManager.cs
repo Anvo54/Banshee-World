@@ -89,14 +89,21 @@ public class MenuSceneManager : MonoBehaviour {
             (value => { SetBot4(value); });
 
         CharacterImageInMainMenu.sprite = characters[PlayerPrefs.GetInt("selectedCharacter")].CharacterImage;
-        BotToggles.transform.GetChild((int)GameControl.character).GetComponent<Toggle>().isOn = true;
+        BotToggles.transform.GetChild((int)GameStaticValues.bot).GetComponent<Toggle>().isOn = true;
 
-        MultiplayerToggle.isOn = GameControl.multiplayer;
+        MultiplayerToggle.isOn = GameStaticValues.multiplayer;
+
     }
 
     private void SetPlayer1ReadyForPlay()
     {
         isPlayer1Ready = true;
+
+        if(!GameStaticValues.multiplayer)
+        {
+            StartGame();
+            return;
+        }
 
         if (isPlayer2Ready)
         {
@@ -136,29 +143,28 @@ public class MenuSceneManager : MonoBehaviour {
     {
         if(value)
         {
-            GameControl.character = Character.Character1;
+            GameStaticValues.bot = Character.Character1;
         }
     }
     private void SetBot2(bool value)
     {
         if (value)
         {
-            GameControl.character = Character.Character2;
+            GameStaticValues.bot = Character.Character2;
         }
     }
-
     private void SetBot3(bool value)
     {
         if (value)
         {
-            GameControl.character = Character.Character3;
+            GameStaticValues.bot = Character.Character3;
         }
     }
     private void SetBot4(bool value)
     {
         if (value)
         {
-            GameControl.character = Character.Character4;
+            GameStaticValues.bot = Character.Character4;
         }
     }
 
@@ -169,7 +175,7 @@ public class MenuSceneManager : MonoBehaviour {
 
     private void SetMultiplayer(bool value)
     {
-        GameControl.multiplayer = value;
+        GameStaticValues.multiplayer = value;
     }
 
     public void StartGame()
@@ -203,8 +209,9 @@ public class MenuSceneManager : MonoBehaviour {
     {
         PlayerPrefs.SetInt("selectedCharacter", tempIndex);
 
+        Debug.Log(tempIndex);
+        Debug.Log("GetInt");
         Debug.Log(PlayerPrefs.GetInt("selectedCharacter"));
-
         CharacterImageInMainMenu.sprite = characters[tempIndex].CharacterImage;
         ClosePanel("CharacterPanel");
         ClosePanel("CharactersPanel");

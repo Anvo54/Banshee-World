@@ -9,11 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbd9d1120d33c074aa24bb0a8904f707, type: 3}
-  m_Name: Character2
+  m_Name: Character4
   m_EditorClassIdentifier: 
-  character: 1
-  CharacterName: Char2
-  CharacterImage: {fileID: 21300000, guid: d66f1ed868bfaaa44ada56cee3337ac6, type: 3}
-  AttackPoint: 200
-  HealthPoint: 200
-  Description: This is second one
+  character: 3
+  CharacterPrefab: {fileID: 1429279921026270, guid: 76e24f222a39cce4f8e428cb88887d46,
+    type: 2}
+  CharacterName: Char4
+  CharacterImage: {fileID: 21300000, guid: f24cb848774a239479fcb873187b4479, type: 3}
+  AttackPoint: 400
+  HealthPoint: 400
+  Description: This is last one
