@@ -17,8 +17,7 @@ public class CharacterSO : ScriptableObject {
 
     public override string ToString()
     {
-        return "Character Name is " + CharacterName + 
-            "\n\nHealth point: " + HealthPoint.ToString() + "\n\nAttack Point: " + AttackPoint.ToString();
+        return CharacterName + "\n\nHealth: " + HealthPoint.ToString() + "\n\nAttack: " + AttackPoint.ToString();
     }
 
 
