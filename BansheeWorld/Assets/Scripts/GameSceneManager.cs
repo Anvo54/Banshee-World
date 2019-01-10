@@ -33,7 +33,7 @@ public class GameSceneManager : MonoBehaviour {
 
         if(GameStaticValues.multiplayer)
         {
-            players[1].instance = Instantiate(CharactersForPlayer[PlayerPrefs.GetInt("selectedCharacterPlayer2")].CharacterPrefab,
+            players[1].instance = Instantiate(CharactersForPlayer[PlayerPrefs.GetInt("selectedCharacterP2")].CharacterPrefab,
                     spawner2.position, spawner2.rotation) as GameObject;
             players[1].playerNumber = 2;
         }

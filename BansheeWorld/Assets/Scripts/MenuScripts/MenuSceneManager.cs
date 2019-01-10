@@ -7,72 +7,116 @@ using UnityEngine.SceneManagement;
 
 
 public class MenuSceneManager : MonoBehaviour {
-
+    
     [SerializeField]
     List<CharacterSO> characters = new List<CharacterSO>();
 
     [SerializeField]
-    GameObject BansheeCanvas;
+    GameObject LevelMapCanvas;
     [SerializeField]
-    GameObject CharacterPanel;
+    GameObject Player1BansheeCanvas;
+    [SerializeField]
+    GameObject Player2BansheeCanvas;
+
+    [Header("Main Canvas")]
     [SerializeField]
     GameObject Player2Panel;
-
-
     [SerializeField]
-    Button BackButtonInCharactersPanel;
-    [SerializeField]
-    Button BackButtonInCharacterPanel;
+    Button LevelSelectionButton;
     [SerializeField]
     Button CharacterSelectionButton;
     [SerializeField]
-    Button SelectButtonInCharacterPanel;
+    Button CharacterSelectionButtonForPlayer2;
     [SerializeField]
     Button Player1ReadyButton;
     [SerializeField]
     Button Player2ReadyButton;
 
+    [SerializeField] Toggle MultiplayerToggle;
+    [SerializeField] GameObject BotToggles;
+    [SerializeField]
+    Image CharacterImageP1InMainCanvas;
+    [SerializeField]
+    Image CharacterImageP2InMainCanvas;
+    [SerializeField]
+    Text NoticeText;
+
+    [Header("Player1 Canvas")]
+    [SerializeField]
+    GameObject CharacterPanelInPlayer1;
+    [SerializeField]
+    Button BackButtonInCharactersPanel;
+    [SerializeField]
+    Button BackButtonInCharacterPanel;
+    [SerializeField]
+    Button SelectButtonInCharacterPanel;
     [SerializeField]
     List<Button> CharacterButtons = new List<Button>();
-
     [SerializeField]
     Image CharacterImageInCharacterPanel;
     [SerializeField]
     Text CharacterDetais;
 
+    [Header("Player2 Canvas")]
     [SerializeField]
-    Image CharacterImageInMainMenu;
-
-    [SerializeField] Toggle MultiplayerToggle;
-    [SerializeField] GameObject BotToggles;
-
+    GameObject CharacterPanelInPlayer2;
     [SerializeField]
-    Text NoticeText;
+    Button BackButtonInCharactersPanelP2;
+    [SerializeField]
+    Button BackButtonInCharacterPanelP2;
+    [SerializeField]
+    Button SelectButtonInCharacterPanelP2;
+    [SerializeField]
+    List<Button> CharacterButtonsP2 = new List<Button>();
+    [SerializeField]
+    Image CharacterImageInCharacterPanelP2;
+    [SerializeField]
+    Text CharacterDetaisP2;
+
+    [Header("Level Selection Canvas")]
+    [SerializeField]
+    Button BackButtonInLevelMapCanvas;
+    [SerializeField]
+    GameObject LevelToggles;
 
     int tempIndex;
+    int tempIndexP2;
     bool isPlayer1Ready, isPlayer2Ready;
     
 
     void Start ()
     {
-        BansheeCanvas.SetActive(false);
-        CharacterPanel.SetActive(false);
+        Player1BansheeCanvas.SetActive(false);
+        Player2BansheeCanvas.SetActive(false);
+        CharacterPanelInPlayer1.SetActive(false);
+        CharacterPanelInPlayer2.SetActive(false);
+        LevelMapCanvas.SetActive(false);
         NoticeText.enabled = false;
 
         for (int i = 0; i < CharacterButtons.Count; i++)
         {
             int index = i;
-            CharacterButtons[i].onClick.AddListener( delegate {OpenCharacterPanel(index);} );
+            CharacterButtons[i].onClick.AddListener( delegate {OpenCharacterPanel(1, index);} );
         }
 
+        for (int i = 0; i < CharacterButtons.Count; i++)
+        {
+            int index = i;
+            CharacterButtonsP2[i].onClick.AddListener(delegate { OpenCharacterPanel(2, index); });
+        }
+        LevelSelectionButton.onClick.AddListener(OpenLevelMapPanel);
         BackButtonInCharacterPanel.onClick.AddListener(delegate { ClosePanel("CharacterPanel"); });
         BackButtonInCharactersPanel.onClick.AddListener(delegate { ClosePanel("CharactersPanel"); });
+        BackButtonInCharacterPanelP2.onClick.AddListener(delegate { ClosePanel("CharacterPanelP2"); });
+        BackButtonInCharactersPanelP2.onClick.AddListener(delegate { ClosePanel("CharactersPanelP2"); });
         CharacterSelectionButton.onClick.AddListener(OpenCharactersPanel);
+        CharacterSelectionButtonForPlayer2.onClick.AddListener(OpenCharactersPanelP2);
 
         Player1ReadyButton.onClick.AddListener(SetPlayer1ReadyForPlay);
         Player2ReadyButton.onClick.AddListener(SetPlayer2ReadyForPlay);
 
-        SelectButtonInCharacterPanel.onClick.AddListener(Select);
+        SelectButtonInCharacterPanel.onClick.AddListener(delegate { Select(1); });
+        SelectButtonInCharacterPanelP2.onClick.AddListener(delegate { Select(2); });
         //StartButton.onClick.AddListener(StartGame);
 
         MultiplayerToggle.onValueChanged.AddListener((value) => { SetMultiplayer(value); });
@@ -88,11 +132,48 @@ public class MenuSceneManager : MonoBehaviour {
         BotToggles.transform.GetChild(2).GetComponent<Toggle>().onValueChanged.AddListener
             (value => { SetBot4(value); });
 
-        CharacterImageInMainMenu.sprite = characters[PlayerPrefs.GetInt("selectedCharacter")].CharacterImage;
+        CharacterImageP1InMainCanvas.sprite = characters[PlayerPrefs.GetInt("selectedCharacter")].CharacterImage;
+        CharacterImageP2InMainCanvas.sprite = characters[PlayerPrefs.GetInt("selectedCharacterP2")].CharacterImage;
         BotToggles.transform.GetChild((int)GameStaticValues.bot).GetComponent<Toggle>().isOn = true;
 
         MultiplayerToggle.isOn = GameStaticValues.multiplayer;
 
+        LevelToggles.transform.GetChild(0).GetComponent<Toggle>().onValueChanged.AddListener
+            (value => { SetLevel1(value); });
+        LevelToggles.transform.GetChild(1).GetComponent<Toggle>().onValueChanged.AddListener
+          (value => { SetLevel2(value); });
+        LevelToggles.transform.GetChild(2).GetComponent<Toggle>().onValueChanged.AddListener
+          (value => { SetLevel3(value); });
+
+        LevelToggles.transform.GetChild((int)GameStaticValues.level).GetComponent<Toggle>().isOn = true;
+        BackButtonInLevelMapCanvas.onClick.AddListener(delegate { ClosePanel("LevelMap"); } );
+    }
+
+    private void OpenLevelMapPanel()
+    {
+        LevelMapCanvas.SetActive(true);
+    }
+
+    private void SetLevel1(bool value)
+    {
+        if(value)
+        {
+            GameStaticValues.level = Level.Level1;
+        }
+    }
+    private void SetLevel2(bool value)
+    {
+        if (value)
+        {
+            GameStaticValues.level = Level.Level2;
+        }
+    }
+    private void SetLevel3(bool value)
+    {
+        if (value)
+        {
+            GameStaticValues.level = Level.Level3;
+        }
     }
 
     private void SetPlayer1ReadyForPlay()
@@ -170,7 +251,11 @@ public class MenuSceneManager : MonoBehaviour {
 
     private void OpenCharactersPanel()
     {
-        BansheeCanvas.SetActive(true);
+        Player1BansheeCanvas.SetActive(true);
+    }
+    private void OpenCharactersPanelP2()
+    {
+        Player2BansheeCanvas.SetActive(true);
     }
 
     private void SetMultiplayer(bool value)
@@ -180,41 +265,72 @@ public class MenuSceneManager : MonoBehaviour {
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Game");
+        int sceneNumber = (int)GameStaticValues.level + 2;
+        SceneManager.LoadScene(sceneNumber);
     }
 
     private void ClosePanel(string panelName)
     {
         if(panelName == "CharacterPanel")
         {
-            CharacterPanel.SetActive(false);
+            CharacterPanelInPlayer1.SetActive(false);
         }
         if(panelName == "CharactersPanel")
         {
-            BansheeCanvas.SetActive(false);
+            Player1BansheeCanvas.SetActive(false);
+        }
+        if (panelName == "CharacterPanelP2")
+        {
+            CharacterPanelInPlayer2.SetActive(false);
+        }
+        if (panelName == "CharactersPanelP2")
+        {
+            Player2BansheeCanvas.SetActive(false);
+        }
+        if (panelName == "LevelMap")
+        {
+            LevelMapCanvas.SetActive(false);
         }
     }
 
-    private void OpenCharacterPanel(int characterIndex)
+    private void OpenCharacterPanel(int playerIndex, int characterIndex)
     {
-        CharacterPanel.SetActive(true);
+        if(playerIndex == 1)
+        {
+            CharacterPanelInPlayer1.SetActive(true);
 
-        CharacterImageInCharacterPanel.sprite = characters[characterIndex].CharacterImage;
-        CharacterDetais.text = characters[characterIndex].ToString();
+            CharacterImageInCharacterPanel.sprite = characters[characterIndex].CharacterImage;
+            CharacterDetais.text = characters[characterIndex].ToString();
 
-        tempIndex = characterIndex;
+            tempIndex = characterIndex;
+        }
+
+        if(playerIndex == 2)
+        {
+            CharacterPanelInPlayer2.SetActive(true);
+
+            CharacterImageInCharacterPanelP2.sprite = characters[characterIndex].CharacterImage;
+            CharacterDetaisP2.text = characters[characterIndex].ToString();
+
+            tempIndexP2 = characterIndex;
+        }
     }
 
-    private void Select()
+    private void Select(int playerNumber)
     {
-        PlayerPrefs.SetInt("selectedCharacter", tempIndex);
-
-        Debug.Log(tempIndex);
-        Debug.Log("GetInt");
-        Debug.Log(PlayerPrefs.GetInt("selectedCharacter"));
-        CharacterImageInMainMenu.sprite = characters[tempIndex].CharacterImage;
-        ClosePanel("CharacterPanel");
-        ClosePanel("CharactersPanel");
-
+        if(playerNumber == 1)
+        {
+            PlayerPrefs.SetInt("selectedCharacter", tempIndex);
+            CharacterImageP1InMainCanvas.sprite = characters[tempIndex].CharacterImage;
+            ClosePanel("CharacterPanel");
+            ClosePanel("CharactersPanel");
+        }
+        if(playerNumber == 2)
+        {
+            PlayerPrefs.SetInt("selectedCharacterP2", tempIndexP2);
+            CharacterImageP2InMainCanvas.sprite = characters[tempIndexP2].CharacterImage;
+            ClosePanel("CharacterPanelP2");
+            ClosePanel("CharactersPanelP2");
+        }
     }
 }
