@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-
 [Serializable]
 public class PlayerManager
 {
@@ -11,6 +10,20 @@ public class PlayerManager
     [HideInInspector] public GameObject instance;
     [HideInInspector] public int playerNumber;
     public Transform spawnPosition;
+
+    [HideInInspector] public int numberOfWins;
+
+
+    public void Reset()
+    {
+        //health reset to max;
+
+        instance.transform.position = spawnPosition.position;
+        instance.transform.rotation = spawnPosition.rotation;
+
+        instance.SetActive(false);
+        instance.SetActive(true);
+    }
 
 
 }

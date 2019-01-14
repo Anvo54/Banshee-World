@@ -2,28 +2,82 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameSceneManager : MonoBehaviour {
 
     [SerializeField] PlayerManager[] players;
 
     [SerializeField]
-    Transform spawner1, spawner2;
+    Transform spawner1;
+    [SerializeField]
+    Transform spawner2;
 
     [SerializeField] List<CharacterSO> CharactersForPlayer;
     [SerializeField] List<CharacterSO> CharactersForBot;
 
-    [SerializeField] float StartDelay;
-
+    [SerializeField] float StartingDelay;
     private WaitForSeconds StartWait;
+    [SerializeField] float EndingDelay;
+    WaitForSeconds EndWait;
 
+    PlayerManager gameWinner;
+
+    [SerializeField] Text MessageText;
  
     void Start ()
     {
-        StartWait = new WaitForSeconds(StartDelay);
+        StartWait = new WaitForSeconds(StartingDelay);
+        EndWait = new WaitForSeconds(EndingDelay);
    
-        SpawnAllPlayers();	
+        SpawnAllPlayers();
+
+        StartCoroutine(GameLoop());
 	}
+
+    IEnumerator GameLoop()
+    {
+        ResetPlayers();
+        MessageText.text = "Game Start";
+        yield return StartWait;
+
+        if(gameWinner != null)
+        {
+            //gameWinner.numberOfWins++;
+            if(gameWinner == players[0])
+            {
+                GameStaticValues.player1Win++;
+            }
+            else
+            {
+                GameStaticValues.player2Win++;
+            }
+        }
+        
+
+        yield return EndWait;
+    }
+
+    private void ResetPlayers()
+    {
+        for (int i = 0; i < players.Length; i++)
+        {
+            players[i].Reset();
+        }
+    }
+
+    PlayerManager GetGameWinner()
+    {
+        for (int i = 0; i < players.Length; i++)
+        {
+            if(players[i].instance.activeSelf)
+            {
+                return players[i];
+            }
+        }
+
+        return null;
+    }
 
     private void SpawnAllPlayers()
     {
