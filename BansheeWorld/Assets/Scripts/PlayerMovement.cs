@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour {
         if (Input.GetButtonDown("Fire2"))
         {
             Debug.Log("Kick");
+            playerAnimator.SetLayerWeight(1, 1);
             playerAnimator.SetTrigger("Punch");
             Attack(attackHitBoxes[1]);
         }
@@ -58,8 +59,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void Attack(Collider col)
-    {
-        
+    {  
         Collider[] cols = Physics.OverlapBox(col.bounds.center, col.bounds.extents, col.transform.rotation, LayerMask.GetMask("Hitbox"));
         foreach(Collider c in cols)
         {
@@ -68,8 +68,6 @@ public class PlayerMovement : MonoBehaviour {
                 continue;
             }
             Debug.Log(c.name);
-
-            
 
             switch (c.name)
             { case "Head":
@@ -92,20 +90,27 @@ public class PlayerMovement : MonoBehaviour {
     {
         float moveSpeed = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         transform.Translate(moveSpeed, 0, 0);
+        playerAnimator.SetFloat("Running",Mathf.Abs(moveSpeed*2));
     }
 
     private void MoveVertically()
     {
         float moveSpeed = Input.GetAxis("Vertical") * speed * Time.deltaTime;
         transform.Translate(0, 0, moveSpeed);
+        playerAnimator.SetFloat("Running", Mathf.Abs(moveSpeed*2));
     }
 
     private void Jump()
     {
         if (Input.GetButton("Jump") && grounded == true)
         {
+            playerAnimator.SetTrigger("Jumping");
             grounded = false;
             playerRB.AddForce(Vector3.up * jumpForce);
+        }
+        else
+        {
+            playerAnimator.ResetTrigger("Jumping");
         }
     }
 
