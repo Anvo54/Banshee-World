@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] float jumpForce;
     [SerializeField] bool grounded;
     [SerializeField] Collider[] attackHitBoxes;
+    [SerializeField] float damage = 0;
+
     Rigidbody playerRB;
     Animator playerAnimator;
 
@@ -66,6 +68,20 @@ public class PlayerMovement : MonoBehaviour {
                 continue;
             }
             Debug.Log(c.name);
+
+            
+
+            switch (c.name)
+            { case "Head":
+                    damage = 30;
+                    break;
+                case "Torso":
+                    damage = 20;
+                    break;
+                default:
+                    Debug.Log("Unable to indetify witch bodypart was hit. Check your spelling!");
+                    break;
+            }
         }
 
 
