@@ -141,6 +141,16 @@ ModelImporter:
     100270: upArm.R
     100272: upleg.L
     100274: upleg.R
+    100276: Circle.000
+    100278: Circle.001
+    100280: Circle.002
+    100282: Circle.003
+    100284: Circle.004
+    100286: Circle.005
+    100288: Circle.006
+    100290: Cylinder.008
+    100292: Cylinder.009
+    100294: Cylinder.010
     400000: 1stFinger.L
     400002: 1stFinger.R
     400004: 1stFinger1.L
@@ -279,11 +289,25 @@ ModelImporter:
     400270: upArm.R
     400272: upleg.L
     400274: upleg.R
+    400276: Circle.000
+    400278: Circle.001
+    400280: Circle.002
+    400282: Circle.003
+    400284: Circle.004
+    400286: Circle.005
+    400288: Circle.006
+    400290: Cylinder.008
+    400292: Cylinder.009
+    400294: Cylinder.010
     2100000: Material.001
     2100002: Material.002
     2100004: Material.003
     2100006: Material.006
     2100008: No Name
+    2100010: Material.007
+    2100012: Material.008
+    2100014: Material.005
+    2100016: Material
     2300000: Cylinder
     2300002: Cylinder.001
     2300004: Cylinder.002
@@ -294,6 +318,16 @@ ModelImporter:
     2300014: Cylinder.007
     2300016: Group6333
     2300018: Plane
+    2300020: Circle.000
+    2300022: Circle.001
+    2300024: Circle.002
+    2300026: Circle.003
+    2300028: Circle.004
+    2300030: Circle.005
+    2300032: Circle.006
+    2300034: Cylinder.008
+    2300036: Cylinder.009
+    2300038: Cylinder.010
     3300000: Cylinder
     3300002: Cylinder.001
     3300004: Cylinder.002
@@ -304,6 +338,16 @@ ModelImporter:
     3300014: Cylinder.007
     3300016: Group6333
     3300018: Plane
+    3300020: Circle.000
+    3300022: Circle.001
+    3300024: Circle.002
+    3300026: Circle.003
+    3300028: Circle.004
+    3300030: Circle.005
+    3300032: Circle.006
+    3300034: Cylinder.008
+    3300036: Cylinder.009
+    3300038: Cylinder.010
     4300000: Cylinder
     4300002: Plane
     4300004: Cylinder.005
@@ -314,6 +358,16 @@ ModelImporter:
     4300014: Cylinder.003
     4300016: Cylinder.004
     4300018: Cylinder.007
+    4300020: Circle.001
+    4300022: Circle.000
+    4300024: Circle.002
+    4300026: Circle.003
+    4300028: Circle.004
+    4300030: Circle.005
+    4300032: Circle.006
+    4300034: Cylinder.008
+    4300036: Cylinder.009
+    4300038: Cylinder.010
     7400000: Armature|Armature|Armature|1 RIGHT PUNCH|Armature|1 RIGHT PUNCH
     7400002: Armature|Armature|Armature|idle1|Armature|idle1
     7400004: Armature|Armature|Armature|idle2|Armature|idle2
