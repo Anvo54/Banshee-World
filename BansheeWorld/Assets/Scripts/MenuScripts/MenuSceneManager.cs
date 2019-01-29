@@ -256,10 +256,16 @@ public class MenuSceneManager : MonoBehaviour {
 
         LevelToggles.transform.GetChild(0).GetComponent<Toggle>().onValueChanged.AddListener
             (value => { SetLevel1(value); });
+        LevelToggles.transform.GetChild(0).GetComponent<Toggle>().onValueChanged.AddListener
+            (delegate { ClosePanel("LevelMap"); });
         LevelToggles.transform.GetChild(1).GetComponent<Toggle>().onValueChanged.AddListener
           (value => { SetLevel2(value); });
+        LevelToggles.transform.GetChild(1).GetComponent<Toggle>().onValueChanged.AddListener
+            (delegate { ClosePanel("LevelMap"); });
         LevelToggles.transform.GetChild(2).GetComponent<Toggle>().onValueChanged.AddListener
           (value => { SetLevel3(value); });
+        LevelToggles.transform.GetChild(2).GetComponent<Toggle>().onValueChanged.AddListener
+            (delegate { ClosePanel("LevelMap"); });
 
         LevelToggles.transform.GetChild((int)GameStaticValues.level).GetComponent<Toggle>().isOn = true;
         BackButtonInLevelMapCanvas.onClick.AddListener(delegate { ClosePanel("LevelMap"); } );
