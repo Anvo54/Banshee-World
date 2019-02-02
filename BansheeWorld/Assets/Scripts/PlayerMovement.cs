@@ -52,7 +52,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Animate()
     {
-        
         playerAnimator.SetFloat("Running", playerRB.velocity.sqrMagnitude);
     }
 
@@ -118,33 +117,16 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-    /*
-    private void MoveHorizontally()
-    {
-        float moveSpeed = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        transform.Translate(moveSpeed, 0, 0);
-        
-    }
-
-    private void MoveVertically()
-    {
-        float moveSpeed = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-        transform.Translate(0, 0, moveSpeed);
-        
-    }*/
 
     private void Jump()
     {
         if (Input.GetButton("Jump") && grounded == true)
         {
-            playerAnimator.SetTrigger("Jumping");
+            StartCoroutine("JumpAnim");
             grounded = false;
             playerRB.AddForce(Vector3.up * jumpForce);
         }
-        else
-        {
-            playerAnimator.ResetTrigger("Jumping");
-        }
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -153,5 +135,13 @@ public class PlayerMovement : MonoBehaviour
         {
             grounded = true;
         }
+    }
+
+    private IEnumerable JumpAnim()
+    {
+        Debug.Log("Started");
+        playerAnimator.SetTrigger("Jumping");
+        yield return new WaitForSeconds(4f*Time.deltaTime);
+        playerAnimator.ResetTrigger("Jumping");
     }
 }
