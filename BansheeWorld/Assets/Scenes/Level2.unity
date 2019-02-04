@@ -1813,6 +1813,18 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 83.969
       objectReference: {fileID: 0}
+    - target: {fileID: 100208, guid: 7dda7af76f3a2f842b8860918490edd4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: 7dda7af76f3a2f842b8860918490edd4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bf9a1507110761642ae12cc936c2f9ed, type: 2}
+    - target: {fileID: 2300004, guid: 7dda7af76f3a2f842b8860918490edd4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bf9a1507110761642ae12cc936c2f9ed, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7dda7af76f3a2f842b8860918490edd4, type: 3}
   m_IsPrefabAsset: 0
