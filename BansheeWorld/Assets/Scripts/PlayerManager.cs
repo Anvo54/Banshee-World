@@ -8,7 +8,7 @@ public class PlayerManager
 {
 
     [HideInInspector] public GameObject instance;
-    [HideInInspector] public int playerNumber;
+    [HideInInspector] public int playerIndex;
     public Transform spawnPosition;
 
     [HideInInspector] public int numberOfWins;
@@ -16,14 +16,10 @@ public class PlayerManager
 
     public void Reset()
     {
-        //health reset to max;
-
         instance.transform.position = spawnPosition.position;
         instance.transform.rotation = spawnPosition.rotation;
 
         instance.SetActive(false);
         instance.SetActive(true);
     }
-
-
 }

@@ -5,34 +5,60 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
+    //
+    [SerializeField] List<InputAxesSO> inputAxes = new List<InputAxesSO>();
+
     [SerializeField] float speed;
     [SerializeField] float jumpForce;
     [SerializeField] bool grounded;
     [SerializeField] Collider[] attackHitBoxes;
-    [SerializeField] float damage = 0;
+    public float damage = 0;
 
     Rigidbody playerRB;
     Animator playerAnimator;
 
-    // Use this for initialization
-    void Start () {
+    //
+    GameObject GameSceneManagerRef;
+    GameSceneManager gameSceneManager;
+
+    int playerIndex;
+    
+    void Start ()
+    {
+        GameSceneManagerRef = GameObject.FindGameObjectWithTag("GameManager");
+        gameSceneManager = GameSceneManagerRef.GetComponent<GameSceneManager>();
+
+        for (int i = 0; i < gameSceneManager.players.Length; i++)
+        {
+            if (gameObject == gameSceneManager.players[i].instance)
+            {
+                playerIndex = gameSceneManager.players[i].playerIndex;
+            }
+        }
+
+
         playerRB = GetComponent<Rigidbody>();
         playerAnimator = GetComponent<Animator>();
     }
 	
+    internal void ResetMaxHealth()
+    {
+        Debug.Log("SET current health to max health");
+    }
+
 	// Update is called once per frame
 	void FixedUpdate ()
     {
         MoveHorizontally();
         MoveVertically();
-        Jump();
+       // Jump();
         Punch();
         Kick();
     }
 
     private void Punch()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown(inputAxes[playerIndex].fire1))
         {
             playerAnimator.SetTrigger("Punch");
             Attack(attackHitBoxes[0]);
@@ -48,9 +74,9 @@ public class PlayerMovement : MonoBehaviour {
         if (Input.GetButtonDown("Fire2"))
         {
             Debug.Log("Kick");
-            playerAnimator.SetLayerWeight(1, 1);
+          //  playerAnimator.SetLayerWeight(1, 1);
             playerAnimator.SetTrigger("Punch");
-            Attack(attackHitBoxes[1]);
+            Attack(attackHitBoxes[0]);
         }
         if (Input.GetButtonUp("Fire2"))
         {
@@ -81,23 +107,20 @@ public class PlayerMovement : MonoBehaviour {
                     break;
             }
         }
-
-
-        
     }
 
     private void MoveHorizontally()
     {
         float moveSpeed = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         transform.Translate(moveSpeed, 0, 0);
-        playerAnimator.SetFloat("Running",Mathf.Abs(moveSpeed*2));
+    //    playerAnimator.SetFloat("Running", Mathf.Abs(moveSpeed*2));
     }
 
     private void MoveVertically()
     {
         float moveSpeed = Input.GetAxis("Vertical") * speed * Time.deltaTime;
         transform.Translate(0, 0, moveSpeed);
-        playerAnimator.SetFloat("Running", Mathf.Abs(moveSpeed*2));
+     //   playerAnimator.SetFloat("Running", Mathf.Abs(moveSpeed*2));
     }
 
     private void Jump()
@@ -121,6 +144,5 @@ public class PlayerMovement : MonoBehaviour {
             grounded = true;
         }
     }
-
 
 }
