@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool grounded;
     [SerializeField] Collider[] attackHitBoxes;
     [SerializeField] float damage = 0;
+    [SerializeField] string horizonal_Axis;
+    [SerializeField] string Vertical_Axis;
     Vector3 moveInput;
     Vector3 moveVelocity;
 
@@ -29,8 +31,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        float lh = Input.GetAxis("Horizontal");
-        float lv = Input.GetAxis("Vertical");
+        float lh = Input.GetAxis(horizonal_Axis);
+        float lv = Input.GetAxis(Vertical_Axis);
 
         Animate();
 
@@ -68,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            playerAnimator.SetLayerWeight(1, 1f);
             playerAnimator.SetTrigger("Punch");
             Attack(attackHitBoxes[0]);
         }
