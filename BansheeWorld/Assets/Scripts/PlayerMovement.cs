@@ -32,7 +32,9 @@ public class PlayerMovement : MonoBehaviour {
         {
             if (gameObject == gameSceneManager.players[i].instance)
             {
+//                playerIndex = i;
                 playerIndex = gameSceneManager.players[i].playerIndex;
+                
             }
         }
 
