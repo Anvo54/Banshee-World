@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         Quaternion cameraRelativeRotation = Quaternion.FromToRotation(Vector3.forward, cameraForward);
         Vector3 lookToward = cameraRelativeRotation * moveInput;
 
-        if (moveInput.sqrMagnitude > 0)
+        if(moveInput.sqrMagnitude > 0)
         {
             Ray lookRay = new Ray(transform.position, lookToward);
             transform.LookAt(lookRay.GetPoint(1));
@@ -144,7 +144,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log("Started");
         playerAnimator.SetTrigger("Jumping");
-        yield return new WaitForSeconds(4f * Time.deltaTime);
+        yield return new WaitForSeconds(4f*Time.deltaTime);
         playerAnimator.ResetTrigger("Jumping");
     }
 }
