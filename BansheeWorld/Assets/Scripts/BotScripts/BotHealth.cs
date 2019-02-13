@@ -19,6 +19,7 @@ public class BotHealth : MonoBehaviour
     float healthRatio;
 
     [SerializeField] Image healthBarImage;
+    [SerializeField] Text playerNameTag;
     float damageFromPlayer =0;
     float damageToPlayer;
 
@@ -38,6 +39,8 @@ public class BotHealth : MonoBehaviour
         
         currentHealth = maxHealth;
         damageFromPlayer = target.GetComponent<PlayerMovement>().damage;
+
+        playerNameTag.text = "Bot";
     }
 
 
