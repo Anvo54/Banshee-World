@@ -1,16 +1,18 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class StartSceneManager : MonoBehaviour
 {
-
     [SerializeField]
     Button GoToMenuSceneButton;
     [SerializeField]
     Button OpenSettingPanelButton;
     [SerializeField]
     Button OpenCreditPanelButton;
+    [SerializeField]
+    Toggle SoundToggle;
     
     [SerializeField]
     GameObject SettingPanel;
@@ -107,7 +109,15 @@ public class StartSceneManager : MonoBehaviour
         GoToMenuSceneButton.onClick.AddListener(GoToMenuScene);
         OpenCreditPanelButton.onClick.AddListener(OpenCreditPanel);
         OpenSettingPanelButton.onClick.AddListener(OpenSettingPanel);
+
+        SoundToggle.onValueChanged.AddListener((value) => { SetSoundOnOff(!value); });
 	}
+
+    private void SetSoundOnOff(bool value)
+    {
+        AudioListener.pause = value;
+        //Debug.Log(AudioListener.pause);
+    }
 
     public void ClosePopupPanels()
     {
@@ -120,7 +130,6 @@ public class StartSceneManager : MonoBehaviour
     {
         SettingPanel.SetActive(true);
         CreditPanel.SetActive(false);
-
     }
 
     private void OpenCreditPanel()
@@ -131,7 +140,7 @@ public class StartSceneManager : MonoBehaviour
 
     private void GoToMenuScene()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene(1);
     }
 
 }
