@@ -3,28 +3,64 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour
+{
 
     [SerializeField] float speed;
     [SerializeField] float jumpForce;
     [SerializeField] bool grounded;
     [SerializeField] Collider[] attackHitBoxes;
     [SerializeField] float damage = 0;
+    [SerializeField] string horizonal_Axis;
+    [SerializeField] string Vertical_Axis;
+    Vector3 moveInput;
+    Vector3 moveVelocity;
+
+    Camera mainCamera;
 
     Rigidbody playerRB;
     Animator playerAnimator;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         playerRB = GetComponent<Rigidbody>();
+        mainCamera = Camera.main;
         playerAnimator = GetComponent<Animator>();
     }
-	
-	// Update is called once per frame
-	void FixedUpdate ()
+
+    private void Update()
     {
-        MoveHorizontally();
-        MoveVertically();
+        float lh = Input.GetAxis(horizonal_Axis);
+        float lv = Input.GetAxis(Vertical_Axis);
+
+        Animate();
+
+        moveInput = new Vector3(lh, 0f, lv);
+        Vector3 cameraForward = mainCamera.transform.forward;
+        cameraForward.y = 0;
+
+        Quaternion cameraRelativeRotation = Quaternion.FromToRotation(Vector3.forward, cameraForward);
+        Vector3 lookToward = cameraRelativeRotation * moveInput;
+
+        if(moveInput.sqrMagnitude > 0)
+        {
+            Ray lookRay = new Ray(transform.position, lookToward);
+            transform.LookAt(lookRay.GetPoint(1));
+        }
+
+        moveVelocity = transform.forward * speed * moveInput.sqrMagnitude;
+    }
+
+    private void Animate()
+    {
+        playerAnimator.SetFloat("Running", playerRB.velocity.sqrMagnitude);
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        playerRB.velocity = moveVelocity;
         Jump();
         Punch();
         Kick();
@@ -34,6 +70,7 @@ public class PlayerMovement : MonoBehaviour {
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            playerAnimator.SetLayerWeight(1, 1f);
             playerAnimator.SetTrigger("Punch");
             Attack(attackHitBoxes[0]);
         }
@@ -59,18 +96,19 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void Attack(Collider col)
-    {  
+    {
         Collider[] cols = Physics.OverlapBox(col.bounds.center, col.bounds.extents, col.transform.rotation, LayerMask.GetMask("Hitbox"));
-        foreach(Collider c in cols)
+        foreach (Collider c in cols)
         {
-            if(c.transform.root == transform)
+            if (c.transform.root == transform)
             {
                 continue;
             }
             Debug.Log(c.name);
 
             switch (c.name)
-            { case "Head":
+            {
+                case "Head":
                     damage = 30;
                     break;
                 case "Torso":
@@ -81,37 +119,17 @@ public class PlayerMovement : MonoBehaviour {
                     break;
             }
         }
-
-
-        
-    }
-
-    private void MoveHorizontally()
-    {
-        float moveSpeed = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        transform.Translate(moveSpeed, 0, 0);
-        playerAnimator.SetFloat("Running",Mathf.Abs(moveSpeed*2));
-    }
-
-    private void MoveVertically()
-    {
-        float moveSpeed = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-        transform.Translate(0, 0, moveSpeed);
-        playerAnimator.SetFloat("Running", Mathf.Abs(moveSpeed*2));
     }
 
     private void Jump()
     {
         if (Input.GetButton("Jump") && grounded == true)
         {
-            playerAnimator.SetTrigger("Jumping");
+            StartCoroutine("JumpAnim");
             grounded = false;
             playerRB.AddForce(Vector3.up * jumpForce);
         }
-        else
-        {
-            playerAnimator.ResetTrigger("Jumping");
-        }
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -122,5 +140,11 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-
+    private IEnumerable JumpAnim()
+    {
+        Debug.Log("Started");
+        playerAnimator.SetTrigger("Jumping");
+        yield return new WaitForSeconds(4f*Time.deltaTime);
+        playerAnimator.ResetTrigger("Jumping");
+    }
 }
