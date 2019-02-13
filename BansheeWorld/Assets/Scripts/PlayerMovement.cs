@@ -13,6 +13,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float damage = 0;
     [SerializeField] string horizonal_Axis;
     [SerializeField] string Vertical_Axis;
+    [SerializeField] string jump;
+    [SerializeField] string fire1;
+    [SerializeField] string fire2;
     Vector3 moveInput;
     Vector3 moveVelocity;
 
@@ -62,36 +65,51 @@ public class PlayerMovement : MonoBehaviour
     {
         playerRB.velocity = moveVelocity;
         Jump();
-        Punch();
+        Attack1();
+        Attack2();
         Kick();
     }
 
-    private void Punch()
+    private void Attack2()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown(fire2))
         {
             playerAnimator.SetLayerWeight(1, 1f);
-            playerAnimator.SetTrigger("Punch");
+            playerAnimator.SetTrigger("Attack2");
             Attack(attackHitBoxes[0]);
         }
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp(fire2))
         {
-            playerAnimator.ResetTrigger("Punch");
+            playerAnimator.ResetTrigger("Attack2");
+        }
+    }
+
+    private void Attack1()
+    {
+        if (Input.GetButtonDown(fire1))
+        {
+            playerAnimator.SetLayerWeight(1, 1f);
+            playerAnimator.SetTrigger("Attack1");
+            Attack(attackHitBoxes[0]);
+        }
+        if (Input.GetButtonUp(fire1))
+        {
+            playerAnimator.ResetTrigger("Attack1");
         }
     }
 
     private void Kick()
     {
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown(fire2))
         {
             Debug.Log("Kick");
             playerAnimator.SetLayerWeight(1, 1);
-            playerAnimator.SetTrigger("Punch");
+            playerAnimator.SetTrigger("Attack1");
             Attack(attackHitBoxes[1]);
         }
-        if (Input.GetButtonUp("Fire2"))
+        if (Input.GetButtonUp(fire2))
         {
-            playerAnimator.ResetTrigger("Punch");
+            playerAnimator.ResetTrigger("Attack1");
         }
     }
 
@@ -123,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetButton("Jump") && grounded == true)
+        if (Input.GetButton(jump) && grounded == true)
         {
             StartCoroutine("JumpAnim");
             grounded = false;
