@@ -1315,7 +1315,7 @@ GameObject:
   - component: {fileID: 95247556430048920}
   m_Layer: 0
   m_Name: 'the grim reaper son '
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

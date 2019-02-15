@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpForce;
     [SerializeField] bool grounded;
     [SerializeField] Collider[] attackHitBoxes;
-    [SerializeField] float damage = 0;
+    [SerializeField] public float damage = 0;
     [SerializeField] string horizonal_Axis;
     [SerializeField] string Vertical_Axis;
     [SerializeField] string jump;
@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] string fire2;
     Vector3 moveInput;
     Vector3 moveVelocity;
+
+    int index;
 
     Camera mainCamera;
 
@@ -27,9 +29,13 @@ public class PlayerMovement : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        index = gameObject.GetComponent<PlayerScriptKim>().playerIndex;
+
         playerRB = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
         playerAnimator = GetComponent<Animator>();
+        fire1 = "Fire1_P" + index;
+        fire2 = "Fire2_P" + index;
     }
 
     private void Update()

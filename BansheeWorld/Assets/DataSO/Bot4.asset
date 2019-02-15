@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -12,8 +13,8 @@ MonoBehaviour:
   m_Name: Bot4
   m_EditorClassIdentifier: 
   character: 3
-  CharacterPrefab: {fileID: 1429279921026270, guid: 76e24f222a39cce4f8e428cb88887d46,
-    type: 2}
+  CharacterPrefab: {fileID: 1429279921026270, guid: 20d1adb868d031c4fb0b0f3e718886cf,
+    type: 3}
   CharacterName: Bot4
   CharacterImage: {fileID: 21300000, guid: f24cb848774a239479fcb873187b4479, type: 3}
   WeaponBasicImage: {fileID: 0}
