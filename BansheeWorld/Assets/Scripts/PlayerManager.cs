@@ -8,7 +8,7 @@ public class PlayerManager
 {
 
     [HideInInspector] public GameObject instance;
-    [HideInInspector] public int playerNumber;
+    [HideInInspector] public int playerIndex;
     public Transform spawnPosition;
 
     [HideInInspector] public int numberOfWins;
