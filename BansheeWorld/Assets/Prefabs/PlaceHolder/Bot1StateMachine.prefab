@@ -258,7 +258,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1794866039}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7abf08d600963b45a9fade4b7beac95, type: 3}
+  m_Script: {fileID: 11500000, guid: bf78be5ac687d364385d418791cea396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1133409519374762
@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 1133409519374763}
   - component: {fileID: 9096594946616120993}
   m_Layer: 0
-  m_Name: Bot1
+  m_Name: Bot1StateMachine
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -331,6 +331,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c8ee57e790bfbf942abfe2a9f5a8301f, type: 2}
   healthBarCanvas: {fileID: 1794866039}
   healthBarImage: {fileID: 287332471}
+  playerNameTag: {fileID: 0}
 --- !u!114 &1378014781883188415
 MonoBehaviour:
   m_ObjectHideFlags: 0

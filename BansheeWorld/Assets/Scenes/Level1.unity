@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 650627663}
   m_Layer: 0
   m_Name: GameSceneManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -184,11 +184,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   players:
   - instance: {fileID: 0}
-    playerNumber: 0
+    playerIndex: 0
     spawnPosition: {fileID: 1114821901}
     numberOfWins: 0
   - instance: {fileID: 0}
-    playerNumber: 0
+    playerIndex: 0
     spawnPosition: {fileID: 959521324}
     numberOfWins: 0
   spawner1: {fileID: 1114821901}
@@ -206,6 +206,8 @@ MonoBehaviour:
   StartingDelay: 0
   EndingDelay: 0
   MessageText: {fileID: 2073247198}
+  PlayAgainButton: {fileID: 0}
+  PauseGameButton: {fileID: 0}
 --- !u!4 &650627664
 Transform:
   m_ObjectHideFlags: 0

@@ -39,13 +39,13 @@ public class FollowState : IState
                 bot.ChangeState(new AttackState());
             }
 
-            if(Input.GetButtonDown("Fire1"))
+            if(Input.GetButtonDown("Fire1_P1"))
             {
                 bot.isDodging = true;
                 bot.ChangeState(new DodgeState());
             }
 
-            if(Input.GetButtonDown("Fire2"))
+            if(Input.GetButtonDown("Fire2_P1"))
             {
                 bot.isJumping = true;
                 bot.ChangeState(new JumpState());

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameSceneManager : MonoBehaviour {
 
-    internal PlayerManager[] players;
+    public PlayerManager[] players;
 
     [SerializeField]
     Transform spawner1;

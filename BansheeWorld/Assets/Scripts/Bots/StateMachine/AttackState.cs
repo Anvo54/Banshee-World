@@ -42,7 +42,7 @@ public class AttackState : IState
             bot.ChangeState(new FollowState());
         }
 
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2_P1"))
         {
             bot.isAttacking = false;
             bot.StopAllCoroutines();
@@ -50,7 +50,7 @@ public class AttackState : IState
             bot.ChangeState(new JumpState());
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1_P1"))
         {
             bot.isAttacking = false;
             bot.StopAllCoroutines();

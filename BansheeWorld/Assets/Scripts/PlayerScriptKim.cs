@@ -9,6 +9,7 @@ public class PlayerScriptKim : MonoBehaviour
 
     public static int playerIndex;
 
+    //damage will be deleted when player has healthscript
     public float damage;
 
     void Start()
@@ -25,6 +26,7 @@ public class PlayerScriptKim : MonoBehaviour
         }
     }
 
+    //also this method no need when player has 
     public void ResetMaxHealth()
     { }
 

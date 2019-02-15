@@ -70,7 +70,7 @@ public class BotMovement : MonoBehaviour
             }
         }
     
-        if (Input.GetButtonDown("Fire1")) // when player punching attack - block
+        if (Input.GetButtonDown("Fire1_P1")) // when player punching attack - block
         {
             isDodging = true;
         }
@@ -80,7 +80,7 @@ public class BotMovement : MonoBehaviour
             Dodge();        
         }
         
-        if(Input.GetButtonDown("Fire2") && !isJumping) // when player kicking attack - jump
+        if(Input.GetButtonDown("Fire2_P1") && !isJumping) // when player kicking attack - jump
         {
             isJumping = true;
         }
