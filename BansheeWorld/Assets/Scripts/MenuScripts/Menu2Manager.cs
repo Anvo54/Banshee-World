@@ -19,6 +19,7 @@ public class Menu2Manager : MonoBehaviour {
     GameObject Player2BansheeCanvas;
 
     [Header("Main Canvas")]
+    [SerializeField] GameObject Player1Panel;
     [SerializeField]
     GameObject Player2Panel;
     [SerializeField] GameObject BotText;
@@ -217,52 +218,99 @@ public class Menu2Manager : MonoBehaviour {
         BackButtonInfoPanelP2.onClick.AddListener(delegate { ClosePanel("CharacterInfoPanelP2"); });
        
         ReadyToPlayButton.onClick.AddListener(StartGame);
-        //Player2ReadyButton.onClick.AddListener(SetPlayer2ReadyForPlay);
 
         //SelectButtonInCharacterPanel.onClick.AddListener(delegate { Select(1); });
         //SelectButtonInCharacterPanelP2.onClick.AddListener(delegate { Select(2); });
 
         UpgradeButtonInCharacterPanel.onClick.AddListener(delegate { UpgradeWeapon(1); });
         UpgradeButtonInCharacterPanelP2.onClick.AddListener(delegate { UpgradeWeapon(2); });
-       
 
         MultiplayerToggle.onValueChanged.AddListener((value) => { SetMultiplayer(value); });
         MultiplayerToggle.onValueChanged.AddListener(isMultiplayerOn => BotToggles.SetActive(!isMultiplayerOn));
         MultiplayerToggle.onValueChanged.AddListener(isMultiplayerOn => BotText.SetActive(!isMultiplayerOn));
         MultiplayerToggle.onValueChanged.AddListener(isMultiplayerOn => Player2Panel.SetActive(isMultiplayerOn));
 
-        BotToggles.transform.GetChild(0).GetComponent<Toggle>().onValueChanged.AddListener
-            (value => { SetBot1(value); });
-        BotToggles.transform.GetChild(1).GetComponent<Toggle>().onValueChanged.AddListener
-            (value => { SetBot2(value); });
-        BotToggles.transform.GetChild(2).GetComponent<Toggle>().onValueChanged.AddListener
-            (value => { SetBot3(value); });
-        BotToggles.transform.GetChild(2).GetComponent<Toggle>().onValueChanged.AddListener
-            (value => { SetBot4(value); });
+        for (int i = 0; i < BotToggles.transform.childCount; i++)
+        {
+            int temp = i;
+            BotToggles.transform.GetChild(i).GetComponent<Toggle>().onValueChanged.AddListener
+                (value => { SetBot(temp, value); });
+        }
+        //BotToggles.transform.GetChild(0).GetComponent<Toggle>().onValueChanged.AddListener
+        //    (value => { SetBot1(value); });
+        //BotToggles.transform.GetChild(1).GetComponent<Toggle>().onValueChanged.AddListener
+        //    (value => { SetBot2(value); });
+        //BotToggles.transform.GetChild(2).GetComponent<Toggle>().onValueChanged.AddListener
+        //    (value => { SetBot3(value); });
+        //BotToggles.transform.GetChild(2).GetComponent<Toggle>().onValueChanged.AddListener
+        //    (value => { SetBot4(value); });
 
         //CharacterImageP1InMainCanvas.sprite = characters[PlayerPrefs.GetInt("selectedCharacter")].CharacterImage;
         //CharacterImageP2InMainCanvas.sprite = characters[PlayerPrefs.GetInt("selectedCharacterP2")].CharacterImage;
 
-    
         BotToggles.transform.GetChild((int)GameStaticValues.bot).GetComponent<Toggle>().isOn = true;
 
         MultiplayerToggle.isOn = GameStaticValues.multiplayer;
 
-        LevelToggles.transform.GetChild(0).GetComponent<Toggle>().onValueChanged.AddListener
-            (value => { SetLevel1(value); });
+        for (int i = 0; i < LevelToggles.transform.childCount; i++)
+        {
+            int temp = i;
+            LevelToggles.transform.GetChild(i).GetComponent<Toggle>().onValueChanged.AddListener
+                (value => { SetLevel(temp, value); });            
+        }
+
         //LevelToggles.transform.GetChild(0).GetComponent<Toggle>().onValueChanged.AddListener
-        //    (delegate { ClosePanel("LevelMap"); });
-        LevelToggles.transform.GetChild(1).GetComponent<Toggle>().onValueChanged.AddListener
-          (value => { SetLevel2(value); });
+        //  (value => { SetLevel1(value); });
         //LevelToggles.transform.GetChild(1).GetComponent<Toggle>().onValueChanged.AddListener
-        //    (delegate { ClosePanel("LevelMap"); });
-        LevelToggles.transform.GetChild(2).GetComponent<Toggle>().onValueChanged.AddListener
-          (value => { SetLevel3(value); });
+        //  (value => { SetLevel2(value); });
         //LevelToggles.transform.GetChild(2).GetComponent<Toggle>().onValueChanged.AddListener
-        //    (delegate { ClosePanel("LevelMap"); });
+        //  (value => { SetLevel3(value); });
 
         LevelToggles.transform.GetChild((int)GameStaticValues.level).GetComponent<Toggle>().isOn = true;
         BackButtonInLevelMapCanvas.onClick.AddListener(delegate { ClosePanel("LevelMap"); } );
+    }
+
+    private void SetBot(int index, bool value)
+    {
+        if (value)
+        {
+            if(index == 0)
+                GameStaticValues.bot = Character.Character1;
+            if(index == 1)
+                GameStaticValues.bot = Character.Character2;
+            if(index == 2)
+                GameStaticValues.bot = Character.Character3;
+            if(index == 3)
+                GameStaticValues.bot = Character.Character4;
+        }
+
+        Debug.Log(GameStaticValues.bot);
+    }
+
+    private void SetLevel(int index, bool value)
+    {
+        if (value)
+        {
+            if(index == 0)
+                GameStaticValues.level = Level.Level1;
+
+            if(index == 1)
+                GameStaticValues.level = Level.Level2;
+
+            if(index == 2)
+                GameStaticValues.level = Level.Level3;
+
+            if(index == 3)
+                GameStaticValues.level = Level.Level1;
+        }
+
+        StartCoroutine(StartGameFromToggle());
+    }
+
+    IEnumerator StartGameFromToggle()
+    {
+        yield return new WaitForSeconds(2);
+        StartGame();
     }
 
     private void ResetData()
@@ -282,6 +330,10 @@ public class Menu2Manager : MonoBehaviour {
     private void OpenLevelMapPanel()
     {
         LevelMapCanvas.SetActive(true);
+
+        Player1Panel.SetActive(false);
+        Player2Panel.SetActive(false);
+        BotToggles.gameObject.SetActive(false);
     }
 
     private void SetLevel1(bool value)
@@ -309,13 +361,11 @@ public class Menu2Manager : MonoBehaviour {
     //private void SetPlayer1ReadyForPlay()
     //{
     //    isPlayer1Ready = true;
-
     //    if(!GameStaticValues.multiplayer)
     //    {
     //        StartGame();
     //        return;
     //    }
-
     //    if (isPlayer2Ready)
     //    {
     //        StartGame();
@@ -330,7 +380,6 @@ public class Menu2Manager : MonoBehaviour {
     //private void SetPlayer2ReadyForPlay()
     //{
     //    isPlayer2Ready = true;
-
     //    if(isPlayer1Ready)
     //    {
     //        StartGame();
@@ -354,8 +403,6 @@ public class Menu2Manager : MonoBehaviour {
         yield return new WaitForSeconds(second);
         text.enabled = false;
     }
-
-   
 
     private void SetBot1(bool value)
     {
@@ -408,9 +455,18 @@ public class Menu2Manager : MonoBehaviour {
         {
             Player2BansheeCanvas.SetActive(false);
         }
+
         if (panelName == "LevelMap")
         {
             LevelMapCanvas.SetActive(false);
+            Player1Panel.SetActive(true);
+
+            if (GameStaticValues.multiplayer)
+            {
+                Player2Panel.SetActive(true);
+            }
+            else
+                BotToggles.gameObject.SetActive(true);
         }
     }
 
@@ -479,7 +535,6 @@ public class Menu2Manager : MonoBehaviour {
                 CharacterDetaisP2.text = characters[tempIndexP2].ToString() + " + " +
                   characters[tempIndexP2].WeaponUp2Power.ToString();
             }
-
         }
     }
 

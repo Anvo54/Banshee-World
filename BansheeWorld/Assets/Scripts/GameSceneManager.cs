@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,18 +28,24 @@ public class GameSceneManager : MonoBehaviour {
     [SerializeField] Button PlayAgainButton;
     [SerializeField] Button PauseGameButton;
 
+    [SerializeField] GameObject cinemachineTargetGroup;
+     CinemachineTargetGroup targetGroup;
+     List<CinemachineTargetGroup.Target> targets = new List<CinemachineTargetGroup.Target>();
+
     void Start ()
     {
+        targetGroup = cinemachineTargetGroup.GetComponent<CinemachineTargetGroup>();
+
         MessageText.enabled = false;
         StartWait = new WaitForSeconds(StartingDelay);
         EndWait = new WaitForSeconds(EndingDelay);
    
         SpawnAllPlayers();
-
+        
         StartCoroutine(GameLoop());
 
-       // PlayAgainButton.onClick.AddListener(delegate { StartCoroutine(GameLoop()); });
-       // PauseGameButton.onClick.AddListener(PauseGame);
+        PlayAgainButton.onClick.AddListener(delegate { StartCoroutine(GameLoop()); });
+        PauseGameButton.onClick.AddListener(PauseGame);
     }
 
     private void PauseGame()
@@ -111,12 +118,18 @@ public class GameSceneManager : MonoBehaviour {
         players[0].playerIndex = 1;
         players[0].spawnPosition = spawner1;
 
+
+        targets.Add(new CinemachineTargetGroup.Target { target = players[0].instance.transform, radius = 2f, weight = 1f });
+
         if (GameStaticValues.multiplayer)
         {
             players[1].instance = Instantiate(CharactersForPlayer[PlayerPrefs.GetInt("selectedCharacterP2")].CharacterPrefab,
                     spawner2.position, spawner2.rotation) as GameObject;
             players[1].playerIndex = 2;
             players[1].spawnPosition = spawner2;
+
+           
+            targets.Add(new CinemachineTargetGroup.Target { target = players[1].instance.transform, radius = 2f, weight = 1f });
         }
 
         else
@@ -124,8 +137,12 @@ public class GameSceneManager : MonoBehaviour {
             players[1].instance =  Instantiate(CharactersForBot[(int)GameStaticValues.bot].CharacterPrefab,
                     spawner2.position, spawner2.rotation) as GameObject;
             players[1].spawnPosition = spawner2;
+
+           
+            targets.Add(new CinemachineTargetGroup.Target { target = players[1].instance.transform, radius = 2f, weight = 1f });
         }
-        
+
+        targetGroup.m_Targets = targets.ToArray();
     }
 
     // Update is called once per frame
