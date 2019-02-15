@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Bot3
   m_EditorClassIdentifier: 
   character: 2
-  CharacterPrefab: {fileID: 1429279921026270, guid: af713fc2cdfe2ea4186123cbee573029,
+  CharacterPrefab: {fileID: 1429279921026270, guid: e9cbe673984b1d74bbddf006436cec6e,
     type: 3}
   CharacterName: Bot3
-  CharacterImage: {fileID: 21300000, guid: d66f1ed868bfaaa44ada56cee3337ac6, type: 3}
+  CharacterImage: {fileID: 21300000, guid: 0ea7da4e8825d3542977dad8e0cac092, type: 3}
   WeaponBasicImage: {fileID: 0}
   WeaponUp1Image: {fileID: 0}
   WeaponUp2Image: {fileID: 0}
