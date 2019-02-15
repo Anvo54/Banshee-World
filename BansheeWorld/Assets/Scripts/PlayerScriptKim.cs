@@ -7,12 +7,12 @@ public class PlayerScriptKim : MonoBehaviour
     GameObject GameSceneManagerRef;
     GameSceneManager gameSceneManager;
 
-    public static int playerIndex;
+    public int playerIndex;
 
     //damage will be deleted when player has healthscript
     public float damage;
 
-    void Start()
+    void Awake()
     {
         GameSceneManagerRef = GameObject.FindGameObjectWithTag("GameManager");
         gameSceneManager = GameSceneManagerRef.GetComponent<GameSceneManager>();
