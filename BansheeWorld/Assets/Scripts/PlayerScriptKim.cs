@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScriptKim : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class PlayerScriptKim : MonoBehaviour
     GameSceneManager gameSceneManager;
 
     public int playerIndex;
+
+  //  [SerializeField] Image healthBarImage;
+    [SerializeField] Text playerNameTag;
 
     //damage will be deleted when player has healthscript
     public float damage;
@@ -24,6 +28,8 @@ public class PlayerScriptKim : MonoBehaviour
                 playerIndex = gameSceneManager.players[i].playerIndex;
             }
         }
+
+        playerNameTag.text = "P" + (playerIndex +1).ToString();
     }
 
     //also this method no need when player has 

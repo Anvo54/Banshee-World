@@ -19,43 +19,51 @@ public class AttackState : IState
 
     public void Update()
     {
-        bot.transform.LookAt(bot.Target);
-        bot.transform.rotation = Quaternion.Slerp
-            (bot.transform.rotation, Quaternion.LookRotation(bot.Target.position - bot.transform.position),
-                    bot.RotationSpeed * Time.deltaTime);
-
-        if (bot.isAttacking)
+        if (bot.Target == null)
         {
-            bot.StartCoroutine(Attack());
-        }
-        
-        if (bot.Distance < bot.MinDistanceFromPlayer)
-        {
-            bot.isAttacking = false;
             bot.ChangeState(new IdleState());
         }
 
-        if (bot.Distance > bot.MaxAttackDistance)
+        else
         {
-            bot.isAttacking = false;
-            bot.StopAllCoroutines();
-            bot.ChangeState(new FollowState());
-        }
+            bot.transform.LookAt(bot.Target);
+            bot.transform.rotation = Quaternion.Slerp
+                (bot.transform.rotation, Quaternion.LookRotation(bot.Target.position - bot.transform.position),
+                        bot.RotationSpeed * Time.deltaTime);
 
-        if (Input.GetButtonDown("Fire2_P1"))
-        {
-            bot.isAttacking = false;
-            bot.StopAllCoroutines();
-            bot.isJumping = true;
-            bot.ChangeState(new JumpState());
-        }
+            if (bot.isAttacking)
+            {
+                bot.StartCoroutine(Attack());
+            }
 
-        if (Input.GetButtonDown("Fire1_P1"))
-        {
-            bot.isAttacking = false;
-            bot.StopAllCoroutines();
-            bot.isDodging = true;
-            bot.ChangeState(new DodgeState());
+            if (bot.Distance < bot.MinDistanceFromPlayer)
+            {
+                bot.isAttacking = false;
+                bot.ChangeState(new IdleState());
+            }
+
+            if (bot.Distance > bot.MaxAttackDistance)
+            {
+                bot.isAttacking = false;
+                bot.StopAllCoroutines();
+                bot.ChangeState(new FollowState());
+            }
+
+            if (Input.GetButtonDown("Fire2_P1"))
+            {
+                bot.isAttacking = false;
+                bot.StopAllCoroutines();
+                bot.isJumping = true;
+                bot.ChangeState(new JumpState());
+            }
+
+            if (Input.GetButtonDown("Fire1_P1"))
+            {
+                bot.isAttacking = false;
+                bot.StopAllCoroutines();
+                bot.isDodging = true;
+                bot.ChangeState(new DodgeState());
+            }
         }
     }
 

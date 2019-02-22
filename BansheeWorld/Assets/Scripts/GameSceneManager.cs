@@ -29,8 +29,8 @@ public class GameSceneManager : MonoBehaviour {
     [SerializeField] Button PauseGameButton;
 
     [SerializeField] GameObject cinemachineTargetGroup;
-     CinemachineTargetGroup targetGroup;
-     List<CinemachineTargetGroup.Target> targets = new List<CinemachineTargetGroup.Target>();
+    CinemachineTargetGroup targetGroup;
+    List<CinemachineTargetGroup.Target> targets = new List<CinemachineTargetGroup.Target>();
 
     void Start ()
     {
@@ -50,7 +50,12 @@ public class GameSceneManager : MonoBehaviour {
 
     private void PauseGame()
     {
-        throw new NotImplementedException();
+     
+    }
+
+    public void PlayAgain()
+    {
+        StartCoroutine(GameLoop());
     }
 
     IEnumerator GameLoop()
