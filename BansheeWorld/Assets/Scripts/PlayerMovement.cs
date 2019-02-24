@@ -10,32 +10,46 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpForce;
     [SerializeField] bool grounded;
     [SerializeField] Collider[] attackHitBoxes;
-    [SerializeField] public float damage = 0;
+    [SerializeField] public int damage = 0;
     [SerializeField] string horizonal_Axis;
     [SerializeField] string Vertical_Axis;
     [SerializeField] string jump;
     [SerializeField] string fire1;
     [SerializeField] string fire2;
+    [SerializeField] int opponentNum;
+    PlayerStats stats;
+    public int playerNumber;
     Vector3 moveInput;
     Vector3 moveVelocity;
+    public GameObject opponent;
 
-    int index;
+    
 
     Camera mainCamera;
 
     Rigidbody playerRB;
     Animator playerAnimator;
 
+    private void Awake()
+    {
+        PlayerNumber();
+        gameObject.name = "P" + playerNumber;
+        opponent = GameObject.Find("P" + opponentNum);
+    }
+
     // Use this for initialization
     void Start()
     {
-        index = gameObject.GetComponent<PlayerScriptKim>().playerIndex;
-
+        //index = gameObject.GetComponent<PlayerScriptKim>().playerIndex;
         playerRB = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
         playerAnimator = GetComponent<Animator>();
-        fire1 = "Fire1_P" + index;
-        fire2 = "Fire2_P" + index;
+        fire1 = "J" + playerNumber + "Fire1";
+        fire2 = "J" + playerNumber + "Fire2";
+        horizonal_Axis = "J" + playerNumber + "Horizontal";
+        Vertical_Axis = "J" + playerNumber + "Vertical";
+        jump = "J" + playerNumber + "Jump";
+        stats = opponent.GetComponent<PlayerStats>();
     }
 
     private void Update()
@@ -73,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
         Jump();
         Attack1();
         Attack2();
-        Kick();
+        Kick();     
     }
 
     private void Attack2()
@@ -133,10 +147,12 @@ public class PlayerMovement : MonoBehaviour
             switch (c.name)
             {
                 case "Head":
-                    damage = 30;
+                    damage = 4;
+                    stats.GetHit(damage);
                     break;
                 case "Torso":
-                    damage = 20;
+                    damage = 2;
+                    stats.GetHit(damage);
                     break;
                 default:
                     Debug.Log("Unable to indetify witch bodypart was hit. Check your spelling!");
@@ -171,4 +187,26 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(4f*Time.deltaTime);
         playerAnimator.ResetTrigger("Jumping");
     }
+
+
+    void PlayerNumber()
+    {
+        if(transform.position.x == GameObject.FindGameObjectWithTag("Spawner1").transform.position.x)
+        {
+            playerNumber = 1;
+            opponentNum = 2;
+        }
+        else
+        {
+            playerNumber = 2;
+            opponentNum = 1;
+        }
+    }
+
+    void getOpponent()
+    {
+        //Here comes logic!
+    }
+
+
 }
