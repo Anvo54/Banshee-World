@@ -8,6 +8,10 @@ TagManager:
   - enemy
   - Enemy
   - GameManager
+  - Spawner2
+  - Spawner1
+  - P1H
+  - P2H
   layers:
   - Default
   - TransparentFX
