@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8646446047010313527
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8646446047010313513}
+  - component: {fileID: 8646446047010313526}
+  - component: {fileID: 8646446047010313512}
+  m_Layer: 0
+  m_Name: GameSceneManager
+  m_TagString: GameManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8646446047010313513
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8646446047010313527}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8646446047010313526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8646446047010313527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a545c8a5d5d8dc48a20546ca294610a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players:
+  - instance: {fileID: 0}
+    playerIndex: 0
+    spawnPosition: {fileID: 0}
+    numberOfWins: 0
+  - instance: {fileID: 0}
+    playerIndex: 0
+    spawnPosition: {fileID: 0}
+    numberOfWins: 0
+  spawner1: {fileID: 0}
+  spawner2: {fileID: 0}
+  CharactersForPlayer:
+  - {fileID: 11400000, guid: bc1a7885b48f55f4689f1afeddf91c0c, type: 2}
+  - {fileID: 11400000, guid: 378a59bdf68208747addf2f0eaa33060, type: 2}
+  - {fileID: 11400000, guid: 6887fda3bb9e362458276dacaac3b229, type: 2}
+  - {fileID: 11400000, guid: 4f971bcd89ba8744886485b2a11ae934, type: 2}
+  CharactersForBot:
+  - {fileID: 11400000, guid: e7faac1a82502344498aff92d09694f9, type: 2}
+  - {fileID: 11400000, guid: 42e828c9b0b0c5b49900e6cad55badfa, type: 2}
+  - {fileID: 11400000, guid: 9ab29985c53456e439658849b0328107, type: 2}
+  - {fileID: 11400000, guid: c8ee57e790bfbf942abfe2a9f5a8301f, type: 2}
+  StartingDelay: 0
+  EndingDelay: 0
+  MessageText: {fileID: 0}
+  GameOverText: {fileID: 0}
+  PlayAgainButton: {fileID: 0}
+  PauseGameButton: {fileID: 0}
+  cinemachineTargetGroup: {fileID: 0}
+  isGameOver: 0
+  gameOverMessage: WHO WINS?
+--- !u!114 &8646446047010313512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8646446047010313527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 064ecf2ff07561243801bea68014a87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverPanel: {fileID: 0}
+  pausePanel: {fileID: 0}
+  pauseButton: {fileID: 0}
+  playAgainButton: {fileID: 0}
+  cancelButton: {fileID: 0}
+  continueButton: {fileID: 0}
+  goToMenuButton: {fileID: 0}
+  quitButton: {fileID: 0}

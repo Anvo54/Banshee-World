@@ -26,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody playerRB;
     Animator playerAnimator;
 
-    // Use this for initialization
     void Start()
     {
         index = gameObject.GetComponent<PlayerScriptKim>().playerIndex;
@@ -142,6 +141,16 @@ public class PlayerMovement : MonoBehaviour
                     Debug.Log("Unable to indetify witch bodypart was hit. Check your spelling!");
                     break;
             }
+            if (GameStaticValues.multiplayer)
+            {
+                c.transform.root.GetComponent<PlayerHealth>().TakeDamage(damage);
+            }
+
+            else
+            {
+                c.transform.root.GetComponent<BotHealth>().AddjustCurrentHealth(damage);
+            }
+
         }
     }
 
@@ -171,4 +180,6 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(4f*Time.deltaTime);
         playerAnimator.ResetTrigger("Jumping");
     }
+
+  
 }

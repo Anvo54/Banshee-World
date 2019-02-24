@@ -64,8 +64,13 @@ public class GameUIManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        if (gameSceneManager.isGameOver)
+        {
+            gameOverPanel.SetActive(true);
+
+            gameSceneManager.isGameOver = false;
+        }
     }
 }

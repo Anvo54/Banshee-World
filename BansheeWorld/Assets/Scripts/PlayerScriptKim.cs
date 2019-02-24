@@ -10,30 +10,19 @@ public class PlayerScriptKim : MonoBehaviour
 
     public int playerIndex;
 
-  //  [SerializeField] Image healthBarImage;
-    [SerializeField] Text playerNameTag;
-
-    //damage will be deleted when player has healthscript
-    public float damage;
-
-    void Awake()
+    void Start()
     {
         GameSceneManagerRef = GameObject.FindGameObjectWithTag("GameManager");
         gameSceneManager = GameSceneManagerRef.GetComponent<GameSceneManager>();
-
+        
         for (int i = 0; i < gameSceneManager.players.Length; i++)
         {
             if (gameObject == gameSceneManager.players[i].instance)
             {
                 playerIndex = gameSceneManager.players[i].playerIndex;
+                Debug.Log("Player1 index: " + playerIndex);
             }
         }
-
-        playerNameTag.text = "P" + (playerIndex +1).ToString();
     }
-
-    //also this method no need when player has 
-    public void ResetMaxHealth()
-    { }
 
 }

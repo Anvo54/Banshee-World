@@ -276,9 +276,12 @@ MonoBehaviour:
   StartingDelay: 0
   EndingDelay: 0
   MessageText: {fileID: 1443204916}
+  GameOverText: {fileID: 4605468525658818345}
   PlayAgainButton: {fileID: 1443204914}
   PauseGameButton: {fileID: 1443204918}
   cinemachineTargetGroup: {fileID: 1231326505}
+  isGameOver: 0
+  gameOverMessage: WHO WINS?
 --- !u!4 &650627664
 Transform:
   m_ObjectHideFlags: 0
@@ -532,17 +535,17 @@ PrefabInstance:
     - target: {fileID: 5947019767757296369, guid: 0424b57b6b0dc4743b18acdac0bb1277,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.39054027
+      value: 0.3905403
       objectReference: {fileID: 0}
     - target: {fileID: 5947019767757296369, guid: 0424b57b6b0dc4743b18acdac0bb1277,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.28072086
+      value: 0.28072092
       objectReference: {fileID: 0}
     - target: {fileID: 5947019767757296369, guid: 0424b57b6b0dc4743b18acdac0bb1277,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.12636532
+      value: -0.12636536
       objectReference: {fileID: 0}
     - target: {fileID: 5947019767757296369, guid: 0424b57b6b0dc4743b18acdac0bb1277,
         type: 3}
@@ -567,17 +570,17 @@ PrefabInstance:
     - target: {fileID: 5947019768219507665, guid: 0424b57b6b0dc4743b18acdac0bb1277,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.39054027
+      value: 0.3905403
       objectReference: {fileID: 0}
     - target: {fileID: 5947019768219507665, guid: 0424b57b6b0dc4743b18acdac0bb1277,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.28072086
+      value: 0.28072092
       objectReference: {fileID: 0}
     - target: {fileID: 5947019768219507665, guid: 0424b57b6b0dc4743b18acdac0bb1277,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.12636532
+      value: -0.12636536
       objectReference: {fileID: 0}
     - target: {fileID: 5947019768219507665, guid: 0424b57b6b0dc4743b18acdac0bb1277,
         type: 3}
@@ -1432,3 +1435,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2111331416}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4605468525658818345 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4605468525658818345, guid: e0d5a2991ebf6ca409dfe312683872b0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1443204909}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

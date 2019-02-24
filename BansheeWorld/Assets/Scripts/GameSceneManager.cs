@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameSceneManager : MonoBehaviour {
+public class GameSceneManager : MonoBehaviour
+{
 
     public PlayerManager[] players;
 
@@ -25,6 +26,7 @@ public class GameSceneManager : MonoBehaviour {
     PlayerManager gameWinner = new PlayerManager();
 
     [SerializeField] Text MessageText;
+    [SerializeField] Text GameOverText;
     [SerializeField] Button PlayAgainButton;
     [SerializeField] Button PauseGameButton;
 
@@ -32,8 +34,12 @@ public class GameSceneManager : MonoBehaviour {
     CinemachineTargetGroup targetGroup;
     List<CinemachineTargetGroup.Target> targets = new List<CinemachineTargetGroup.Target>();
 
+    public bool isGameOver;
+    public string gameOverMessage = "WHO WINS?";
+
     void Start ()
     {
+        isGameOver = false;
         targetGroup = cinemachineTargetGroup.GetComponent<CinemachineTargetGroup>();
 
         MessageText.enabled = false;
@@ -46,6 +52,7 @@ public class GameSceneManager : MonoBehaviour {
 
         PlayAgainButton.onClick.AddListener(delegate { StartCoroutine(GameLoop()); });
         PauseGameButton.onClick.AddListener(PauseGame);
+        GameOverText.text = gameOverMessage;
     }
 
     private void PauseGame()
@@ -60,6 +67,8 @@ public class GameSceneManager : MonoBehaviour {
 
     IEnumerator GameLoop()
     {
+        isGameOver = false;
+
         ResetPlayers();
         MessageText.enabled = true;
         MessageText.text = "Game Start";
@@ -68,15 +77,51 @@ public class GameSceneManager : MonoBehaviour {
 
         if (gameWinner != null)
         {
-            //gameWinner.numberOfWins++;
-            if(gameWinner == players[0])
+            if (gameWinner == players[0])
             {
-                GameStaticValues.player1Win++;
+                gameOverMessage = "Player1 wins";
+
+                if (GameStaticValues.multiplayer)
+                {
+                    GameStaticValues.player1Win++;
+                    GameStaticValues.player1Coin += 10;
+
+                    GameStaticValues.player2Coin -= 5;
+                }
+                else
+                {
+                    GameStaticValues.player1Win++;
+                    GameStaticValues.player1Coin += 5;
+                }
             }
+
             else
             {
-                GameStaticValues.player2Win++;
+                if (GameStaticValues.multiplayer)
+                {
+                    gameOverMessage = "Player2 wins";
+                    GameStaticValues.player2Win++;
+                    GameStaticValues.player2Coin += 10;
+
+                    GameStaticValues.player1Coin -= 5;
+                }
+                else
+                {
+                    gameOverMessage = "Bot wins";
+                }
             }
+
+            GameOverText.text = gameOverMessage;
+
+            PlayerPrefs.SetInt("Player1Coin", GameStaticValues.player1Coin);
+            PlayerPrefs.SetInt("Player1WinScore", GameStaticValues.player1Win);
+            PlayerPrefs.SetInt("Player2Coin", GameStaticValues.player2Coin);
+            PlayerPrefs.SetInt("Player2WinScore", GameStaticValues.player2Win);
+        }
+
+        if (isGameOver && gameWinner == null)
+        {
+            gameOverMessage = "Draw";
         }
         
         yield return EndWait;
@@ -91,14 +136,14 @@ public class GameSceneManager : MonoBehaviour {
 
         if (!GameStaticValues.multiplayer)
         {
-            players[0].instance.GetComponent<PlayerScriptKim>().ResetMaxHealth();
+            players[0].instance.GetComponent<PlayerHealth>().ResetMaxHealth();
             players[1].instance.GetComponent<BotHealth>().ResetMaxHealth();
         }
         else
         {
             for (int i = 0; i < players.Length; i++)
             {
-                players[i].instance.GetComponent<PlayerScriptKim>().ResetMaxHealth();
+                players[i].instance.GetComponent<PlayerHealth>().ResetMaxHealth();
             }
         }
     }
@@ -109,6 +154,7 @@ public class GameSceneManager : MonoBehaviour {
         {
             if(players[i].instance.activeSelf)
             {
+                gameWinner = players[i];
                 return players[i];
             }
         }
@@ -150,8 +196,42 @@ public class GameSceneManager : MonoBehaviour {
         targetGroup.m_Targets = targets.ToArray();
     }
 
-    // Update is called once per frame
-    void Update () {
-		
-	}
+   
+    void FixedUpdate ()
+    {
+        if(isGameOver)
+        {
+            return;
+        }
+
+        else
+        {
+            if (GameStaticValues.multiplayer)
+            {
+                for (int i = 0; i < players.Length; i++)
+                {
+                    if(players[i].instance.GetComponent<PlayerHealth>().isDead)
+                    {
+                        GetGameWinner();
+                        isGameOver = true;
+                    }
+                }
+            }
+
+            else
+            {
+                if (players[0].instance.GetComponent<PlayerHealth>().isDead)
+                {
+                    GetGameWinner();
+                    isGameOver = true;
+                }
+                if (players[1].instance.GetComponent<BotHealth>().isBotDead)
+                {
+                    GetGameWinner();
+                    isGameOver = true;
+                }
+            }
+        }
+
+    }
 }
