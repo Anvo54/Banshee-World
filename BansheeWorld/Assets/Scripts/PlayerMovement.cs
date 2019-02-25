@@ -10,7 +10,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpForce;
     [SerializeField] bool grounded;
     [SerializeField] Collider[] attackHitBoxes;
-    [SerializeField] public float damage = 0;
+    [SerializeField] float damage = 0;
+
+    internal float headDamage = 30;
+    internal float bodyDamage = 20;
+
     [SerializeField] string horizonal_Axis;
     [SerializeField] string Vertical_Axis;
     [SerializeField] string jump;
@@ -132,10 +136,10 @@ public class PlayerMovement : MonoBehaviour
             switch (c.name)
             {
                 case "Head":
-                    damage = 30;
+                    damage = headDamage;
                     break;
                 case "Torso":
-                    damage = 20;
+                    damage = bodyDamage;
                     break;
                 default:
                     Debug.Log("Unable to indetify witch bodypart was hit. Check your spelling!");

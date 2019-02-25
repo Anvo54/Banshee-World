@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3596847628287442470}
   - component: {fileID: 8436976178474104212}
   - component: {fileID: 5035204933440652513}
+  - component: {fileID: 788092699246144279}
   m_Layer: 0
   m_Name: weaponBox
   m_TagString: Untagged
@@ -86,8 +87,20 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 79712213405124169}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &788092699246144279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79712213405124169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8faf8fafbd35c1747873bedb0009fdfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

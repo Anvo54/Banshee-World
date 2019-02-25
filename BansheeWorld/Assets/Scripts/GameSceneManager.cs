@@ -35,9 +35,12 @@ public class GameSceneManager : MonoBehaviour
     List<CinemachineTargetGroup.Target> targets = new List<CinemachineTargetGroup.Target>();
 
     [SerializeField] float durationOfMatching = 120;
-    [SerializeField] float durationOfBox = 10;
     internal float gameTimer;
+
+    [SerializeField] float durationOfBox = 10;
     float boxTimer = 0;
+    [SerializeField] float durationOfWeaponHolding = 30;
+    float weaponHoldingTimer = 0;
 
     bool gameStarted;
     bool isBoxSpawned;
@@ -54,6 +57,13 @@ public class GameSceneManager : MonoBehaviour
     [SerializeField] Transform[] spawningPositions;
     [SerializeField] GameObject weaponBox;
     GameObject box;
+
+    internal bool weaponInHand;
+    public int whoHasWeapon;
+
+
+    int headDamageGlobal = 30;
+    int bodyDamageGlobal = 20;
 
     void Start ()
     {
@@ -72,7 +82,7 @@ public class GameSceneManager : MonoBehaviour
 
         PlayAgainButton.onClick.AddListener(delegate { StartCoroutine(GameLoop()); });
         PauseGameButton.onClick.AddListener(PauseGame);
-        GameOverText.text = gameOverMessage;   
+ //       GameOverText.text = gameOverMessage;   
     }
 
     private void PauseGame()
@@ -247,10 +257,39 @@ public class GameSceneManager : MonoBehaviour
     {
         GameOverText.text = gameOverMessage;
 
-        if (isGameOver)
+        if(weaponInHand)
         {
-            StopAllCoroutines();
-            return;
+            weaponHoldingTimer += Time.deltaTime;
+
+            if (whoHasWeapon == 1)
+            {
+                players[0].instance.GetComponent<PlayerMovement>().bodyDamage  =
+                            bodyDamageGlobal * (1 + GameStaticValues.player1WeaponLevel * 0.1f);
+                players[0].instance.GetComponent<PlayerMovement>().headDamage =
+                            headDamageGlobal * (1 + GameStaticValues.player1WeaponLevel * 0.1f);
+            }
+            else if (whoHasWeapon == 2)
+            {
+                players[1].instance.GetComponent<PlayerMovement>().bodyDamage =
+                           bodyDamageGlobal * (1 + GameStaticValues.player2WeaponLevel * 0.1f);
+                players[1].instance.GetComponent<PlayerMovement>().headDamage =
+                           headDamageGlobal * (1 + GameStaticValues.player2WeaponLevel * 0.1f);
+
+                //players[1].instance.GetComponent<PlayerMovement>().damage =
+                //    CharactersForPlayer[PlayerPrefs.GetInt("selectedCharacterP2")].AttackPoint *
+                //    (1 + GameStaticValues.player2WeaponLevel * 0.1f);
+            }
+                       
+            if (weaponHoldingTimer >= durationOfWeaponHolding)
+            {
+                whoHasWeapon = 0;
+                for (int i = 0; i < players.Length; i++)
+                {
+                    players[i].instance.GetComponent<PlayerMovement>().bodyDamage = bodyDamageGlobal;
+                    players[i].instance.GetComponent<PlayerMovement>().headDamage = headDamageGlobal;
+                }
+                weaponInHand = false;
+            }
         }
 
         if (gameStarted)
@@ -270,7 +309,6 @@ public class GameSceneManager : MonoBehaviour
             }
         }
 
-
         if (isBoxSpawned)
         {
             boxTimer += Time.deltaTime;
@@ -282,8 +320,11 @@ public class GameSceneManager : MonoBehaviour
             }
         }
 
-        
-
+        if (isGameOver)
+        {
+            StopAllCoroutines();
+            return;
+        }
         else
         {
             if (GameStaticValues.multiplayer)
@@ -312,6 +353,5 @@ public class GameSceneManager : MonoBehaviour
                 }
             }
         }
-
     }
 }
