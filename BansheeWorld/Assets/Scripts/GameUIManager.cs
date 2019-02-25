@@ -18,6 +18,8 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] Button goToMenuButton;
     [SerializeField] Button quitButton;
 
+    [SerializeField] Text timerText;
+
     GameSceneManager gameSceneManager;
 
     void Start()
@@ -25,15 +27,24 @@ public class GameUIManager : MonoBehaviour
         gameOverPanel.SetActive(false);
         pausePanel.SetActive(false);
 
+        timerText.text = "2:00";
+
         gameSceneManager = GetComponent<GameSceneManager>();
 
-        playAgainButton.onClick.AddListener(gameSceneManager.PlayAgain);
+        playAgainButton.onClick.AddListener(CloseGameOverPanel);
+       // playAgainButton.onClick.AddListener(gameSceneManager.PlayAgain);
+      
         cancelButton.onClick.AddListener(GoToMenuScene);
 
         pauseButton.onClick.AddListener(Pause);
         continueButton.onClick.AddListener(Unpause);
         goToMenuButton.onClick.AddListener(GoToMenuScene);
         quitButton.onClick.AddListener(QuitGame);
+    }
+
+    private void CloseGameOverPanel()
+    {
+        gameOverPanel.SetActive(false);
     }
 
     private void Pause()
@@ -69,8 +80,16 @@ public class GameUIManager : MonoBehaviour
         if (gameSceneManager.isGameOver)
         {
             gameOverPanel.SetActive(true);
-
-            gameSceneManager.isGameOver = false;
+           
+        //    gameSceneManager.isGameOver = false;
         }
+    }
+
+    private void Update()
+    {
+        float timeLeft = gameSceneManager.gameTimer;
+        int min = Mathf.FloorToInt(timeLeft / 60);
+        int sec = Mathf.FloorToInt(timeLeft % 60);
+        timerText.text = min.ToString("0") + ":" + sec.ToString("00");
     }
 }
