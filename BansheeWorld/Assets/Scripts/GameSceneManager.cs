@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameSceneManager : MonoBehaviour {
+public class GameSceneManager : MonoBehaviour
+{
 
     public PlayerManager[] players;
-
+    
     [SerializeField]
     Transform spawner1;
     [SerializeField]
@@ -25,15 +26,50 @@ public class GameSceneManager : MonoBehaviour {
     PlayerManager gameWinner = new PlayerManager();
 
     [SerializeField] Text MessageText;
+    [SerializeField] Text GameOverText;
     [SerializeField] Button PlayAgainButton;
     [SerializeField] Button PauseGameButton;
 
     [SerializeField] GameObject cinemachineTargetGroup;
-     CinemachineTargetGroup targetGroup;
-     List<CinemachineTargetGroup.Target> targets = new List<CinemachineTargetGroup.Target>();
+    CinemachineTargetGroup targetGroup;
+    List<CinemachineTargetGroup.Target> targets = new List<CinemachineTargetGroup.Target>();
+
+    [SerializeField] float durationOfMatching = 120;
+    internal float gameTimer;
+
+    [SerializeField] float durationOfBox = 10;
+    float boxTimer = 0;
+    [SerializeField] float durationOfWeaponHolding = 30;
+    float weaponHoldingTimer = 0;
+
+    bool gameStarted;
+    bool isBoxSpawned;
+
+    public bool isGameOver;
+    public string gameOverMessage = "WHO WINS?";
+
+    int winGoldPointMultiplayer = 10;
+    int winGoldPointWithBot = 5;
+    int loseGoldPointMultiplayer = 5;
+
+    [SerializeField] float firstBoxDropTime = 0;
+    [SerializeField] float secondBoxDropDelay = 60;
+    [SerializeField] Transform[] spawningPositions;
+    [SerializeField] GameObject weaponBox;
+    GameObject box;
+
+    internal bool weaponInHand;
+    public int whoHasWeapon;
+
+
+    int headDamageGlobal = 30;
+    int bodyDamageGlobal = 20;
 
     void Start ()
     {
+        isGameOver = false;
+        gameStarted = false;
+        isBoxSpawned = false;
         targetGroup = cinemachineTargetGroup.GetComponent<CinemachineTargetGroup>();
 
         MessageText.enabled = false;
@@ -46,35 +82,105 @@ public class GameSceneManager : MonoBehaviour {
 
         PlayAgainButton.onClick.AddListener(delegate { StartCoroutine(GameLoop()); });
         PauseGameButton.onClick.AddListener(PauseGame);
+ //       GameOverText.text = gameOverMessage;   
     }
 
     private void PauseGame()
     {
-        throw new NotImplementedException();
+     
+    }
+
+    public void PlayAgain()
+    {
+        StartCoroutine(GameLoop());
     }
 
     IEnumerator GameLoop()
     {
+        gameWinner = null;
+        gameOverMessage = "WHO WINS?";
+        isGameOver = false;
+
+        gameTimer = durationOfMatching;
+
         ResetPlayers();
         MessageText.enabled = true;
         MessageText.text = "Game Start";
         yield return StartWait;
         MessageText.enabled = false;
 
+        gameStarted = true;
+
+        firstBoxDropTime = UnityEngine.Random.Range(9, 19);
+
+        yield return new WaitForSecondsRealtime(firstBoxDropTime);
+        SpawnBox();
+
+        yield return new WaitForSecondsRealtime(secondBoxDropDelay);
+        SpawnBox();
+        
         if (gameWinner != null)
         {
-            //gameWinner.numberOfWins++;
-            if(gameWinner == players[0])
+            if (gameWinner == players[0])
             {
-                GameStaticValues.player1Win++;
+                gameOverMessage = "Player1 wins";
+
+                if (GameStaticValues.multiplayer)
+                {
+                    GameStaticValues.player1Win++;
+                    GameStaticValues.player1Coin += winGoldPointMultiplayer;
+
+                    GameStaticValues.player2Coin -= loseGoldPointMultiplayer;
+                }
+                else
+                {
+                    GameStaticValues.player1Win++;
+                    GameStaticValues.player1Coin += winGoldPointWithBot;
+                }
             }
-            else
+
+            else if(gameWinner == players[1])
             {
-                GameStaticValues.player2Win++;
+                if (GameStaticValues.multiplayer)
+                {
+                    gameOverMessage = "Player2 wins";
+                    GameStaticValues.player2Win++;
+                    GameStaticValues.player2Coin += winGoldPointMultiplayer;
+
+                    GameStaticValues.player1Coin -= loseGoldPointMultiplayer;
+                }
+                else
+                {
+                    gameOverMessage = "Bot wins";
+                }
             }
+
+            GameOverText.text = gameOverMessage;
+
+            PlayerPrefs.SetInt("Player1Coin", GameStaticValues.player1Coin);
+            PlayerPrefs.SetInt("Player1WinScore", GameStaticValues.player1Win);
+            PlayerPrefs.SetInt("Player2Coin", GameStaticValues.player2Coin);
+            PlayerPrefs.SetInt("Player2WinScore", GameStaticValues.player2Win);
         }
+
         
         yield return EndWait;
+    }
+
+    private void SpawnBox()
+    {
+        isBoxSpawned = true;
+
+        int tempIndex = UnityEngine.Random.Range(0, spawningPositions.Length);
+        box = Instantiate(weaponBox, spawningPositions[tempIndex].position, spawningPositions[tempIndex].rotation);
+    }
+
+    private void RemoveBox()
+    {
+        if(box != null)
+        {
+            Destroy(box);
+        }
     }
 
     private void ResetPlayers()
@@ -86,14 +192,14 @@ public class GameSceneManager : MonoBehaviour {
 
         if (!GameStaticValues.multiplayer)
         {
-            players[0].instance.GetComponent<PlayerScriptKim>().ResetMaxHealth();
+            players[0].instance.GetComponent<PlayerHealth>().ResetMaxHealth();
             players[1].instance.GetComponent<BotHealth>().ResetMaxHealth();
         }
         else
         {
             for (int i = 0; i < players.Length; i++)
             {
-                players[i].instance.GetComponent<PlayerScriptKim>().ResetMaxHealth();
+                players[i].instance.GetComponent<PlayerHealth>().ResetMaxHealth();
             }
         }
     }
@@ -104,6 +210,7 @@ public class GameSceneManager : MonoBehaviour {
         {
             if(players[i].instance.activeSelf)
             {
+                gameWinner = players[i];
                 return players[i];
             }
         }
@@ -145,8 +252,106 @@ public class GameSceneManager : MonoBehaviour {
         targetGroup.m_Targets = targets.ToArray();
     }
 
-    // Update is called once per frame
-    void Update () {
-		
-	}
+   
+    void FixedUpdate ()
+    {
+        GameOverText.text = gameOverMessage;
+
+        if(weaponInHand)
+        {
+            weaponHoldingTimer += Time.deltaTime;
+
+            if (whoHasWeapon == 1)
+            {
+                players[0].instance.GetComponent<PlayerMovement>().bodyDamage  =
+                            bodyDamageGlobal * (1 + GameStaticValues.player1WeaponLevel * 0.1f);
+                players[0].instance.GetComponent<PlayerMovement>().headDamage =
+                            headDamageGlobal * (1 + GameStaticValues.player1WeaponLevel * 0.1f);
+            }
+            else if (whoHasWeapon == 2)
+            {
+                players[1].instance.GetComponent<PlayerMovement>().bodyDamage =
+                           bodyDamageGlobal * (1 + GameStaticValues.player2WeaponLevel * 0.1f);
+                players[1].instance.GetComponent<PlayerMovement>().headDamage =
+                           headDamageGlobal * (1 + GameStaticValues.player2WeaponLevel * 0.1f);
+
+                //players[1].instance.GetComponent<PlayerMovement>().damage =
+                //    CharactersForPlayer[PlayerPrefs.GetInt("selectedCharacterP2")].AttackPoint *
+                //    (1 + GameStaticValues.player2WeaponLevel * 0.1f);
+            }
+                       
+            if (weaponHoldingTimer >= durationOfWeaponHolding)
+            {
+                whoHasWeapon = 0;
+                for (int i = 0; i < players.Length; i++)
+                {
+                    players[i].instance.GetComponent<PlayerMovement>().bodyDamage = bodyDamageGlobal;
+                    players[i].instance.GetComponent<PlayerMovement>().headDamage = headDamageGlobal;
+                }
+                weaponInHand = false;
+            }
+        }
+
+        if (gameStarted)
+        {
+            gameTimer -= Time.deltaTime;
+            if (gameTimer <= 0)
+            {
+                isGameOver = true;
+                if (players[0].instance.activeSelf && players[1].instance.activeSelf)
+                {
+                    gameOverMessage = "Draw";
+                    GameOverText.text = gameOverMessage;
+                }
+               
+                gameStarted = false;
+                gameTimer = durationOfMatching;
+            }
+        }
+
+        if (isBoxSpawned)
+        {
+            boxTimer += Time.deltaTime;
+            if(boxTimer >= durationOfBox)
+            {
+                RemoveBox();
+                isBoxSpawned = false;
+                boxTimer = 0;
+            }
+        }
+
+        if (isGameOver)
+        {
+            StopAllCoroutines();
+            return;
+        }
+        else
+        {
+            if (GameStaticValues.multiplayer)
+            {
+                for (int i = 0; i < players.Length; i++)
+                {
+                    if(players[i].instance.GetComponent<PlayerHealth>().isDead)
+                    {
+                        GetGameWinner();
+                        isGameOver = true;
+                    }
+                }
+            }
+
+            else
+            {
+                if (players[0].instance.GetComponent<PlayerHealth>().isDead)
+                {
+                    GetGameWinner();
+                    isGameOver = true;
+                }
+                if (players[1].instance.GetComponent<BotHealth>().isBotDead)
+                {
+                    GetGameWinner();
+                    isGameOver = true;
+                }
+            }
+        }
+    }
 }

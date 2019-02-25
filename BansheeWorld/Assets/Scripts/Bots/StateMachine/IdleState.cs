@@ -46,9 +46,10 @@ public class IdleState : IState
             }
         }
 
-        if(bot.Target == null)
+        else 
         {
-           // bot.gameObject.SetActive(false);
+            bot.anim.SetTrigger("idle");
+            // bot.gameObject.SetActive(false);
         }
     }
 }

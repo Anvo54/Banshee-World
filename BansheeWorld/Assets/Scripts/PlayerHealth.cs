@@ -1,42 +1,48 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BotHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
 
-    [SerializeField] List<CharacterSO> bots = new List<CharacterSO>();
-    int selectedBotIndex;
-
+    [SerializeField] List<CharacterSO> characters = new List<CharacterSO>();
+    int playerIndex;
+    int selectedCharacterIndex;
+    
     [SerializeField] GameObject healthBarCanvas;
 
     int maxHealth;
     float currentHealth;
     float healthRatio;
 
-    public bool isBotDead;
+    public bool isDead;
 
     [SerializeField] Image healthBarImage;
     [SerializeField] Text playerNameTag;
 
     void Start()
     {
-        isBotDead = false;
-        selectedBotIndex = (int)GameStaticValues.bot;
+        isDead = false;
 
-        healthBarCanvas.GetComponent<Canvas>().worldCamera = 
+        playerIndex = gameObject.GetComponent<PlayerScriptKim>().playerIndex;
+
+        if (playerIndex == 1)
+            selectedCharacterIndex = PlayerPrefs.GetInt("selectedCharacter");
+        else
+            selectedCharacterIndex = PlayerPrefs.GetInt("selectedCharacterP2");
+
+
+        healthBarCanvas.GetComponent<Canvas>().worldCamera =
                  GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
-        maxHealth = bots[selectedBotIndex].HealthPoint;
+        maxHealth = characters[selectedCharacterIndex].HealthPoint;
         currentHealth = maxHealth;
 
-        playerNameTag.text = "Bot";
+        playerNameTag.text = "P" + playerIndex.ToString();
     }
 
-
-    internal void AddjustCurrentHealth(float damage)
+    internal void TakeDamage(float damage)
     {
         currentHealth -= damage;
 
@@ -50,19 +56,19 @@ public class BotHealth : MonoBehaviour
             currentHealth = maxHealth;
 
         healthRatio = currentHealth / maxHealth;
-        
+
         healthBarImage.rectTransform.localScale = new Vector3(healthRatio, 1, 1);
     }
 
     internal void Die()
     {
-        isBotDead = true;
+        isDead = true;
         gameObject.SetActive(false);
     }
 
     internal void ResetMaxHealth()
     {
-        isBotDead = false;
+        isDead = false;
         currentHealth = maxHealth;
     }
 }

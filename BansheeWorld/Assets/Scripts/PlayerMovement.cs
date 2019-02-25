@@ -10,7 +10,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpForce;
     [SerializeField] bool grounded;
     [SerializeField] Collider[] attackHitBoxes;
-    [SerializeField] public int damage = 0;
+
+    [SerializeField] float damage = 0;
+
+    internal float headDamage = 30;
+    internal float bodyDamage = 20;
+
     [SerializeField] string horizonal_Axis;
     [SerializeField] string Vertical_Axis;
     [SerializeField] string jump;
@@ -30,14 +35,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody playerRB;
     Animator playerAnimator;
 
-    private void Awake()
-    {
-        PlayerNumber();
-        gameObject.name = "P" + playerNumber;
-        opponent = GameObject.Find("P" + opponentNum);
-    }
 
-    // Use this for initialization
     void Start()
     {
         //index = gameObject.GetComponent<PlayerScriptKim>().playerIndex;
@@ -147,17 +145,25 @@ public class PlayerMovement : MonoBehaviour
             switch (c.name)
             {
                 case "Head":
-                    damage = 4;
-                    stats.GetHit(damage);
+                    damage = headDamage;
                     break;
                 case "Torso":
-                    damage = 2;
-                    stats.GetHit(damage);
+                    damage = bodyDamage;
                     break;
                 default:
                     Debug.Log("Unable to indetify witch bodypart was hit. Check your spelling!");
                     break;
             }
+            if (GameStaticValues.multiplayer)
+            {
+                c.transform.root.GetComponent<PlayerHealth>().TakeDamage(damage);
+            }
+
+            else
+            {
+                c.transform.root.GetComponent<BotHealth>().AddjustCurrentHealth(damage);
+            }
+
         }
     }
 
@@ -187,26 +193,5 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(4f*Time.deltaTime);
         playerAnimator.ResetTrigger("Jumping");
     }
-
-
-    void PlayerNumber()
-    {
-        if(transform.position.x == GameObject.FindGameObjectWithTag("Spawner1").transform.position.x)
-        {
-            playerNumber = 1;
-            opponentNum = 2;
-        }
-        else
-        {
-            playerNumber = 2;
-            opponentNum = 1;
-        }
-    }
-
-    void getOpponent()
-    {
-        //Here comes logic!
-    }
-
 
 }
