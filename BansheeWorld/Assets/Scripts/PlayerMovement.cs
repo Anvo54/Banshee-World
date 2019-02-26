@@ -21,12 +21,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] string jump;
     [SerializeField] string fire1;
     [SerializeField] string fire2;
-    [SerializeField] int opponentNum;
     PlayerStats stats;
-    public int playerNumber;
+    public int index;
+    private int pnum;
     Vector3 moveInput;
     Vector3 moveVelocity;
-    public GameObject opponent;
 
     
 
@@ -39,15 +38,16 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         //index = gameObject.GetComponent<PlayerScriptKim>().playerIndex;
+        pnum = PlayerNumber();
         playerRB = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
         playerAnimator = GetComponent<Animator>();
-        fire1 = "J" + playerNumber + "Fire1";
-        fire2 = "J" + playerNumber + "Fire2";
-        horizonal_Axis = "J" + playerNumber + "Horizontal";
-        Vertical_Axis = "J" + playerNumber + "Vertical";
-        jump = "J" + playerNumber + "Jump";
-        stats = opponent.GetComponent<PlayerStats>();
+        fire1 = "J" + pnum + "Fire1";
+        fire2 = "J" + pnum + "Fire2";
+        horizonal_Axis = "J" + pnum + "Horizontal";
+        Vertical_Axis = "J" + pnum + "Vertical";
+        jump = "J" + pnum + "Jump";
+
     }
 
     private void Update()
@@ -192,6 +192,16 @@ public class PlayerMovement : MonoBehaviour
         playerAnimator.SetTrigger("Jumping");
         yield return new WaitForSeconds(4f*Time.deltaTime);
         playerAnimator.ResetTrigger("Jumping");
+    }
+
+
+    int PlayerNumber()
+    {
+        if (GameObject.FindGameObjectWithTag("Spawner1").transform.position.x == transform.position.x)
+        {
+            return 1;
+        }
+        else return 2;
     }
 
 }
