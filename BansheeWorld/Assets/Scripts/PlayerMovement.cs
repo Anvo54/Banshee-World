@@ -3,57 +3,179 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour
+{
 
     [SerializeField] float speed;
     [SerializeField] float jumpForce;
     [SerializeField] bool grounded;
-    Rigidbody playerRB;
+    [SerializeField] Collider[] attackHitBoxes;
 
-    // Use this for initialization
-    void Start () {
-        playerRB = GetComponent<Rigidbody>();   
-    }
-	
-	// Update is called once per frame
-	void Update ()
+    [SerializeField] float damage = 0;
+
+    internal float headDamage = 30;
+    internal float bodyDamage = 20;
+
+    [SerializeField] string horizonal_Axis;
+    [SerializeField] string Vertical_Axis;
+    [SerializeField] string jump;
+    [SerializeField] string fire1;
+    [SerializeField] string fire2;
+    [SerializeField] int opponentNum;
+    PlayerStats stats;
+    public int playerNumber;
+    Vector3 moveInput;
+    Vector3 moveVelocity;
+    public GameObject opponent;
+
+    
+
+    Camera mainCamera;
+
+    Rigidbody playerRB;
+    Animator playerAnimator;
+
+
+    void Start()
     {
-        MoveHorizontally();
+        //index = gameObject.GetComponent<PlayerScriptKim>().playerIndex;
+        playerRB = GetComponent<Rigidbody>();
+        mainCamera = Camera.main;
+        playerAnimator = GetComponent<Animator>();
+        fire1 = "J" + playerNumber + "Fire1";
+        fire2 = "J" + playerNumber + "Fire2";
+        horizonal_Axis = "J" + playerNumber + "Horizontal";
+        Vertical_Axis = "J" + playerNumber + "Vertical";
+        jump = "J" + playerNumber + "Jump";
+        stats = opponent.GetComponent<PlayerStats>();
+    }
+
+    private void Update()
+    {
+        float lh = Input.GetAxis(horizonal_Axis);
+        float lv = Input.GetAxis(Vertical_Axis);
+
+        Animate();
+
+        moveInput = new Vector3(lh, 0f, lv);
+        Vector3 cameraForward = mainCamera.transform.forward;
+        cameraForward.y = 0;
+
+        Quaternion cameraRelativeRotation = Quaternion.FromToRotation(Vector3.forward, cameraForward);
+        Vector3 lookToward = cameraRelativeRotation * moveInput;
+
+        if(moveInput.sqrMagnitude > 0)
+        {
+            Ray lookRay = new Ray(transform.position, lookToward);
+            transform.LookAt(lookRay.GetPoint(1));
+        }
+
+        moveVelocity = transform.forward * speed * moveInput.sqrMagnitude;
+    }
+
+    private void Animate()
+    {
+        playerAnimator.SetFloat("Running", playerRB.velocity.sqrMagnitude);
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        playerRB.velocity = moveVelocity;
         Jump();
-        Punch();
-        Kick();
+        Attack1();
+        Attack2();
+        Kick();     
+    }
+
+    private void Attack2()
+    {
+        if (Input.GetButtonDown(fire2))
+        {
+            playerAnimator.SetLayerWeight(1, 1f);
+            playerAnimator.SetTrigger("Attack2");
+            Attack(attackHitBoxes[0]);
+        }
+        if (Input.GetButtonUp(fire2))
+        {
+            playerAnimator.ResetTrigger("Attack2");
+        }
+    }
+
+    private void Attack1()
+    {
+        if (Input.GetButtonDown(fire1))
+        {
+            playerAnimator.SetLayerWeight(1, 1f);
+            playerAnimator.SetTrigger("Attack1");
+            Attack(attackHitBoxes[0]);
+        }
+        if (Input.GetButtonUp(fire1))
+        {
+            playerAnimator.ResetTrigger("Attack1");
+        }
     }
 
     private void Kick()
     {
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown(fire2))
         {
             Debug.Log("Kick");
+            playerAnimator.SetLayerWeight(1, 1);
+            playerAnimator.SetTrigger("Attack1");
+            Attack(attackHitBoxes[1]);
         }
-    }
-
-    private void Punch()
-    {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonUp(fire2))
         {
-            Debug.Log("Punch");
+            playerAnimator.ResetTrigger("Attack1");
         }
-        
     }
 
-    private void MoveHorizontally()
+    private void Attack(Collider col)
     {
-        float moveSpeed = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        transform.Translate(moveSpeed, 0, 0);
+        Collider[] cols = Physics.OverlapBox(col.bounds.center, col.bounds.extents, col.transform.rotation, LayerMask.GetMask("Hitbox"));
+        foreach (Collider c in cols)
+        {
+            if (c.transform.root == transform)
+            {
+                continue;
+            }
+            Debug.Log(c.name);
+
+            switch (c.name)
+            {
+                case "Head":
+                    damage = headDamage;
+                    break;
+                case "Torso":
+                    damage = bodyDamage;
+                    break;
+                default:
+                    Debug.Log("Unable to indetify witch bodypart was hit. Check your spelling!");
+                    break;
+            }
+            if (GameStaticValues.multiplayer)
+            {
+                c.transform.root.GetComponent<PlayerHealth>().TakeDamage(damage);
+            }
+
+            else
+            {
+                c.transform.root.GetComponent<BotHealth>().AddjustCurrentHealth(damage);
+            }
+
+        }
     }
 
     private void Jump()
     {
-        if (Input.GetButton("Jump") && grounded == true)
+        if (Input.GetButton(jump) && grounded == true)
         {
+            StartCoroutine("JumpAnim");
             grounded = false;
             playerRB.AddForce(Vector3.up * jumpForce);
         }
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -64,5 +186,12 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
+    private IEnumerable JumpAnim()
+    {
+        Debug.Log("Started");
+        playerAnimator.SetTrigger("Jumping");
+        yield return new WaitForSeconds(4f*Time.deltaTime);
+        playerAnimator.ResetTrigger("Jumping");
+    }
 
 }

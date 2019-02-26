@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -13,9 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: 1
   CharacterPrefab: {fileID: 1208624240926186, guid: 79afb71125a04774a829cf982c499331,
-    type: 2}
-  CharacterName: Char2
-  CharacterImage: {fileID: 21300000, guid: d66f1ed868bfaaa44ada56cee3337ac6, type: 3}
-  AttackPoint: 200
-  HealthPoint: 200
-  Description: This is second one
+    type: 3}
+  CharacterName: Poppet
+  CharacterImage: {fileID: 21300000, guid: 575713a94b3952740bf61a3863821205, type: 3}
+  WeaponBasicImage: {fileID: 21300000, guid: 69e5c2c3b16b7aa4293b59469c505f3f, type: 3}
+  WeaponUp1Image: {fileID: 21300000, guid: 3ae312b5d6a2ea749b2ad8a7e34e12f9, type: 3}
+  WeaponUp2Image: {fileID: 21300000, guid: 28e5fc5cfe2d1bb47a87cbb739f5d1ef, type: 3}
+  WeaponBasicPrefab: {fileID: 0}
+  WeaponUp1Prefab: {fileID: 0}
+  WeaponUp2Prefab: {fileID: 0}
+  WeaponTo1UpgradeCost: 500
+  WeaponTo2UpgradeCost: 5000
+  WeaponBasicPower: 10
+  WeaponUp1Power: 20
+  WeaponUp2Power: 30
+  AttackPoint: 100
+  HealthPoint: 100

@@ -14,8 +14,18 @@ MonoBehaviour:
   character: 3
   CharacterPrefab: {fileID: 1429279921026270, guid: 76e24f222a39cce4f8e428cb88887d46,
     type: 2}
-  CharacterName: Char4
+  CharacterName: BJ
   CharacterImage: {fileID: 21300000, guid: f24cb848774a239479fcb873187b4479, type: 3}
-  AttackPoint: 400
-  HealthPoint: 400
-  Description: This is last one
+  WeaponBasicImage: {fileID: 21300000, guid: 748c30b32e252e54f890141b1ffa55ab, type: 3}
+  WeaponUp1Image: {fileID: 21300000, guid: d4fc5c9ce10795f48b99ee978cb4c093, type: 3}
+  WeaponUp2Image: {fileID: 21300000, guid: bc70f246daea313439b38c688c0e8f04, type: 3}
+  WeaponBasicPrefab: {fileID: 0}
+  WeaponUp1Prefab: {fileID: 0}
+  WeaponUp2Prefab: {fileID: 0}
+  WeaponTo1UpgradeCost: 500
+  WeaponTo2UpgradeCost: 5000
+  WeaponBasicPower: 10
+  WeaponUp1Power: 20
+  WeaponUp2Power: 30
+  AttackPoint: 100
+  HealthPoint: 100
