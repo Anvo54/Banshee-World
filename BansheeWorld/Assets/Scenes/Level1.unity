@@ -153,6 +153,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 770750f398d236446aa0a090675a0a25, type: 3}
+--- !u!224 &250776457 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5658856160997157249, guid: cfc90d258445643439cc2d25002c9765,
+    type: 3}
+  m_PrefabInstance: {fileID: 1403089982}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &632472971 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1340608500896904, guid: 252126c346e49b146b6663e79107bccb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1087930304}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &632472975
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632472971}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300214, guid: 3eb89885bb8bc0f4db015c71d3ea7504, type: 3}
 --- !u!1 &650627662
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,7 +301,7 @@ GameObject:
   - component: {fileID: 959521324}
   m_Layer: 0
   m_Name: Player2Spawner
-  m_TagString: Untagged
+  m_TagString: Spawner2
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -294,6 +320,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &985876404 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1590627964370222, guid: 252126c346e49b146b6663e79107bccb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1087930304}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &985876408
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985876404}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300210, guid: 3eb89885bb8bc0f4db015c71d3ea7504, type: 3}
+--- !u!1 &996181578 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1960057359812234, guid: 252126c346e49b146b6663e79107bccb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1087930304}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &996181582
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996181578}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300014, guid: 3eb89885bb8bc0f4db015c71d3ea7504, type: 3}
 --- !u!1 &1072501120
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,6 +433,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1643748804719024, guid: 252126c346e49b146b6663e79107bccb, type: 3}
+      propertyPath: m_TagString
+      value: ground
+      objectReference: {fileID: 0}
     - target: {fileID: 4272664566628644, guid: 252126c346e49b146b6663e79107bccb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -411,6 +481,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1340608500896904, guid: 252126c346e49b146b6663e79107bccb, type: 3}
+      propertyPath: m_TagString
+      value: ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 252126c346e49b146b6663e79107bccb, type: 3}
 --- !u!1 &1114821900
@@ -424,7 +498,7 @@ GameObject:
   - component: {fileID: 1114821901}
   m_Layer: 0
   m_Name: Player1Spawner
-  m_TagString: Untagged
+  m_TagString: Spawner1
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
