@@ -131,6 +131,10 @@ public class GameSceneManager : MonoBehaviour
                     GameStaticValues.player1Coin += winGoldPointMultiplayer;
 
                     GameStaticValues.player2Coin -= loseGoldPointMultiplayer;
+                    if(GameStaticValues.player2Coin <=0)
+                    {
+                        GameStaticValues.player2Coin = 0;
+                    }
                 }
                 else
                 {
@@ -148,6 +152,10 @@ public class GameSceneManager : MonoBehaviour
                     GameStaticValues.player2Coin += winGoldPointMultiplayer;
 
                     GameStaticValues.player1Coin -= loseGoldPointMultiplayer;
+                    if (GameStaticValues.player1Coin <= 0)
+                    {
+                        GameStaticValues.player1Coin = 0;
+                    }
                 }
                 else
                 {
