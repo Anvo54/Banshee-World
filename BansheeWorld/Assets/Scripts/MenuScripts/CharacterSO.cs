@@ -10,15 +10,30 @@ public class CharacterSO : ScriptableObject {
     public string CharacterName;
     public Sprite CharacterImage;
 
-    public int AttackPoint;
-    public int HealthPoint;
+    public Sprite WeaponBasicImage;
+    public Sprite WeaponUp1Image;
+    public Sprite WeaponUp2Image;
 
-    public string Description;
+    public GameObject WeaponBasicPrefab;
+    public GameObject WeaponUp1Prefab;
+    public GameObject WeaponUp2Prefab;
+
+    public int WeaponTo1UpgradeCost = 500;
+    public int WeaponTo2UpgradeCost = 5000;
+
+    public int WeaponBasicPower = 10;
+    public int WeaponUp1Power = 20;
+    public int WeaponUp2Power = 30;
+
+    public int AttackPoint = 100;
+    public int HealthPoint = 100;
 
 
     public override string ToString()
     {
-        return CharacterName + "\n\nHealth: " + HealthPoint.ToString() + "\n\nAttack: " + AttackPoint.ToString();
+        return CharacterName +
+                "\nHealth: " + HealthPoint.ToString() +
+                "\nAttack: " + AttackPoint.ToString();
     }
 
 

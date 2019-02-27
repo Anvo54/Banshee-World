@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -12,10 +13,20 @@ MonoBehaviour:
   m_Name: Bot1
   m_EditorClassIdentifier: 
   character: 0
-  CharacterPrefab: {fileID: 1133409519374762, guid: 64c7cb019ab21cc458970847ccf83b3b,
-    type: 2}
+  CharacterPrefab: {fileID: 3905577297324133285, guid: a23fe2e0f61eb9f479b7f2bb64b127d4,
+    type: 3}
   CharacterName: Bot1
   CharacterImage: {fileID: 21300000, guid: df53ea291e55b1c4f87e245fb82a69f3, type: 3}
-  AttackPoint: 150
-  HealthPoint: 150
-  Description: First Bot
+  WeaponBasicImage: {fileID: 0}
+  WeaponUp1Image: {fileID: 0}
+  WeaponUp2Image: {fileID: 0}
+  WeaponBasicPrefab: {fileID: 0}
+  WeaponUp1Prefab: {fileID: 0}
+  WeaponUp2Prefab: {fileID: 0}
+  WeaponTo1UpgradeCost: 500
+  WeaponTo2UpgradeCost: 5000
+  WeaponBasicPower: 10
+  WeaponUp1Power: 20
+  WeaponUp2Power: 30
+  AttackPoint: 100
+  HealthPoint: 100
