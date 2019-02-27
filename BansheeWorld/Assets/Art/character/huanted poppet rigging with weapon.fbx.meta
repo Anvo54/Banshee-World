@@ -1,0 +1,383 @@
+fileFormatVersion: 2
+guid: 3172b8fcb10a7594c98b1ae461f65a1b
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Armature
+    100002: BASE
+    100004: Bone
+    100006: Bone.001
+    100008: Camera
+    100010: CHEST
+    100012: chest
+    100014: Cube
+    100016: Cube.001
+    100018: Ear.L
+    100020: ear.L
+    100022: ear.L_end
+    100024: Ear.R
+    100026: ear.R
+    100028: ear.R_end
+    100030: elpoCtrl.L
+    100032: elpoCtrl.L_end
+    100034: elpoCtrl.R
+    100036: elpoCtrl.R_end
+    100038: Empty
+    100040: feet.L
+    100042: feet.R
+    100044: feetIK.L
+    100046: feetIK.L_end
+    100048: feetIK.R
+    100050: feetIK.R_end
+    100052: Finger.R
+    100054: finger1.L
+    100056: finger1.L_end
+    100058: finger1.R
+    100060: finger1.R_end
+    100062: finger3.L
+    100064: finger3.L_end
+    100066: finger3.R
+    100068: finger3.R_end
+    100070: fingermid.L
+    100072: fingermid.L_end
+    100074: fingermid.R
+    100076: fingermid.R_end
+    100078: Fingers.L
+    100080: foot.L
+    100082: foot.R
+    100084: foreArm.L
+    100086: foreArm.R
+    100088: Hand.L
+    100090: hand.L
+    100092: Hand.R
+    100094: hand.R
+    100096: handIK.L
+    100098: handIK.R
+    100100: HAUNTED POPPET
+    100102: Head
+    100104: head
+    100106: HIPPS
+    100108: hipps
+    100110: //RootNode
+    100112: knee.L
+    100114: knee.L_end
+    100116: knee.R
+    100118: knee.R_end
+    100120: lowerLeg.L
+    100122: lowerLeg.R
+    100124: Plane
+    100126: Point
+    100128: Point.001
+    100130: Point.002
+    100132: Shoulder.L
+    100134: shoulder.L
+    100136: Shoulder.R
+    100138: shoulder.R
+    100140: SPIN
+    100142: spin
+    100144: tale
+    100146: tale.1
+    100148: tale.2
+    100150: tale.3
+    100152: tale.4
+    100154: tale.5
+    100156: tale.6
+    100158: tale.6_end
+    100160: taleIK
+    100162: taleIK_end
+    100164: toe.L
+    100166: toe.L_end
+    100168: toe.R
+    100170: toe.R_end
+    100172: UpperArm.L
+    100174: upperArm.L
+    100176: UpperArm.R
+    100178: upperArm.R
+    100180: upperleg.L
+    100182: upperleg.R
+    400000: Armature
+    400002: BASE
+    400004: Bone
+    400006: Bone.001
+    400008: Camera
+    400010: CHEST
+    400012: chest
+    400014: Cube
+    400016: Cube.001
+    400018: Ear.L
+    400020: ear.L
+    400022: ear.L_end
+    400024: Ear.R
+    400026: ear.R
+    400028: ear.R_end
+    400030: elpoCtrl.L
+    400032: elpoCtrl.L_end
+    400034: elpoCtrl.R
+    400036: elpoCtrl.R_end
+    400038: Empty
+    400040: feet.L
+    400042: feet.R
+    400044: feetIK.L
+    400046: feetIK.L_end
+    400048: feetIK.R
+    400050: feetIK.R_end
+    400052: Finger.R
+    400054: finger1.L
+    400056: finger1.L_end
+    400058: finger1.R
+    400060: finger1.R_end
+    400062: finger3.L
+    400064: finger3.L_end
+    400066: finger3.R
+    400068: finger3.R_end
+    400070: fingermid.L
+    400072: fingermid.L_end
+    400074: fingermid.R
+    400076: fingermid.R_end
+    400078: Fingers.L
+    400080: foot.L
+    400082: foot.R
+    400084: foreArm.L
+    400086: foreArm.R
+    400088: Hand.L
+    400090: hand.L
+    400092: Hand.R
+    400094: hand.R
+    400096: handIK.L
+    400098: handIK.R
+    400100: HAUNTED POPPET
+    400102: Head
+    400104: head
+    400106: HIPPS
+    400108: hipps
+    400110: //RootNode
+    400112: knee.L
+    400114: knee.L_end
+    400116: knee.R
+    400118: knee.R_end
+    400120: lowerLeg.L
+    400122: lowerLeg.R
+    400124: Plane
+    400126: Point
+    400128: Point.001
+    400130: Point.002
+    400132: Shoulder.L
+    400134: shoulder.L
+    400136: Shoulder.R
+    400138: shoulder.R
+    400140: SPIN
+    400142: spin
+    400144: tale
+    400146: tale.1
+    400148: tale.2
+    400150: tale.3
+    400152: tale.4
+    400154: tale.5
+    400156: tale.6
+    400158: tale.6_end
+    400160: taleIK
+    400162: taleIK_end
+    400164: toe.L
+    400166: toe.L_end
+    400168: toe.R
+    400170: toe.R_end
+    400172: UpperArm.L
+    400174: upperArm.L
+    400176: UpperArm.R
+    400178: upperArm.R
+    400180: upperleg.L
+    400182: upperleg.R
+    2000000: Camera
+    2100000: ZIBBER
+    2100002: bottons
+    2100004: needels
+    2100006: Material
+    2100008: scissor
+    2300000: CHEST
+    2300002: Cube
+    2300004: Cube.001
+    2300006: Ear.L
+    2300008: Ear.R
+    2300010: Finger.R
+    2300012: Fingers.L
+    2300014: foot.L
+    2300016: foot.R
+    2300018: Hand.L
+    2300020: Hand.R
+    2300022: Head
+    2300024: HIPPS
+    2300026: Plane
+    2300028: Shoulder.L
+    2300030: Shoulder.R
+    2300032: SPIN
+    2300034: tale
+    2300036: UpperArm.L
+    2300038: UpperArm.R
+    3300000: CHEST
+    3300002: Cube
+    3300004: Cube.001
+    3300006: Ear.L
+    3300008: Ear.R
+    3300010: Finger.R
+    3300012: Fingers.L
+    3300014: foot.L
+    3300016: foot.R
+    3300018: Hand.L
+    3300020: Hand.R
+    3300022: Head
+    3300024: HIPPS
+    3300026: Plane
+    3300028: Shoulder.L
+    3300030: Shoulder.R
+    3300032: SPIN
+    3300034: tale
+    3300036: UpperArm.L
+    3300038: UpperArm.R
+    4300000: HAUNTED POPPET
+    4300002: Plane
+    4300004: Cube
+    4300006: Cube.001
+    4300008: foot.L
+    4300010: HIPPS
+    4300012: SPIN
+    4300014: CHEST
+    4300016: Hand.L
+    4300018: Hand.R
+    4300020: Head
+    4300022: Ear.L
+    4300024: Ear.R
+    4300026: Finger.R
+    4300028: UpperArm.R
+    4300030: Fingers.L
+    4300032: UpperArm.L
+    4300034: Shoulder.L
+    4300036: Shoulder.R
+    4300038: foot.R
+    4300040: tale
+    7400000: Armature|poppet BLOCKING with weapon
+    7400002: Armature|poppet BOTH hand attack with weapon
+    7400004: Armature|poppet get hit with weapon
+    7400006: Armature|poppet idle with weapon
+    7400008: Armature|poppet JUMPING with weapon
+    7400010: 'Armature|poppet left hand attack with weapon '
+    7400012: 'Armature|poppet right hand attack with weapon '
+    7400014: Armature|poppet runing with weapon
+    7400016: Armature|poppet rush attack with weapon
+    7400018: Cube.001|poppet BOTH hand attack with weapon
+    9500000: //RootNode
+    10800000: Point
+    10800002: Point.001
+    10800004: Point.002
+    13700000: HAUNTED POPPET
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 7f2e980b01f1d7248be86cbe3ef4f0e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ZIBBER
+    second: {fileID: 2100000, guid: 7f2e980b01f1d7248be86cbe3ef4f0e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bottons
+    second: {fileID: 2100000, guid: 7f2e980b01f1d7248be86cbe3ef4f0e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: needels
+    second: {fileID: 2100000, guid: bdee7804f40c6cc4d8d455c2243ecf71, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: scissor
+    second: {fileID: 2100000, guid: 3c1da474a6ff31f42824cd9e7b151c23, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.15
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.0015
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
