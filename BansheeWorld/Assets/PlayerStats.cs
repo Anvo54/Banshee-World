@@ -13,7 +13,7 @@ public class PlayerStats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pnum = gameObject.GetComponent<PlayerMovement>().playerNumber;
+        pnum = gameObject.GetComponent<PlayerMovement>().index;
         textTag = "P" + pnum + "H";
         healthINT = Character1.HealthPoint;
         health = GameObject.FindGameObjectWithTag(textTag).GetComponent<Text>();
