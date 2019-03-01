@@ -20,9 +20,6 @@ MonoBehaviour:
   WeaponBasicImage: {fileID: 0}
   WeaponUp1Image: {fileID: 0}
   WeaponUp2Image: {fileID: 0}
-  WeaponBasicPrefab: {fileID: 0}
-  WeaponUp1Prefab: {fileID: 0}
-  WeaponUp2Prefab: {fileID: 0}
   WeaponTo1UpgradeCost: 500
   WeaponTo2UpgradeCost: 5000
   WeaponBasicPower: 10
