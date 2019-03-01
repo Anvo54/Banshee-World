@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Character2
   m_EditorClassIdentifier: 
   character: 1
-  CharacterPrefab: {fileID: 1208624240926186, guid: 79afb71125a04774a829cf982c499331,
+  CharacterPrefab: {fileID: 1090904995274728, guid: ab30e6cbe430e9f45a187693e1b1286b,
     type: 3}
   CharacterName: Poppet
   CharacterImage: {fileID: 21300000, guid: 42e7116ae582bb54b903f4184bf08b73, type: 3}
