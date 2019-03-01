@@ -282,6 +282,7 @@ MonoBehaviour:
   cinemachineTargetGroup: {fileID: 1231326505}
   durationOfMatching: 120
   durationOfBox: 10
+  durationOfWeaponHolding: 30
   isGameOver: 0
   gameOverMessage: 
   firstBoxDropTime: 0
@@ -298,6 +299,7 @@ MonoBehaviour:
   - {fileID: 4570037826710653925}
   - {fileID: 4612321126583118104}
   weaponBox: {fileID: 79712213405124169, guid: 8059bdc8e96c04742ad681c246f9a62b, type: 3}
+  whoHasWeapon: 0
 --- !u!4 &650627664
 Transform:
   m_ObjectHideFlags: 0
@@ -450,7 +452,7 @@ Transform:
   m_LocalScale: {x: 2.9661, y: 2.9661, z: 2.9661}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1114821900
 GameObject:
@@ -1234,7 +1236,7 @@ Transform:
   m_LocalScale: {x: 3.529, y: 3.529, z: 3.529}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2023896877
 PrefabInstance:
@@ -1464,6 +1466,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2111331416}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2111331418 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100236, guid: 41d12aa55aeb6384c8a24fb03e7bd069,
+    type: 3}
+  m_PrefabInstance: {fileID: 2111331416}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2111331419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111331418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94eeebd6e882a8d44b20b76f8d06876c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &2111331420
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111331418}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 94.32268, y: 12.0646515, z: 94.53865}
+  m_Center: {x: -0.034225464, y: 10.559486, z: 0.6625557}
 --- !u!1001 &543131089225534482
 PrefabInstance:
   m_ObjectHideFlags: 0

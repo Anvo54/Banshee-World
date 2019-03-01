@@ -8,8 +8,6 @@ public class WeaponBoostBoxScript : MonoBehaviour
     GameObject GameSceneManagerRef;
     GameSceneManager gameSceneManager;
 
- //   internal int playerIndexWithWeapon;
-
     private void Start()
     {
         GameSceneManagerRef = GameObject.FindGameObjectWithTag("GameManager");
@@ -31,8 +29,8 @@ public class WeaponBoostBoxScript : MonoBehaviour
                     gameSceneManager.whoHasWeapon = gameSceneManager.players[i].playerIndex;   
                 }   
             }
-         //   gameSceneManager.whoHasWeapon = playerIndexWithWeapon;
         }
+
         else
         {
             return;
