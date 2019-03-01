@@ -492,6 +492,7 @@ MonoBehaviour:
   cinemachineTargetGroup: {fileID: 499378828}
   durationOfMatching: 120
   durationOfBox: 10
+  durationOfWeaponHolding: 30
   isGameOver: 0
   gameOverMessage: 
   firstBoxDropTime: 0
@@ -508,6 +509,7 @@ MonoBehaviour:
   - {fileID: 5740876}
   - {fileID: 107688754}
   weaponBox: {fileID: 79712213405124169, guid: 8059bdc8e96c04742ad681c246f9a62b, type: 3}
+  whoHasWeapon: 0
 --- !u!4 &650627664
 Transform:
   m_ObjectHideFlags: 0
