@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: 0c35f25b0c4f99948a4288206fecb882
+guid: eb43ccd41e6a8974d86db1cda57db718
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: Stone_MAT
+    2100000: CryptFloor_MAT
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Stone
+    4300000: Plane
   externalObjects: {}
   materials:
     importMaterials: 1
