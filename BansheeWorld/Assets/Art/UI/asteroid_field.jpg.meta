@@ -1,8 +1,9 @@
 fileFormatVersion: 2
-guid: f2a9d2848e8f0f94c9ad3f43ded4ab11
+guid: 270d4e0939ce6c4499ed5ad4958e4c00
 TextureImporter:
   fileIDToRecycleName:
-    21300000: lava stage area_0
+    21300000: asteroid_field_0
+    21300002: asteroid_field_1
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -92,17 +93,28 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lava stage area_0
+      name: asteroid_field_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 55
-        width: 396
-        height: 250
+        x: 200
+        y: 0
+        width: 952
+        height: 595
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -110,7 +122,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f4390f450b6d1744a03af32180f496d
+      spriteID: 515941397d30131418f326c306789fe8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: asteroid_field_1
+      rect:
+        serializedVersion: 2
+        x: 1236
+        y: 48
+        width: 29
+        height: 125
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b17704f7e1868243ab82ae77978b986
       vertices: []
       indices: 
       edges: []
@@ -118,7 +150,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 42580b9a2a377ff469bbf6ed1ad4c900
+    spriteID: 6d8ad0e2f119850419ef0e100a7c6208
     vertices: []
     indices: 
     edges: []

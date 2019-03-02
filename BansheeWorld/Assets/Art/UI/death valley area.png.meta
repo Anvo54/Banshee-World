@@ -99,12 +99,12 @@ TextureImporter:
       name: death valley area_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 36
-        width: 430
-        height: 290
+        x: 24
+        y: 56
+        width: 399
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

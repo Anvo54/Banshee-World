@@ -301,7 +301,10 @@ public class Menu2Manager : MonoBehaviour {
                 GameStaticValues.level = Level.Level3;
 
             if(index == 3)
-                GameStaticValues.level = Level.Level1;
+                GameStaticValues.level = Level.Level4;
+
+            if (index == 4)
+                GameStaticValues.level = Level.Level5;
         }
 
         StartCoroutine(StartGameFromToggle());

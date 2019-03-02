@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: f2a9d2848e8f0f94c9ad3f43ded4ab11
+guid: 374bf2e19e2dc4945b53a329c8449ed7
 TextureImporter:
   fileIDToRecycleName:
-    21300000: lava stage area_0
+    21300000: crypt_0
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -92,25 +92,36 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lava stage area_0
+      name: crypt_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 55
-        width: 396
-        height: 250
+        x: 155
+        y: 2
+        width: 872
+        height: 545
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f4390f450b6d1744a03af32180f496d
+      spriteID: b39b59fb49b22f54895122b0a035adc6
       vertices: []
       indices: 
       edges: []
@@ -118,7 +129,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 42580b9a2a377ff469bbf6ed1ad4c900
+    spriteID: 721e30476b02de24683ce18d79000d3b
     vertices: []
     indices: 
     edges: []
