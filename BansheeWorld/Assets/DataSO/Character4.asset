@@ -17,9 +17,9 @@ MonoBehaviour:
     type: 3}
   CharacterName: GO
   CharacterImage: {fileID: 21300000, guid: 386876de591fc4f48bf694a3c7d94a65, type: 3}
-  WeaponBasicImage: {fileID: 21300000, guid: 6474eecdc60e62945b73af614790c745, type: 3}
-  WeaponUp1Image: {fileID: 21300000, guid: 6474eecdc60e62945b73af614790c745, type: 3}
-  WeaponUp2Image: {fileID: 21300000, guid: 6474eecdc60e62945b73af614790c745, type: 3}
+  WeaponBasicImage: {fileID: 21300000, guid: 9c3e9de6f582bc34e8e0317f6885bf68, type: 3}
+  WeaponUp1Image: {fileID: 21300000, guid: 9c3e9de6f582bc34e8e0317f6885bf68, type: 3}
+  WeaponUp2Image: {fileID: 21300000, guid: 9c3e9de6f582bc34e8e0317f6885bf68, type: 3}
   WeaponTo1UpgradeCost: 500
   WeaponTo2UpgradeCost: 5000
   WeaponBasicPower: 10
