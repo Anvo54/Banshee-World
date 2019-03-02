@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 274d229c08e83a94d88ece7c616c27c2
+guid: e7d5288684911e240839b5b3ed59b58e
 TextureImporter:
   fileIDToRecycleName:
-    21300000: death valley area_0
+    21300000: sand_dune_0
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -92,17 +92,28 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: death valley area_0
+      name: sand_dune_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 36
-        width: 430
-        height: 290
+        x: 80
+        y: 0
+        width: 872
+        height: 545
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -110,7 +121,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db874e3b9270a0846bef2842e68df326
+      spriteID: e2c67e5f952ba6842800dd99fabcb482
       vertices: []
       indices: 
       edges: []
@@ -118,7 +129,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 40055d6b7db6bab419023653e250fe87
+    spriteID: c6349fe1e18f2714b9ea1d0e663260fa
     vertices: []
     indices: 
     edges: []

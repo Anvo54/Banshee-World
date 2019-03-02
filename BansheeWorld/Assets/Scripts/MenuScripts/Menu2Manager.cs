@@ -301,7 +301,10 @@ public class Menu2Manager : MonoBehaviour {
                 GameStaticValues.level = Level.Level3;
 
             if(index == 3)
-                GameStaticValues.level = Level.Level1;
+                GameStaticValues.level = Level.Level4;
+
+            if (index == 4)
+                GameStaticValues.level = Level.Level5;
         }
 
         StartCoroutine(StartGameFromToggle());
@@ -484,23 +487,28 @@ public class Menu2Manager : MonoBehaviour {
                 WeaponImageInCharacterPanel.sprite = characters[tempIndex].WeaponBasicImage;
                 CoinNeeded.text = GameStaticValues.player1Coin.ToString() + "/" +
                     characters[tempIndex].WeaponTo1UpgradeCost.ToString();
-                CharacterDetais.text = characters[tempIndex].ToString() + " + " + 
-                    characters[tempIndex].WeaponBasicPower.ToString();
+                CharacterDetais.text = characters[tempIndex].ToString() +
+                    "\nHead Attack: 30 + " + characters[tempIndex].WeaponBasicPower.ToString() +"%" +
+                    "\nBody Attack: 20 + " + characters[tempIndex].WeaponBasicPower.ToString() + "%";
             }
             if (GameStaticValues.player1WeaponLevel == 2)
             {
                 WeaponImageInCharacterPanel.sprite = characters[tempIndex].WeaponUp1Image;
                 CoinNeeded.text = GameStaticValues.player1Coin.ToString() + "/" 
                     + characters[tempIndex].WeaponTo2UpgradeCost.ToString();
-                CharacterDetais.text = characters[tempIndex].ToString() + " + " +
-                   characters[tempIndex].WeaponUp1Power.ToString();
+                CharacterDetais.text = characters[tempIndex].ToString() +
+                    "\nHead Attack: 30 + " + characters[tempIndex].WeaponUp1Power.ToString() + "%" +
+                    "\nBody Attack: 20 + " + characters[tempIndex].WeaponUp1Power.ToString() + "%";
+                //characters[tempIndex].WeaponUp1Power.ToString() +"%";
             }
             if (GameStaticValues.player1WeaponLevel == 3)
             {
                 WeaponImageInCharacterPanel.sprite = characters[tempIndex].WeaponUp2Image;
                 CoinNeeded.text = "MAXED";
-                CharacterDetais.text = characters[tempIndex].ToString() + " + " +
-                   characters[tempIndex].WeaponUp2Power.ToString();
+                CharacterDetais.text = characters[tempIndex].ToString() +
+                    "\nHead Attack: 30 + " + characters[tempIndex].WeaponUp2Power.ToString() + "%" +
+                    "\nBody Attack: 20 + " + characters[tempIndex].WeaponUp2Power.ToString() + "%";
+               // characters[tempIndex].WeaponUp2Power.ToString() +"%";
             }
 
         }
@@ -517,23 +525,29 @@ public class Menu2Manager : MonoBehaviour {
                 WeaponImageInCharacterPanelP2.sprite = characters[tempIndexP2].WeaponBasicImage;
                 CoinNeededP2.text = GameStaticValues.player2Coin.ToString() + "/" +
                     characters[tempIndexP2].WeaponTo1UpgradeCost.ToString();
-                CharacterDetaisP2.text = characters[tempIndexP2].ToString() + " + " +
-                   characters[tempIndexP2].WeaponBasicPower.ToString();
+                CharacterDetaisP2.text = characters[tempIndexP2].ToString() +
+                    "\nHead Attack: 30 + " + characters[tempIndexP2].WeaponBasicPower.ToString() + "%" +
+                    "\nBody Attack: 20 + " + characters[tempIndexP2].WeaponBasicPower.ToString() + "%";
+//                characters[tempIndexP2].WeaponBasicPower.ToString() + "%";
             }
             if (GameStaticValues.player2WeaponLevel == 2)
             {
                 WeaponImageInCharacterPanelP2.sprite = characters[tempIndexP2].WeaponUp1Image;
                 CoinNeededP2.text = GameStaticValues.player2Coin.ToString() + "/" +
                     characters[tempIndexP2].WeaponTo2UpgradeCost.ToString();
-                CharacterDetaisP2.text = characters[tempIndexP2].ToString() + " + " +
-                    characters[tempIndexP2].WeaponUp1Power.ToString();
+                CharacterDetaisP2.text = characters[tempIndexP2].ToString() +
+                    "\nHead Attack: 30 + " + characters[tempIndexP2].WeaponUp1Power.ToString() + "%" +
+                    "\nBody Attack: 20 + " + characters[tempIndexP2].WeaponUp1Power.ToString() + "%";
+               // characters[tempIndexP2].WeaponUp1Power.ToString() +"%";
             }
             if (GameStaticValues.player2WeaponLevel == 3)
             {
                 WeaponImageInCharacterPanelP2.sprite = characters[tempIndexP2].WeaponUp2Image;
                 CoinNeededP2.text = "MAXED";
-                CharacterDetaisP2.text = characters[tempIndexP2].ToString() + " + " +
-                  characters[tempIndexP2].WeaponUp2Power.ToString();
+                CharacterDetaisP2.text = characters[tempIndexP2].ToString() +
+                    "\nHead Attack: 30 + " + characters[tempIndexP2].WeaponUp2Power.ToString() + "%" +
+                    "\nBody Attack: 20 + " + characters[tempIndexP2].WeaponUp2Power.ToString() + "%";
+              //  characters[tempIndexP2].WeaponUp2Power.ToString() +"%";
             }
         }
     }

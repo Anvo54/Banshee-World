@@ -99,12 +99,12 @@ TextureImporter:
       name: lava stage area_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 36
-        width: 430
-        height: 290
+        x: 22
+        y: 55
+        width: 396
+        height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
