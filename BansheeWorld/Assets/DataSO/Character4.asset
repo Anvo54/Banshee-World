@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Character4
   m_EditorClassIdentifier: 
   character: 3
-  CharacterPrefab: {fileID: 1429279921026270, guid: 76e24f222a39cce4f8e428cb88887d46,
+  CharacterPrefab: {fileID: 1196434330891280657, guid: ce080bf673df9a347a178d91e5e2bde0,
     type: 3}
   CharacterName: GO
   CharacterImage: {fileID: 21300000, guid: 386876de591fc4f48bf694a3c7d94a65, type: 3}
