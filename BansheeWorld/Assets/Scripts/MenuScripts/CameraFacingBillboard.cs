@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*
+ * http://wiki.unity3d.com/index.php/CameraFacingBillboard
+ * Author: Neil Carter (NCarter)
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

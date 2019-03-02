@@ -17,6 +17,8 @@ public class Bot : MonoBehaviour
     public float MaxAttackDistance = 2.1f;
 
     public float AttackCooldown = 2f;
+    public Collider[] attackHitBoxes;
+    public float attackDamage;
 
     private IState currentState;
 

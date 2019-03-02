@@ -10,32 +10,44 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpForce;
     [SerializeField] bool grounded;
     [SerializeField] Collider[] attackHitBoxes;
-    [SerializeField] public float damage = 0;
+
+    [SerializeField] float damage = 0;
+
+    internal float headDamage = 30;
+    internal float bodyDamage = 20;
+
     [SerializeField] string horizonal_Axis;
     [SerializeField] string Vertical_Axis;
     [SerializeField] string jump;
     [SerializeField] string fire1;
     [SerializeField] string fire2;
+    PlayerStats stats;
+    public int index;
+    private int pnum;
     Vector3 moveInput;
     Vector3 moveVelocity;
 
-    int index;
+    
 
     Camera mainCamera;
 
     Rigidbody playerRB;
     Animator playerAnimator;
 
-    // Use this for initialization
+
     void Start()
     {
-        index = gameObject.GetComponent<PlayerScriptKim>().playerIndex;
-
+        //index = gameObject.GetComponent<PlayerScriptKim>().playerIndex;
+        pnum = PlayerNumber();
         playerRB = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
         playerAnimator = GetComponent<Animator>();
-        fire1 = "Fire1_P" + index;
-        fire2 = "Fire2_P" + index;
+        fire1 = "J" + pnum + "Fire1";
+        fire2 = "J" + pnum + "Fire2";
+        horizonal_Axis = "J" + pnum + "Horizontal";
+        Vertical_Axis = "J" + pnum + "Vertical";
+        jump = "J" + pnum + "Jump";
+
     }
 
     private void Update()
@@ -73,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
         Jump();
         Attack1();
         Attack2();
-        Kick();
+        Kick();     
     }
 
     private void Attack2()
@@ -133,15 +145,25 @@ public class PlayerMovement : MonoBehaviour
             switch (c.name)
             {
                 case "Head":
-                    damage = 30;
+                    damage = headDamage;
                     break;
                 case "Torso":
-                    damage = 20;
+                    damage = bodyDamage;
                     break;
                 default:
                     Debug.Log("Unable to indetify witch bodypart was hit. Check your spelling!");
                     break;
             }
+            if (GameStaticValues.multiplayer)
+            {
+                c.transform.root.GetComponent<PlayerHealth>().TakeDamage(damage);
+            }
+
+            else
+            {
+                c.transform.root.GetComponent<BotHealth>().AddjustCurrentHealth(damage);
+            }
+
         }
     }
 
@@ -171,4 +193,15 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(4f*Time.deltaTime);
         playerAnimator.ResetTrigger("Jumping");
     }
+
+
+    int PlayerNumber()
+    {
+        if (GameObject.FindGameObjectWithTag("Spawner1").transform.position.x == transform.position.x)
+        {
+            return 1;
+        }
+        else return 2;
+    }
+
 }
