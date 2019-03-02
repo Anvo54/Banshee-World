@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpForce;
     [SerializeField] bool grounded;
     [SerializeField] Collider[] attackHitBoxes;
+    [SerializeField] GameObject Hit;
 
     [SerializeField] float damage = 0;
 
@@ -55,9 +56,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+
+        
         float lh = Input.GetAxis(horizonal_Axis);
         float lv = Input.GetAxis(Vertical_Axis);
-
         Animate();
 
         moveInput = new Vector3(lh, 0f, lv);
@@ -150,9 +152,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 case "Head":
                     damage = headDamage;
+                    Instantiate(Hit,transform.position,Quaternion.identity);
                     break;
                 case "Torso":
                     damage = bodyDamage;
+                    Instantiate(Hit, transform.position, Quaternion.identity);
                     break;
                 default:
                     Debug.Log("Unable to indetify witch bodypart was hit. Check your spelling!");
@@ -175,6 +179,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButton(jump) && grounded)
         {
+            playerAnimator.SetTrigger("Jump");
             Debug.Log("Starting to jump");
             playerRB.AddForce(Vector3.up * jumpForce*2);
             grounded = false;
@@ -185,7 +190,7 @@ public class PlayerMovement : MonoBehaviour
                 playerRB.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
    
             }
-
+        playerAnimator.ResetTrigger("Jump");
     }
 
     private void OnCollisionEnter(Collision collision)
