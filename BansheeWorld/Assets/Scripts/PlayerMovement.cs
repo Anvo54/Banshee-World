@@ -152,11 +152,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 case "Head":
                     damage = headDamage;
-                    Instantiate(Hit,transform.position,Quaternion.identity);
+                    //Instantiate(Hit,transform.position,Quaternion.identity);
                     break;
                 case "Torso":
                     damage = bodyDamage;
-                    Instantiate(Hit, transform.position, Quaternion.identity);
+                    //Instantiate(Hit, transform.position, Quaternion.identity);
                     break;
                 default:
                     Debug.Log("Unable to indetify witch bodypart was hit. Check your spelling!");
