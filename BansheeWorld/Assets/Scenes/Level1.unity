@@ -153,6 +153,46 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 770750f398d236446aa0a090675a0a25, type: 3}
+--- !u!1 &241239588 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1419188626483012, guid: 252126c346e49b146b6663e79107bccb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1087930304}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &241239590
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241239588}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300216, guid: 3eb89885bb8bc0f4db015c71d3ea7504, type: 3}
+--- !u!1 &381392221 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1235770739580890, guid: 252126c346e49b146b6663e79107bccb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1087930304}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &381392223
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381392221}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300212, guid: 3eb89885bb8bc0f4db015c71d3ea7504, type: 3}
 --- !u!1 &632472971 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1340608500896904, guid: 252126c346e49b146b6663e79107bccb,
@@ -437,6 +477,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: ground
       objectReference: {fileID: 0}
+    - target: {fileID: 1590627964370222, guid: 252126c346e49b146b6663e79107bccb, type: 3}
+      propertyPath: m_TagString
+      value: ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1960057359812234, guid: 252126c346e49b146b6663e79107bccb, type: 3}
+      propertyPath: m_TagString
+      value: ground
+      objectReference: {fileID: 0}
     - target: {fileID: 4272664566628644, guid: 252126c346e49b146b6663e79107bccb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -480,6 +528,14 @@ PrefabInstance:
     - target: {fileID: 4272664566628644, guid: 252126c346e49b146b6663e79107bccb, type: 3}
       propertyPath: m_LocalScale.z
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1419188626483012, guid: 252126c346e49b146b6663e79107bccb, type: 3}
+      propertyPath: m_TagString
+      value: ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1235770739580890, guid: 252126c346e49b146b6663e79107bccb, type: 3}
+      propertyPath: m_TagString
+      value: ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 252126c346e49b146b6663e79107bccb, type: 3}

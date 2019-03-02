@@ -21,6 +21,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] string jump;
     [SerializeField] string fire1;
     [SerializeField] string fire2;
+    [SerializeField] float fallMultiplier = 2.5f;
+    [SerializeField] float lowJumpMultiplier = 2;
+
     PlayerStats stats;
     public int index;
     private int pnum;
@@ -71,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         moveVelocity = transform.forward * speed * moveInput.sqrMagnitude;
+        moveVelocity.y = playerRB.velocity.y;
     }
 
     private void Animate()
@@ -169,12 +173,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetButton(jump) && grounded == true)
+        if (Input.GetButton(jump) && grounded)
         {
-            StartCoroutine("JumpAnim");
+            Debug.Log("Starting to jump");
+            playerRB.AddForce(Vector3.up * jumpForce*2);
             grounded = false;
-            playerRB.AddForce(Vector3.up * jumpForce);
-        }
+            
+            playerRB.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier -1) * Time.deltaTime;
+            } if(playerRB.velocity.y >0 && !Input.GetButton(jump))
+            {
+                playerRB.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+   
+            }
 
     }
 
@@ -182,17 +192,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("ground"))
         {
+            Debug.Log("it's the ground!!");
             grounded = true;
         }
     }
 
-    private IEnumerable JumpAnim()
-    {
-        Debug.Log("Started");
-        playerAnimator.SetTrigger("Jumping");
-        yield return new WaitForSeconds(4f*Time.deltaTime);
-        playerAnimator.ResetTrigger("Jumping");
-    }
+
 
 
     int PlayerNumber()
