@@ -1,0 +1,512 @@
+fileFormatVersion: 2
+guid: 87978f50fc10ed749970e065c6ba493f
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Armature
+    100002: BASE
+    100004: Bone
+    100006: Bone.001
+    100008: Camera
+    100010: chest
+    100012: ear.L
+    100014: ear.L_end
+    100016: ear.R
+    100018: ear.R_end
+    100020: elpoCtrl.L
+    100022: elpoCtrl.L_end
+    100024: elpoCtrl.R
+    100026: elpoCtrl.R_end
+    100028: Empty
+    100030: feet.L
+    100032: feet.R
+    100034: feetIK.L
+    100036: feetIK.L_end
+    100038: feetIK.R
+    100040: feetIK.R_end
+    100042: finger1.L
+    100044: finger1.L_end
+    100046: finger1.R
+    100048: finger1.R_end
+    100050: finger3.L
+    100052: finger3.L_end
+    100054: finger3.R
+    100056: finger3.R_end
+    100058: fingermid.L
+    100060: fingermid.L_end
+    100062: fingermid.R
+    100064: fingermid.R_end
+    100066: foreArm.L
+    100068: foreArm.R
+    100070: hand.L
+    100072: hand.R
+    100074: handIK.L
+    100076: handIK.R
+    100078: HAUNTED POPPET
+    100080: head
+    100082: hipps
+    100084: //RootNode
+    100086: knee.L
+    100088: knee.L_end
+    100090: knee.R
+    100092: knee.R_end
+    100094: lowerLeg.L
+    100096: lowerLeg.R
+    100098: Plane
+    100100: Point
+    100102: Point.001
+    100104: Point.002
+    100106: shoulder.L
+    100108: shoulder.R
+    100110: spin
+    100112: tale.1
+    100114: tale.2
+    100116: tale.3
+    100118: tale.4
+    100120: tale.5
+    100122: tale.6
+    100124: tale.6_end
+    100126: taleIK
+    100128: taleIK_end
+    100130: toe.L
+    100132: toe.L_end
+    100134: toe.R
+    100136: toe.R_end
+    100138: upperArm.L
+    100140: upperArm.R
+    100142: upperleg.L
+    100144: upperleg.R
+    400000: Armature
+    400002: BASE
+    400004: Bone
+    400006: Bone.001
+    400008: Camera
+    400010: chest
+    400012: ear.L
+    400014: ear.L_end
+    400016: ear.R
+    400018: ear.R_end
+    400020: elpoCtrl.L
+    400022: elpoCtrl.L_end
+    400024: elpoCtrl.R
+    400026: elpoCtrl.R_end
+    400028: Empty
+    400030: feet.L
+    400032: feet.R
+    400034: feetIK.L
+    400036: feetIK.L_end
+    400038: feetIK.R
+    400040: feetIK.R_end
+    400042: finger1.L
+    400044: finger1.L_end
+    400046: finger1.R
+    400048: finger1.R_end
+    400050: finger3.L
+    400052: finger3.L_end
+    400054: finger3.R
+    400056: finger3.R_end
+    400058: fingermid.L
+    400060: fingermid.L_end
+    400062: fingermid.R
+    400064: fingermid.R_end
+    400066: foreArm.L
+    400068: foreArm.R
+    400070: hand.L
+    400072: hand.R
+    400074: handIK.L
+    400076: handIK.R
+    400078: HAUNTED POPPET
+    400080: head
+    400082: hipps
+    400084: //RootNode
+    400086: knee.L
+    400088: knee.L_end
+    400090: knee.R
+    400092: knee.R_end
+    400094: lowerLeg.L
+    400096: lowerLeg.R
+    400098: Plane
+    400100: Point
+    400102: Point.001
+    400104: Point.002
+    400106: shoulder.L
+    400108: shoulder.R
+    400110: spin
+    400112: tale.1
+    400114: tale.2
+    400116: tale.3
+    400118: tale.4
+    400120: tale.5
+    400122: tale.6
+    400124: tale.6_end
+    400126: taleIK
+    400128: taleIK_end
+    400130: toe.L
+    400132: toe.L_end
+    400134: toe.R
+    400136: toe.R_end
+    400138: upperArm.L
+    400140: upperArm.R
+    400142: upperleg.L
+    400144: upperleg.R
+    2000000: Camera
+    2100000: ZIBBER
+    2100002: bottons
+    2100004: needels
+    2100006: Material
+    2300000: Plane
+    3300000: Plane
+    4300000: HAUNTED POPPET
+    4300002: Plane
+    7400000: Armature|poppet BLOCKING
+    7400002: Armature|poppet BOTH hand attack
+    7400004: Armature|poppet get hit
+    7400006: Armature|poppet idle
+    7400008: Armature|poppet JUMPING
+    7400010: 'Armature|poppet left hand attack '
+    7400012: 'Armature|poppet right hand attack '
+    7400014: Armature|poppet runing
+    7400016: Armature|poppet rush attack
+    9500000: //RootNode
+    10800000: Point
+    10800002: Point.001
+    10800004: Point.002
+    13700000: HAUNTED POPPET
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature|poppet BLOCKING
+      takeName: Armature|poppet BLOCKING
+      firstFrame: 0
+      lastFrame: 119
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|poppet BOTH hand attack
+      takeName: Armature|poppet BOTH hand attack
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|poppet get hit
+      takeName: Armature|poppet get hit
+      firstFrame: 0
+      lastFrame: 14
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|poppet idle
+      takeName: Armature|poppet idle
+      firstFrame: 0
+      lastFrame: 119
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|poppet JUMPING
+      takeName: Armature|poppet JUMPING
+      firstFrame: 0
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: 'Armature|poppet left hand attack '
+      takeName: 'Armature|poppet left hand attack '
+      firstFrame: 0
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: 'Armature|poppet right hand attack '
+      takeName: 'Armature|poppet right hand attack '
+      firstFrame: 0
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|poppet runing
+      takeName: Armature|poppet runing
+      firstFrame: 0
+      lastFrame: 26
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|poppet rush attack
+      takeName: Armature|poppet rush attack
+      firstFrame: 0
+      lastFrame: 74
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.15
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.0015
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

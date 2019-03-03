@@ -10,39 +10,56 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpForce;
     [SerializeField] bool grounded;
     [SerializeField] Collider[] attackHitBoxes;
-    [SerializeField] public float damage = 0;
+    [SerializeField] GameObject Hit;
+
+    [SerializeField] float damage = 0;
+
+    internal float headDamage = 30;
+    internal float bodyDamage = 20;
+
     [SerializeField] string horizonal_Axis;
     [SerializeField] string Vertical_Axis;
     [SerializeField] string jump;
     [SerializeField] string fire1;
     [SerializeField] string fire2;
+    [SerializeField] float fallMultiplier = 2.5f;
+    [SerializeField] float lowJumpMultiplier = 2;
+
+    PlayerStats stats;
+    public int index;
+    private int pnum;
     Vector3 moveInput;
     Vector3 moveVelocity;
 
-    int index;
+    
 
     Camera mainCamera;
 
     Rigidbody playerRB;
     Animator playerAnimator;
 
-    // Use this for initialization
+
     void Start()
     {
-        index = gameObject.GetComponent<PlayerScriptKim>().playerIndex;
-
+        //index = gameObject.GetComponent<PlayerScriptKim>().playerIndex;
+        pnum = PlayerNumber();
         playerRB = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
         playerAnimator = GetComponent<Animator>();
-        fire1 = "Fire1_P" + index;
-        fire2 = "Fire2_P" + index;
+        fire1 = "J" + pnum + "Fire1";
+        fire2 = "J" + pnum + "Fire2";
+        horizonal_Axis = "J" + pnum + "Horizontal";
+        Vertical_Axis = "J" + pnum + "Vertical";
+        jump = "J" + pnum + "Jump";
+
     }
 
     private void Update()
     {
+
+        
         float lh = Input.GetAxis(horizonal_Axis);
         float lv = Input.GetAxis(Vertical_Axis);
-
         Animate();
 
         moveInput = new Vector3(lh, 0f, lv);
@@ -59,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         moveVelocity = transform.forward * speed * moveInput.sqrMagnitude;
+        moveVelocity.y = playerRB.velocity.y;
     }
 
     private void Animate()
@@ -73,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
         Jump();
         Attack1();
         Attack2();
-        Kick();
+        Kick();     
     }
 
     private void Attack2()
@@ -133,42 +151,67 @@ public class PlayerMovement : MonoBehaviour
             switch (c.name)
             {
                 case "Head":
-                    damage = 30;
+                    damage = headDamage;
+                    //Instantiate(Hit,transform.position,Quaternion.identity);
                     break;
                 case "Torso":
-                    damage = 20;
+                    damage = bodyDamage;
+                    //Instantiate(Hit, transform.position, Quaternion.identity);
                     break;
                 default:
                     Debug.Log("Unable to indetify witch bodypart was hit. Check your spelling!");
                     break;
             }
+            if (GameStaticValues.multiplayer)
+            {
+                c.transform.root.GetComponent<PlayerHealth>().TakeDamage(damage);
+            }
+
+            else
+            {
+                c.transform.root.GetComponent<BotHealth>().AddjustCurrentHealth(damage);
+            }
+
         }
     }
 
     private void Jump()
     {
-        if (Input.GetButton(jump) && grounded == true)
+        if (Input.GetButton(jump) && grounded)
         {
-            StartCoroutine("JumpAnim");
+            playerAnimator.SetTrigger("Jump");
+            Debug.Log("Starting to jump");
+            playerRB.AddForce(Vector3.up * jumpForce*2);
             grounded = false;
-            playerRB.AddForce(Vector3.up * jumpForce);
-        }
-
+            
+            playerRB.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier -1) * Time.deltaTime;
+            } if(playerRB.velocity.y >0 && !Input.GetButton(jump))
+            {
+                playerRB.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+   
+            }
+        playerAnimator.ResetTrigger("Jump");
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("ground"))
         {
+            Debug.Log("it's the ground!!");
             grounded = true;
         }
     }
 
-    private IEnumerable JumpAnim()
+
+
+
+    int PlayerNumber()
     {
-        Debug.Log("Started");
-        playerAnimator.SetTrigger("Jumping");
-        yield return new WaitForSeconds(4f*Time.deltaTime);
-        playerAnimator.ResetTrigger("Jumping");
+        if (GameObject.FindGameObjectWithTag("Spawner1").transform.position.x == transform.position.x)
+        {
+            return 1;
+        }
+        else return 2;
     }
+
 }

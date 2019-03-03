@@ -14,10 +14,6 @@ public class CharacterSO : ScriptableObject {
     public Sprite WeaponUp1Image;
     public Sprite WeaponUp2Image;
 
-    public GameObject WeaponBasicPrefab;
-    public GameObject WeaponUp1Prefab;
-    public GameObject WeaponUp2Prefab;
-
     public int WeaponTo1UpgradeCost = 500;
     public int WeaponTo2UpgradeCost = 5000;
 
@@ -28,13 +24,13 @@ public class CharacterSO : ScriptableObject {
     public int AttackPoint = 100;
     public int HealthPoint = 100;
 
-
     public override string ToString()
     {
         return CharacterName +
-                "\nHealth: " + HealthPoint.ToString() +
-                "\nAttack: " + AttackPoint.ToString();
+                "\nHealth: " + HealthPoint.ToString();
+                //   "\nAttack: " + AttackPoint.ToString();
+                //   "\nAttack: " + "Basic";
+                
+
     }
-
-
 }

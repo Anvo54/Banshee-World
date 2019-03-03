@@ -12,42 +12,29 @@ public class BotHealth : MonoBehaviour
 
     [SerializeField] GameObject healthBarCanvas;
 
-    GameObject target;
-
     int maxHealth;
     float currentHealth;
     float healthRatio;
 
+    public bool isBotDead;
+
     [SerializeField] Image healthBarImage;
     [SerializeField] Text playerNameTag;
-    float damageFromPlayer =0;
-    float damageToPlayer;
-
-    //GameObject GameSceneManagerRef;
-    //GameSceneManager gameSceneManager;
 
     void Start()
     {
+        isBotDead = false;
         selectedBotIndex = (int)GameStaticValues.bot;
 
         healthBarCanvas.GetComponent<Canvas>().worldCamera = 
                  GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
-        target = GameObject.FindGameObjectWithTag("Player");
-
         maxHealth = bots[selectedBotIndex].HealthPoint;
-        
         currentHealth = maxHealth;
-        damageFromPlayer = target.GetComponent<PlayerScriptKim>().damage;
 
         playerNameTag.text = "Bot";
     }
 
-
-    void Update()
-    {
-        AddjustCurrentHealth(damageFromPlayer);
-    }
 
     internal void AddjustCurrentHealth(float damage)
     {
@@ -67,13 +54,15 @@ public class BotHealth : MonoBehaviour
         healthBarImage.rectTransform.localScale = new Vector3(healthRatio, 1, 1);
     }
 
-    private void Die()
+    internal void Die()
     {
+        isBotDead = true;
         gameObject.SetActive(false);
     }
 
     internal void ResetMaxHealth()
     {
+        isBotDead = false;
         currentHealth = maxHealth;
     }
 }
