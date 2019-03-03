@@ -1,0 +1,319 @@
+fileFormatVersion: 2
+guid: 0042bc29bb236eb43a5831be04c557dc
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: 1stFinger.L
+    100002: 1stFinger.R
+    100004: 1stFinger1.L
+    100006: 1stFinger1.R
+    100008: 1stFinger2.L
+    100010: 1stFinger2.L_end
+    100012: 1stFinger2.R
+    100014: 1stFinger2.R_end
+    100016: 2stFinger1.L
+    100018: 2stFinger1.R
+    100020: 2stFinger2.L
+    100022: 2stFinger2.R
+    100024: 2stFinger3.L
+    100026: 2stFinger3.L_end
+    100028: 2stFinger3.R
+    100030: 2stFinger3.R_end
+    100032: 3stFinger1.L
+    100034: 3stFinger1.R
+    100036: 3stFinger2.L
+    100038: 3stFinger2.R
+    100040: 3stFinger3.L
+    100042: 3stFinger3.L_end
+    100044: 3stFinger3.R
+    100046: 3stFinger3.R_end
+    100048: Armature
+    100050: base
+    100052: Bone
+    100054: Bone.001
+    100056: Bone.001_end
+    100058: Bone.002
+    100060: Bone.003
+    100062: Bone.004
+    100064: Bone.004_end
+    100066: Bone.005
+    100068: Bone.006
+    100070: Bone.006_end
+    100072: Bone.007
+    100074: Bone.008
+    100076: Bone.009
+    100078: Bone.009_end
+    100080: Bone.010
+    100082: Bone.011
+    100084: Bone.012
+    100086: Bone.012_end
+    100088: Bone.013
+    100090: Bone.014
+    100092: Bone.015
+    100094: Bone.015_end
+    100096: Bone.016
+    100098: Bone.017
+    100100: Bone.017_end
+    100102: Bone.018
+    100104: Bone.018_end
+    100106: Bone.019
+    100108: Bone.019_end
+    100110: Bone.020
+    100112: Bone.020_end
+    100114: chest
+    100116: foorcontrol.L
+    100118: foot.L
+    100120: foot.R
+    100122: Footcontrol.R
+    100124: footrollCtrl.L
+    100126: footrollCtrl.L_end
+    100128: footRollCtrl.R
+    100130: footRollCtrl.R_end
+    100132: Group1.003
+    100134: HAND.L
+    100136: HAND.R
+    100138: handIK.L
+    100140: handIK.R
+    100142: head
+    100144: head_end
+    100146: heelroll.L
+    100148: heelroll.R
+    100150: HipsCtrl
+    100152: ik.L
+    100154: ik.L_end
+    100156: IK.R
+    100158: IK.R_end
+    100160: kalapone.L
+    100162: kalapone.R
+    100164: kneeCtrl.L
+    100166: kneeCtrl.L_end
+    100168: kneeCtrl.R
+    100170: kneeCtrl.R_end
+    100172: lowArm.L
+    100174: lowArm.R
+    100176: lowleg.L
+    100178: lowleg.R
+    100180: neck
+    100182: //RootNode
+    100184: TOE.L
+    100186: TOE.L_end
+    100188: TOE.R
+    100190: TOE.R_end
+    100192: toeroll.L
+    100194: toeroll.R
+    100196: upArm.L
+    100198: upArm.R
+    100200: upleg.L
+    100202: upleg.R
+    400000: 1stFinger.L
+    400002: 1stFinger.R
+    400004: 1stFinger1.L
+    400006: 1stFinger1.R
+    400008: 1stFinger2.L
+    400010: 1stFinger2.L_end
+    400012: 1stFinger2.R
+    400014: 1stFinger2.R_end
+    400016: 2stFinger1.L
+    400018: 2stFinger1.R
+    400020: 2stFinger2.L
+    400022: 2stFinger2.R
+    400024: 2stFinger3.L
+    400026: 2stFinger3.L_end
+    400028: 2stFinger3.R
+    400030: 2stFinger3.R_end
+    400032: 3stFinger1.L
+    400034: 3stFinger1.R
+    400036: 3stFinger2.L
+    400038: 3stFinger2.R
+    400040: 3stFinger3.L
+    400042: 3stFinger3.L_end
+    400044: 3stFinger3.R
+    400046: 3stFinger3.R_end
+    400048: Armature
+    400050: base
+    400052: Bone
+    400054: Bone.001
+    400056: Bone.001_end
+    400058: Bone.002
+    400060: Bone.003
+    400062: Bone.004
+    400064: Bone.004_end
+    400066: Bone.005
+    400068: Bone.006
+    400070: Bone.006_end
+    400072: Bone.007
+    400074: Bone.008
+    400076: Bone.009
+    400078: Bone.009_end
+    400080: Bone.010
+    400082: Bone.011
+    400084: Bone.012
+    400086: Bone.012_end
+    400088: Bone.013
+    400090: Bone.014
+    400092: Bone.015
+    400094: Bone.015_end
+    400096: Bone.016
+    400098: Bone.017
+    400100: Bone.017_end
+    400102: Bone.018
+    400104: Bone.018_end
+    400106: Bone.019
+    400108: Bone.019_end
+    400110: Bone.020
+    400112: Bone.020_end
+    400114: chest
+    400116: foorcontrol.L
+    400118: foot.L
+    400120: foot.R
+    400122: Footcontrol.R
+    400124: footrollCtrl.L
+    400126: footrollCtrl.L_end
+    400128: footRollCtrl.R
+    400130: footRollCtrl.R_end
+    400132: Group1.003
+    400134: HAND.L
+    400136: HAND.R
+    400138: handIK.L
+    400140: handIK.R
+    400142: head
+    400144: head_end
+    400146: heelroll.L
+    400148: heelroll.R
+    400150: HipsCtrl
+    400152: ik.L
+    400154: ik.L_end
+    400156: IK.R
+    400158: IK.R_end
+    400160: kalapone.L
+    400162: kalapone.R
+    400164: kneeCtrl.L
+    400166: kneeCtrl.L_end
+    400168: kneeCtrl.R
+    400170: kneeCtrl.R_end
+    400172: lowArm.L
+    400174: lowArm.R
+    400176: lowleg.L
+    400178: lowleg.R
+    400180: neck
+    400182: //RootNode
+    400184: TOE.L
+    400186: TOE.L_end
+    400188: TOE.R
+    400190: TOE.R_end
+    400192: toeroll.L
+    400194: toeroll.R
+    400196: upArm.L
+    400198: upArm.R
+    400200: upleg.L
+    400202: upleg.R
+    2100000: Material.001
+    2100002: Material
+    4300000: Group1.003
+    7400000: Armature|1 RIGHT PUNCH
+    7400002: Armature|BLOCKING
+    7400004: 'Armature|blocking '
+    7400006: Armature|idle WEAPON
+    7400008: Armature|idle1
+    7400010: Armature|jumb double slash
+    7400012: Armature|JUMPING ANIMATION
+    7400014: Armature|JUMPING ANIMATION with weapon
+    7400016: 'Armature|left armslash '
+    7400018: 'Armature|PUNCHING '
+    7400020: Armature|right hand slashing
+    7400022: 'Armature|runing '
+    7400024: Armature|runingWITH WEAPON
+    7400026: Armature|WEAPON ATTACK 1
+    7400028: Armature|WEAPON ATTACK 2
+    7400030: Armature|WEAPON ATTACK 3
+    7400032: Armature|WEAPON ATTACK 4
+    7400034: Armature|WEAPON ATTACK 5
+    9500000: //RootNode
+    13700000: Group1.003
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
