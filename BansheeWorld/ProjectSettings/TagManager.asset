@@ -12,6 +12,7 @@ TagManager:
   - Spawner1
   - P1H
   - P2H
+  - Bot
   layers:
   - Default
   - TransparentFX
