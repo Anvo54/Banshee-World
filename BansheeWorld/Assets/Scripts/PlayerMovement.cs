@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool grounded;
     [SerializeField] Collider[] attackHitBoxes;
     [SerializeField] GameObject Hit;
+    [SerializeField] float hitForce=300;
 
     [SerializeField] float damage = 0;
 
@@ -93,12 +94,23 @@ public class PlayerMovement : MonoBehaviour
         Attack2();
         Kick();     
     }
-
+    private void Attack1()
+    {
+        if (Input.GetButtonDown(fire1))
+        {
+            Debug.Log("Fire1");
+            playerAnimator.SetTrigger("Attack1");
+            Attack(attackHitBoxes[0]);
+        }
+        if (Input.GetButtonUp(fire1))
+        {
+            playerAnimator.ResetTrigger("Attack1");
+        }
+    }
     private void Attack2()
     {
         if (Input.GetButtonDown(fire2))
         {
-            playerAnimator.SetLayerWeight(1, 1f);
             playerAnimator.SetTrigger("Attack2");
             Attack(attackHitBoxes[0]);
         }
@@ -108,26 +120,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Attack1()
-    {
-        if (Input.GetButtonDown(fire1))
-        {
-            playerAnimator.SetLayerWeight(1, 1f);
-            playerAnimator.SetTrigger("Attack1");
-            Attack(attackHitBoxes[0]);
-        }
-        if (Input.GetButtonUp(fire1))
-        {
-            playerAnimator.ResetTrigger("Attack1");
-        }
-    }
+
 
     private void Kick()
     {
         if (Input.GetButtonDown(fire2))
         {
             Debug.Log("Kick");
-            playerAnimator.SetLayerWeight(1, 1);
             playerAnimator.SetTrigger("Attack1");
             Attack(attackHitBoxes[1]);
         }
@@ -148,15 +147,18 @@ public class PlayerMovement : MonoBehaviour
             }
             Debug.Log(c.name);
 
+
+
             switch (c.name)
             {
                 case "Head":
                     damage = headDamage;
-                    Instantiate(Hit,transform.position,Quaternion.identity);
+                    c.transform.root.GetComponent<Rigidbody>().AddExplosionForce(hitForce,transform.position, 10f);
+                    //Instantiate(Hit,transform.position,Quaternion.identity);
                     break;
                 case "Torso":
                     damage = bodyDamage;
-                    Instantiate(Hit, transform.position, Quaternion.identity);
+                    //Instantiate(Hit, transform.position, Quaternion.identity);
                     break;
                 default:
                     Debug.Log("Unable to indetify witch bodypart was hit. Check your spelling!");
@@ -180,7 +182,6 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButton(jump) && grounded)
         {
             playerAnimator.SetTrigger("Jump");
-            Debug.Log("Starting to jump");
             playerRB.AddForce(Vector3.up * jumpForce*2);
             grounded = false;
             

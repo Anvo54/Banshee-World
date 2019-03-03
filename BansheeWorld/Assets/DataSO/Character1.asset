@@ -26,4 +26,4 @@ MonoBehaviour:
   WeaponUp1Power: 20
   WeaponUp2Power: 30
   AttackPoint: 100
-  HealthPoint: 100
+  HealthPoint: 1000
