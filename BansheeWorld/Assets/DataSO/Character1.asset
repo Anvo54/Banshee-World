@@ -17,9 +17,9 @@ MonoBehaviour:
     type: 3}
   CharacterName: Grim
   CharacterImage: {fileID: 21300000, guid: 4400a598fdb3dd74686a93da69425c14, type: 3}
-  WeaponBasicImage: {fileID: 21300000, guid: ec6b351a3e7d6334188d0e67d29a5fd3, type: 3}
-  WeaponUp1Image: {fileID: 21300000, guid: 15d7ba46eb3d57c4685c1a8731e9c899, type: 3}
-  WeaponUp2Image: {fileID: 21300000, guid: e682fde6fc8d89b47834269fe8a1f8c4, type: 3}
+  WeaponBasicImage: {fileID: 21300000, guid: b27a10b286e307c4793d9ffd18151803, type: 3}
+  WeaponUp1Image: {fileID: 21300000, guid: b27a10b286e307c4793d9ffd18151803, type: 3}
+  WeaponUp2Image: {fileID: 21300000, guid: b27a10b286e307c4793d9ffd18151803, type: 3}
   WeaponTo1UpgradeCost: 500
   WeaponTo2UpgradeCost: 5000
   WeaponBasicPower: 10
