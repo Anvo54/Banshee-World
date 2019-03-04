@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         fire2 = "J" + pnum + "Fire2";
         fire2KB = "K" + pnum + "Fire2";
         fire3 = "J" + pnum + "Fire3";
-        fire2KB = "K" + pnum + "Fire3";
+        fire3KB = "K" + pnum + "Fire3";
         horizonal_Axis = "J" + pnum + "Horizontal";
         horizonal_AxisKB = "K" + pnum + "Horizontal";
         Vertical_Axis = "J" + pnum + "Vertical";
@@ -80,14 +80,14 @@ public class PlayerMovement : MonoBehaviour
     {
         float lh;
         float lv;
-        if (Input.GetAxis(horizonal_Axis) > 0 || Input.GetAxis(Vertical_Axis)>0)
+        if (Mathf.Abs(Input.GetAxis(horizonal_Axis)) > 0 || Mathf.Abs(Input.GetAxis(Vertical_Axis))>0)
         {
             lh = Input.GetAxis(horizonal_Axis);
             lv = Input.GetAxis(Vertical_Axis);
         } else
         {
-            lh = Input.GetAxis(horizonal_Axis);
-            lv = Input.GetAxis(Vertical_Axis);
+            lh = Input.GetAxis(horizonal_AxisKB);
+            lv = Input.GetAxis(Vertical_AxisKB);
         }
     
 
@@ -128,14 +128,14 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Attack1()
     {
-        if (Input.GetButtonDown(fire1) || Input.GetButtonDown("P1fire"))
+        if (Input.GetButtonDown(fire1) || Input.GetButtonDown(fire1KB))
         {
             Debug.Log("Fire1");
             playerAnimator.SetTrigger("Attack1");
             Attack(attackHitBoxes[0]);
             audioI = 0;
         }
-        if (Input.GetButtonUp(fire1) || Input.GetButtonUp("P1fire"))
+        if (Input.GetButtonUp(fire1) || Input.GetButtonUp(fire1KB))
         {
             playerAnimator.ResetTrigger("Attack1");
 
@@ -143,13 +143,13 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Attack2()
     {
-        if (Input.GetButtonDown(fire2) || Input.GetButtonDown("P1fire2"))
+        if (Input.GetButtonDown(fire2) || Input.GetButtonDown(fire2KB))
         {
             playerAnimator.SetTrigger("Attack2");
             Attack(attackHitBoxes[0]);
             audioI = 1;
         }
-        if (Input.GetButtonUp(fire2))
+        if (Input.GetButtonUp(fire2) || Input.GetButtonUp(fire2KB))
         {
             playerAnimator.ResetTrigger("Attack2");
         }
@@ -159,14 +159,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void Kick()
     {
-        if (Input.GetButtonDown(fire3) || Input.GetButtonDown("P1fire3"))
+        if (Input.GetButtonDown(fire3) || Input.GetButtonDown(fire3KB))
         {
             Debug.Log("Kick");
             playerAnimator.SetTrigger("Attack1");
             Attack(attackHitBoxes[1]);
             audioI = 2;
         }
-        if (Input.GetButtonUp(fire2))
+        if (Input.GetButtonUp(fire2) || Input.GetButtonUp(fire3KB))
         {
             playerAnimator.ResetTrigger("Attack1");
         }
@@ -218,7 +218,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetButton(jump) && grounded)
+        if (Input.GetButtonDown(jump) && grounded || Input.GetButtonDown(jumpKB) && grounded)
         {
             playerAnimator.SetTrigger("Jump");
             playerRB.AddForce(Vector3.up * jumpForce*2);
