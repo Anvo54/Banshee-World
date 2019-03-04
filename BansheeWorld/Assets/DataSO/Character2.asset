@@ -17,9 +17,9 @@ MonoBehaviour:
     type: 3}
   CharacterName: Poppet
   CharacterImage: {fileID: 21300000, guid: 42e7116ae582bb54b903f4184bf08b73, type: 3}
-  WeaponBasicImage: {fileID: 21300000, guid: 69e5c2c3b16b7aa4293b59469c505f3f, type: 3}
-  WeaponUp1Image: {fileID: 21300000, guid: 3ae312b5d6a2ea749b2ad8a7e34e12f9, type: 3}
-  WeaponUp2Image: {fileID: 21300000, guid: 28e5fc5cfe2d1bb47a87cbb739f5d1ef, type: 3}
+  WeaponBasicImage: {fileID: 21300000, guid: ac167df0e6001914588526092f38baa3, type: 3}
+  WeaponUp1Image: {fileID: 21300000, guid: ac167df0e6001914588526092f38baa3, type: 3}
+  WeaponUp2Image: {fileID: 21300000, guid: ac167df0e6001914588526092f38baa3, type: 3}
   WeaponTo1UpgradeCost: 500
   WeaponTo2UpgradeCost: 5000
   WeaponBasicPower: 10
