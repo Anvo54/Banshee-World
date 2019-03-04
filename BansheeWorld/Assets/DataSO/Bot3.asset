@@ -13,16 +13,13 @@ MonoBehaviour:
   m_Name: Bot3
   m_EditorClassIdentifier: 
   character: 2
-  CharacterPrefab: {fileID: 1429279921026270, guid: e9cbe673984b1d74bbddf006436cec6e,
+  CharacterPrefab: {fileID: 3905577297324133285, guid: a23fe2e0f61eb9f479b7f2bb64b127d4,
     type: 3}
   CharacterName: Bot3
   CharacterImage: {fileID: 21300000, guid: 0ea7da4e8825d3542977dad8e0cac092, type: 3}
   WeaponBasicImage: {fileID: 0}
   WeaponUp1Image: {fileID: 0}
   WeaponUp2Image: {fileID: 0}
-  WeaponBasicPrefab: {fileID: 0}
-  WeaponUp1Prefab: {fileID: 0}
-  WeaponUp2Prefab: {fileID: 0}
   WeaponTo1UpgradeCost: 500
   WeaponTo2UpgradeCost: 5000
   WeaponBasicPower: 10

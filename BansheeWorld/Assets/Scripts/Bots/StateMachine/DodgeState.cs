@@ -37,12 +37,13 @@ public class DodgeState : IState
 
     private void Dodge()
     {
-        bot.anim.SetTrigger("block");
+        bot.anim.SetTrigger("Blocking");
         float animDuration = bot.anim.GetCurrentAnimatorStateInfo(0).length;
 
         if (bot.timer <= animDuration)
         {
             bot.transform.position -= bot.transform.forward * Time.deltaTime / 5;
+            bot.anim.ResetTrigger("Blocking");
         }
         else
         {

@@ -31,7 +31,7 @@ public class BotHealth : MonoBehaviour
 
         maxHealth = bots[selectedBotIndex].HealthPoint;
         currentHealth = maxHealth;
-
+        healthBarImage.rectTransform.localScale = new Vector3(1, 1, 1);
         playerNameTag.text = "Bot";
     }
 
@@ -64,5 +64,6 @@ public class BotHealth : MonoBehaviour
     {
         isBotDead = false;
         currentHealth = maxHealth;
+        healthBarImage.rectTransform.localScale = new Vector3(1, 1, 1);
     }
 }

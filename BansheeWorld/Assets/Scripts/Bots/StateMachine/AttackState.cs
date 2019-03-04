@@ -50,36 +50,53 @@ public class AttackState : IState
                 bot.ChangeState(new FollowState());
             }
 
-            if (Input.GetButtonDown("Fire2_P1"))
+            if (Input.GetButtonDown("J1Fire2"))
             {
                 bot.isAttacking = false;
                 bot.StopAllCoroutines();
-                bot.isJumping = true;
-                bot.ChangeState(new JumpState());
-            }
-
-            if (Input.GetButtonDown("Fire1_P1"))
-            {
-                bot.isAttacking = false;
-                bot.StopAllCoroutines();
+                bot.anim.ResetTrigger("Attack1");
+                bot.anim.ResetTrigger("Attack2");
                 bot.isDodging = true;
                 bot.ChangeState(new DodgeState());
+            }
+
+            if (Input.GetButtonDown("J1Fire1"))
+            {
+                bot.isAttacking = false;
+                bot.StopAllCoroutines();
+                bot.anim.ResetTrigger("Attack1");
+                bot.anim.ResetTrigger("Attack2");
+                bot.isDodging = true;
+                bot.ChangeState(new DodgeState());
+            }
+
+            if(Input.GetButtonDown("J1Jump"))
+            {
+                bot.isAttacking = false;
+                bot.StopAllCoroutines();
+                bot.anim.ResetTrigger("Attack1");
+                bot.anim.ResetTrigger("Attack2");
+                bot.isJumping = true;
+                bot.ChangeState(new JumpState());
             }
         }
     }
 
     public IEnumerator Attack()
     {
-        bot.isAttacking = false;
+       // bot.isAttacking = false;
 
         while (bot.Distance <= bot.MaxAttackDistance)
         {
             Attack(bot.attackHitBoxes[0]);
-            bot.anim.SetTrigger("punch");
-            yield return new WaitForSecondsRealtime(bot.anim.GetCurrentAnimatorStateInfo(0).length);
-
             Attack(bot.attackHitBoxes[1]);
-            bot.anim.SetTrigger("kick");
+            bot.anim.SetTrigger("Attack1");
+            yield return new WaitForSecondsRealtime(bot.anim.GetCurrentAnimatorStateInfo(0).length);
+            yield return new WaitForSeconds(bot.AttackCooldown);
+
+            Attack(bot.attackHitBoxes[0]);
+            Attack(bot.attackHitBoxes[1]);
+            bot.anim.SetTrigger("Attack2");
             yield return new WaitForSecondsRealtime(bot.anim.GetCurrentAnimatorStateInfo(0).length);
 
             yield return new WaitForSeconds(bot.AttackCooldown);
