@@ -209,7 +209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037883023376982}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 0.071940266, z: -0.020652711}
+  m_LocalPosition: {x: 0, y: 0.071940266, z: -0.020652711}
   m_LocalScale: {x: 35.713886, y: 35.713886, z: 35.713886}
   m_Children:
   - {fileID: 4692668619669760}
@@ -329,10 +329,10 @@ GameObject:
   - component: {fileID: 95921675478778082}
   - component: {fileID: 4348541891834722366}
   - component: {fileID: 6768917394854264883}
-  - component: {fileID: 2279294839036452920}
-  - component: {fileID: 5783161675552859458}
+  - component: {fileID: 4501582380759649073}
+  - component: {fileID: 1647554570751148041}
   m_Layer: 0
-  m_Name: 'huanted poppet '
+  m_Name: BotPoppet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -366,7 +366,7 @@ Animator:
   m_GameObject: {fileID: 1090904995274728}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 87978f50fc10ed749970e065c6ba493f, type: 3}
-  m_Controller: {fileID: 9100000, guid: c64e1ec559f0ca941996bcb17669f3aa, type: 2}
+  m_Controller: {fileID: 9100000, guid: ff733cdcbeee8b942b8eb17d49e25145, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -398,7 +398,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1090904995274728}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49f6f193a5bd6de48bcd7825069289d8, type: 3}
   m_Name: 
@@ -412,15 +412,15 @@ MonoBehaviour:
   Hit: {fileID: 0}
   hitForce: 300
   damage: 0
-  horizonal_Axis: Horizontal
-  Vertical_Axis: Vertical
-  jump: Jump
-  fire1: Fire1
-  fire2: Fire2
+  horizonal_Axis: 
+  Vertical_Axis: 
+  jump: 
+  fire1: 
+  fire2: 
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
   index: 0
---- !u!114 &2279294839036452920
+--- !u!114 &4501582380759649073
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -429,11 +429,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 1090904995274728}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5639d962f52c6ad4d867db573a6dd181, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d7229c6e457fcf46826201268defc82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerIndex: 0
---- !u!114 &5783161675552859458
+  Speed: 5
+  JumpSpeed: 3
+  FallSpeed: 2
+  RotationSpeed: 5
+  Target: {fileID: 0}
+  Distance: 0
+  MinDistanceFromPlayer: 0.75
+  MaxAttackDistance: 2.1
+  AttackCooldown: 2
+  attackHitBoxes:
+  - {fileID: 4894145943236755416}
+  - {fileID: 4624893934756330286}
+  attackDamage: 0
+  GroundPosition: {x: 0, y: 0, z: 0}
+  timer: 0
+  isAttacking: 0
+  isJumping: 0
+  isDodging: 0
+  anim: {fileID: 0}
+--- !u!114 &1647554570751148041
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -442,16 +460,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1090904995274728}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b62bd7fe036a2fa49983219278ef57c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 56af816e1a4e5ca4b88fb4dbadc508a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characters:
-  - {fileID: 11400000, guid: bc1a7885b48f55f4689f1afeddf91c0c, type: 2}
-  - {fileID: 11400000, guid: 378a59bdf68208747addf2f0eaa33060, type: 2}
-  - {fileID: 11400000, guid: 6887fda3bb9e362458276dacaac3b229, type: 2}
-  - {fileID: 11400000, guid: 4f971bcd89ba8744886485b2a11ae934, type: 2}
+  bots:
+  - {fileID: 11400000, guid: e7faac1a82502344498aff92d09694f9, type: 2}
+  - {fileID: 11400000, guid: 42e828c9b0b0c5b49900e6cad55badfa, type: 2}
+  - {fileID: 11400000, guid: 9ab29985c53456e439658849b0328107, type: 2}
+  - {fileID: 11400000, guid: c8ee57e790bfbf942abfe2a9f5a8301f, type: 2}
   healthBarCanvas: {fileID: 3195710602781995434}
-  isDead: 0
+  isBotDead: 0
   healthBarImage: {fileID: 3195710604197106346}
   playerNameTag: {fileID: 3647944519332291770}
 --- !u!1 &1095487115166382
@@ -1436,7 +1454,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1605229448865132}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 0.14069012, z: 0.0000000044703485}
+  m_LocalPosition: {x: 0, y: 0.14069012, z: 0.0000000044703485}
   m_LocalScale: {x: 100.000015, y: 100.000015, z: 100.000015}
   m_Children: []
   m_Father: {fileID: 4935787370222942}
@@ -2560,7 +2578,7 @@ PrefabInstance:
     - target: {fileID: 7189862903713305835, guid: 81def3449c413ad44bdbb846cbaa9634,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.85
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 7189862903713305835, guid: 81def3449c413ad44bdbb846cbaa9634,
         type: 3}

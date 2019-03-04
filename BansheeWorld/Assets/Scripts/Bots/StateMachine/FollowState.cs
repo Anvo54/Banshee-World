@@ -30,7 +30,7 @@ public class FollowState : IState
                 (bot.transform.rotation, Quaternion.LookRotation(bot.Target.position - bot.transform.position), 
                         bot.RotationSpeed * Time.deltaTime);
 
-            bot.anim.SetTrigger("walk");
+           // bot.anim.SetTrigger("");
             bot.transform.position += bot.transform.forward * bot.Speed * Time.deltaTime;
 
             if(bot.Distance <= bot.MaxAttackDistance)
@@ -39,16 +39,16 @@ public class FollowState : IState
                 bot.ChangeState(new AttackState());
             }
 
-            if(Input.GetButtonDown("Fire1_P1"))
+            if(Input.GetButtonDown("J1Fire1"))
             {
                 bot.isDodging = true;
                 bot.ChangeState(new DodgeState());
             }
 
-            if(Input.GetButtonDown("Fire2_P1"))
+            if(Input.GetButtonDown("J1Fire2"))
             {
                 bot.isJumping = true;
-                bot.ChangeState(new JumpState());
+                bot.ChangeState(new DodgeState());
             }
         }
 

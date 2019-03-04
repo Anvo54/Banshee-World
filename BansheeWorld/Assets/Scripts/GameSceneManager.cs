@@ -82,7 +82,7 @@ public class GameSceneManager : MonoBehaviour
 
         PlayAgainButton.onClick.AddListener(delegate { StartCoroutine(GameLoop()); });
         PauseGameButton.onClick.AddListener(PauseGame);
- //       GameOverText.text = gameOverMessage;   
+        gameOverMessage = "Who Wins?";   
     }
 
     private void PauseGame()
@@ -98,7 +98,7 @@ public class GameSceneManager : MonoBehaviour
     IEnumerator GameLoop()
     {
         gameWinner = null;
-        gameOverMessage = "WHO WINS?";
+      //  gameOverMessage = "WHO WINS?";
         isGameOver = false;
 
         gameTimer = durationOfMatching;
@@ -118,60 +118,59 @@ public class GameSceneManager : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(secondBoxDropDelay);
         SpawnBox();
-        
-        if (gameWinner != null)
-        {
-            if (gameWinner == players[0])
-            {
-                gameOverMessage = "Player1 wins";
 
-                if (GameStaticValues.multiplayer)
-                {
-                    GameStaticValues.player1Win++;
-                    GameStaticValues.player1Coin += winGoldPointMultiplayer;
+        //if (gameWinner != null)
+        //{
+        //    if (gameWinner == players[0])
+        //    {
+        //        gameOverMessage = "Player1 wins";
 
-                    GameStaticValues.player2Coin -= loseGoldPointMultiplayer;
-                    if(GameStaticValues.player2Coin <=0)
-                    {
-                        GameStaticValues.player2Coin = 0;
-                    }
-                }
-                else
-                {
-                    GameStaticValues.player1Win++;
-                    GameStaticValues.player1Coin += winGoldPointWithBot;
-                }
-            }
+        //        if (GameStaticValues.multiplayer)
+        //        {
+        //            GameStaticValues.player1Win++;
+        //            GameStaticValues.player1Coin += winGoldPointMultiplayer;
 
-            else if(gameWinner == players[1])
-            {
-                if (GameStaticValues.multiplayer)
-                {
-                    gameOverMessage = "Player2 wins";
-                    GameStaticValues.player2Win++;
-                    GameStaticValues.player2Coin += winGoldPointMultiplayer;
+        //            GameStaticValues.player2Coin -= loseGoldPointMultiplayer;
+        //            if (GameStaticValues.player2Coin <= 0)
+        //            {
+        //                GameStaticValues.player2Coin = 0;
+        //            }
+        //        }
+        //        else
+        //        {
+        //            GameStaticValues.player1Win++;
+        //            GameStaticValues.player1Coin += winGoldPointWithBot;
+        //        }
+        //    }
 
-                    GameStaticValues.player1Coin -= loseGoldPointMultiplayer;
-                    if (GameStaticValues.player1Coin <= 0)
-                    {
-                        GameStaticValues.player1Coin = 0;
-                    }
-                }
-                else
-                {
-                    gameOverMessage = "Bot wins";
-                }
-            }
+        //    else if (gameWinner == players[1])
+        //    {
+        //        if (GameStaticValues.multiplayer)
+        //        {
+        //            gameOverMessage = "Player2 wins";
+        //            GameStaticValues.player2Win++;
+        //            GameStaticValues.player2Coin += winGoldPointMultiplayer;
 
-            GameOverText.text = gameOverMessage;
+        //            GameStaticValues.player1Coin -= loseGoldPointMultiplayer;
+        //            if (GameStaticValues.player1Coin <= 0)
+        //            {
+        //                GameStaticValues.player1Coin = 0;
+        //            }
+        //        }
+        //        else
+        //        {
+        //            gameOverMessage = "Bot wins";
+        //        }
+        //    }
 
-            PlayerPrefs.SetInt("Player1Coin", GameStaticValues.player1Coin);
-            PlayerPrefs.SetInt("Player1WinScore", GameStaticValues.player1Win);
-            PlayerPrefs.SetInt("Player2Coin", GameStaticValues.player2Coin);
-            PlayerPrefs.SetInt("Player2WinScore", GameStaticValues.player2Win);
-        }
+        //    GameOverText.text = gameOverMessage;
 
-        
+        //    PlayerPrefs.SetInt("Player1Coin", GameStaticValues.player1Coin);
+        //    PlayerPrefs.SetInt("Player1WinScore", GameStaticValues.player1Win);
+        //    PlayerPrefs.SetInt("Player2Coin", GameStaticValues.player2Coin);
+        //    PlayerPrefs.SetInt("Player2WinScore", GameStaticValues.player2Win);
+        //}
+
         yield return EndWait;
     }
 
@@ -300,7 +299,7 @@ public class GameSceneManager : MonoBehaviour
             }
         }
 
-        if (gameStarted)
+        if (gameStarted && !isGameOver)
         {
             gameTimer -= Time.deltaTime;
             if (gameTimer <= 0)
@@ -330,7 +329,6 @@ public class GameSceneManager : MonoBehaviour
 
         if (isGameOver)
         {
-            StopAllCoroutines();
             return;
         }
         else
@@ -342,7 +340,9 @@ public class GameSceneManager : MonoBehaviour
                     if(players[i].instance.GetComponent<PlayerHealth>().isDead)
                     {
                         GetGameWinner();
+                        GetResult();
                         isGameOver = true;
+                        StopAllCoroutines();
                     }
                 }
             }
@@ -352,14 +352,79 @@ public class GameSceneManager : MonoBehaviour
                 if (players[0].instance.GetComponent<PlayerHealth>().isDead)
                 {
                     GetGameWinner();
+                    GetResult();
                     isGameOver = true;
+                    StopAllCoroutines();
                 }
                 if (players[1].instance.GetComponent<BotHealth>().isBotDead)
                 {
                     GetGameWinner();
+                    GetResult();
                     isGameOver = true;
+                    StopAllCoroutines();
                 }
             }
         }
+    }
+
+    private void GetResult()
+    {
+        if (gameWinner != null)
+        {
+            if (gameWinner == players[0])
+            {
+                gameOverMessage = "Player1 wins";
+
+                if (GameStaticValues.multiplayer)
+                {
+                    GameStaticValues.player1Win++;
+                    GameStaticValues.player1Coin += winGoldPointMultiplayer;
+
+                    GameStaticValues.player2Coin -= loseGoldPointMultiplayer;
+                    if (GameStaticValues.player2Coin <= 0)
+                    {
+                        GameStaticValues.player2Coin = 0;
+                    }
+                }
+                else
+                {
+                    GameStaticValues.player1Win++;
+                    GameStaticValues.player1Coin += winGoldPointWithBot;
+                }
+            }
+
+            else if (gameWinner == players[1])
+            {
+                if (GameStaticValues.multiplayer)
+                {
+                    gameOverMessage = "Player2 wins";
+                    GameStaticValues.player2Win++;
+                    GameStaticValues.player2Coin += winGoldPointMultiplayer;
+
+                    GameStaticValues.player1Coin -= loseGoldPointMultiplayer;
+                    if (GameStaticValues.player1Coin <= 0)
+                    {
+                        GameStaticValues.player1Coin = 0;
+                    }
+                }
+                else
+                {
+                    gameOverMessage = "Bot wins";
+                }
+            }
+
+            GameOverText.text = gameOverMessage;
+
+            PlayerPrefs.SetInt("Player1Coin", GameStaticValues.player1Coin);
+            PlayerPrefs.SetInt("Player1WinScore", GameStaticValues.player1Win);
+            PlayerPrefs.SetInt("Player2Coin", GameStaticValues.player2Coin);
+            PlayerPrefs.SetInt("Player2WinScore", GameStaticValues.player2Win);
+        }
+
+        else
+        {
+            gameOverMessage = "Draw";
+        }
+
     }
 }

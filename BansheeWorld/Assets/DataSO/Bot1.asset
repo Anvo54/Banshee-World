@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bot1
   m_EditorClassIdentifier: 
   character: 0
-  CharacterPrefab: {fileID: 3905577297324133285, guid: a23fe2e0f61eb9f479b7f2bb64b127d4,
+  CharacterPrefab: {fileID: 3686221804256836861, guid: ce846134c3a8f9d4397e23876ed97e5b,
     type: 3}
   CharacterName: Bot1
   CharacterImage: {fileID: 21300000, guid: df53ea291e55b1c4f87e245fb82a69f3, type: 3}

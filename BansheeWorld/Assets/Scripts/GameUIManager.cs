@@ -24,6 +24,7 @@ public class GameUIManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         gameOverPanel.SetActive(false);
         pausePanel.SetActive(false);
 

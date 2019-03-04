@@ -20,7 +20,7 @@ public class IdleState : IState
     {
         if(bot.Target != null)
         {
-            bot.anim.SetTrigger("idle");
+          //  bot.anim.SetTrigger("idle");
 
             bot.transform.LookAt(bot.Target);
             bot.transform.rotation = Quaternion.Slerp
@@ -36,7 +36,7 @@ public class IdleState : IState
             if (Input.GetButtonDown("Fire2"))
             {
                 bot.StopAllCoroutines();
-                bot.ChangeState(new JumpState());
+                bot.ChangeState(new DodgeState());
             }
 
             if (Input.GetButtonDown("Fire1"))
@@ -46,10 +46,6 @@ public class IdleState : IState
             }
         }
 
-        else 
-        {
-            bot.anim.SetTrigger("idle");
-            // bot.gameObject.SetActive(false);
-        }
+        
     }
 }

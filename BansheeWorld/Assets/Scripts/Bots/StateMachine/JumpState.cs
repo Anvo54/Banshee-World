@@ -43,13 +43,14 @@ public class JumpState : IState
 
     private void Jump()
     {
-        bot.anim.SetTrigger("jump");
+        bot.anim.SetTrigger("Jump");
 
         float animDuration = bot.anim.GetCurrentAnimatorStateInfo(0).length;
         
         if (bot.timer <= animDuration /2)
         {
             bot.transform.Translate(Vector3.up * bot.JumpSpeed * Time.deltaTime / 2);
+            bot.anim.ResetTrigger("Jump");
         }
         else
         {

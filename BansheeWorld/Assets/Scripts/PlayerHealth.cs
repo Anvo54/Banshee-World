@@ -38,7 +38,7 @@ public class PlayerHealth : MonoBehaviour
 
         maxHealth = characters[selectedCharacterIndex].HealthPoint;
         currentHealth = maxHealth;
-
+        healthBarImage.rectTransform.localScale = new Vector3(1, 1, 1);
         playerNameTag.text = "P" + playerIndex.ToString();
     }
 
@@ -70,5 +70,6 @@ public class PlayerHealth : MonoBehaviour
     {
         isDead = false;
         currentHealth = maxHealth;
+        healthBarImage.rectTransform.localScale = new Vector3(1, 1, 1);
     }
 }
