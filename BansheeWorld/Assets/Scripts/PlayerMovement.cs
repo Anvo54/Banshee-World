@@ -12,17 +12,28 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Collider[] attackHitBoxes;
     [SerializeField] GameObject Hit;
     [SerializeField] float hitForce=300;
-
     [SerializeField] float damage = 0;
+    PlayerAudio playAudio;
+    int audioI;
 
     internal float headDamage = 30;
     internal float bodyDamage = 20;
-
+    
+    //Key mappings
     [SerializeField] string horizonal_Axis;
+    [SerializeField] string horizonal_AxisKB;
     [SerializeField] string Vertical_Axis;
+    [SerializeField] string Vertical_AxisKB;
     [SerializeField] string jump;
+    [SerializeField] string jumpKB;
     [SerializeField] string fire1;
+    [SerializeField] string fire1KB;
     [SerializeField] string fire2;
+    [SerializeField] string fire2KB;
+    [SerializeField] string fire3;
+    [SerializeField] string fire3KB;
+
+
     [SerializeField] float fallMultiplier = 2.5f;
     [SerializeField] float lowJumpMultiplier = 2;
 
@@ -43,24 +54,45 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         //index = gameObject.GetComponent<PlayerScriptKim>().playerIndex;
+        playAudio = GetComponent<PlayerAudio>();
         pnum = PlayerNumber();
         playerRB = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
         playerAnimator = GetComponent<Animator>();
+
+        //Control mapping to playernumbers
         fire1 = "J" + pnum + "Fire1";
+        fire1KB = "K" + pnum + "Fire1";
         fire2 = "J" + pnum + "Fire2";
+        fire2KB = "K" + pnum + "Fire2";
+        fire3 = "J" + pnum + "Fire3";
+        fire2KB = "K" + pnum + "Fire3";
         horizonal_Axis = "J" + pnum + "Horizontal";
+        horizonal_AxisKB = "K" + pnum + "Horizontal";
         Vertical_Axis = "J" + pnum + "Vertical";
+        Vertical_AxisKB = "K" + pnum + "Vertical";
         jump = "J" + pnum + "Jump";
+        jumpKB = "K" + pnum + "Jump";
 
     }
 
     private void Update()
     {
+        float lh;
+        float lv;
+        if (Input.GetAxis(horizonal_Axis) > 0 || Input.GetAxis(Vertical_Axis)>0)
+        {
+            lh = Input.GetAxis(horizonal_Axis);
+            lv = Input.GetAxis(Vertical_Axis);
+        } else
+        {
+            lh = Input.GetAxis(horizonal_Axis);
+            lv = Input.GetAxis(Vertical_Axis);
+        }
+    
 
-        
-        float lh = Input.GetAxis(horizonal_Axis);
-        float lv = Input.GetAxis(Vertical_Axis);
+        //lh = Input.GetAxis(horizonal_AxisKB);
+        //lv = Input.GetAxis(Vertical_AxisKB);
         Animate();
 
         moveInput = new Vector3(lh, 0f, lv);
@@ -96,23 +128,26 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Attack1()
     {
-        if (Input.GetButtonDown(fire1))
+        if (Input.GetButtonDown(fire1) || Input.GetButtonDown("P1fire"))
         {
             Debug.Log("Fire1");
             playerAnimator.SetTrigger("Attack1");
             Attack(attackHitBoxes[0]);
+            audioI = 0;
         }
-        if (Input.GetButtonUp(fire1))
+        if (Input.GetButtonUp(fire1) || Input.GetButtonUp("P1fire"))
         {
             playerAnimator.ResetTrigger("Attack1");
+
         }
     }
     private void Attack2()
     {
-        if (Input.GetButtonDown(fire2))
+        if (Input.GetButtonDown(fire2) || Input.GetButtonDown("P1fire2"))
         {
             playerAnimator.SetTrigger("Attack2");
             Attack(attackHitBoxes[0]);
+            audioI = 1;
         }
         if (Input.GetButtonUp(fire2))
         {
@@ -124,11 +159,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Kick()
     {
-        if (Input.GetButtonDown(fire2))
+        if (Input.GetButtonDown(fire3) || Input.GetButtonDown("P1fire3"))
         {
             Debug.Log("Kick");
             playerAnimator.SetTrigger("Attack1");
             Attack(attackHitBoxes[1]);
+            audioI = 2;
         }
         if (Input.GetButtonUp(fire2))
         {
@@ -154,10 +190,13 @@ public class PlayerMovement : MonoBehaviour
                 case "Head":
                     damage = headDamage;
                     c.transform.root.GetComponent<Rigidbody>().AddExplosionForce(hitForce,transform.position, 10f);
+                    playAudio.PlayAttackSound(audioI);
                     //Instantiate(Hit,transform.position,Quaternion.identity);
                     break;
                 case "Torso":
                     damage = bodyDamage;
+                    c.transform.root.GetComponent<Rigidbody>().AddExplosionForce(hitForce*0.80f, transform.position, 10f);
+                    playAudio.PlayAttackSound(audioI);
                     //Instantiate(Hit, transform.position, Quaternion.identity);
                     break;
                 default:
